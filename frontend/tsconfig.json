@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@ui/*": [
+        "ui/*"
+      ],
+      "@images": [
+        "ui/assets/images"
+      ],
+      "@images/*": [
+        "ui/assets/images/*"
+      ],
+      "@templates/*": [
+        "ui/templates/*"
+      ],
+      "@templates": [
+        "ui/templates"
+      ],
+      "@icons": [
+        "ui/assets/icons"
+      ],
+      "@api/*": [
+        "api/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@store/*": [
+        "lib/store/*"
+      ]},
+    "outDir": "./build/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "target": "es5",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["node_modules"]
+}

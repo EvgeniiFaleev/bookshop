@@ -1,0 +1,77 @@
+.home {
+  padding-top: 6rem;
+  background-color: $violet;
+  background-size: auto 60%;
+  height: 38rem;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-image: url("../../../ui/assets/images/hero_background.jpg");
+
+  .slogan {
+    max-width: 42rem;
+    color: $hero-text;
+    text-align: center;
+    font-size: 46px;
+    font-family: GT-Bold serif;
+    line-height: 1.26;
+    letter-spacing: -1px;
+  }
+
+  .search {
+    background: $light_search_bg;
+    width: 21rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    border-radius: 999999px;
+
+    input {
+      border: 0;
+      color: $dark-text;
+      background-color: transparent;
+      flex-grow: 1;
+      margin-right: 5px;
+      outline: none;
+      font-size: 100%;
+    }
+
+    button {
+      border: 0;
+      background-color: $button_primary;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      padding: 0;
+      border-radius: 100%;
+    }
+  }
+}
+
+.booksCount {
+  text-align: center;
+  max-width: $max-width;
+  margin: auto;
+  padding: 0.5rem 0;
+  font-size: 17px;
+  font-family: IbmPlex-Regular, sans-serif;
+  color: $dark-text;
+
+  &_number{
+    font-size: 18px;
+    font-family: IbmPlex-Bold, sans-serif;
+    color:$violet;
+  }
+}
+
+.banner{
+  //max-width: $max-width;
+  display: block;
+  margin: auto;
+  img{
+    width: 100%;
+  }
+}

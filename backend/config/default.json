@@ -1,0 +1,6 @@
+{
+  "port" : 5000,
+  "mongoURI" :"mongodb+srv://Evgeniy:@ev13ar@cluster0.zbhxk.mongodb.net/Cluster0?retryWrites=true&w=majority",
+  "privateKey": "fdffd dfsdf f",
+  "privateSessionKey": "dfgfdgdfzxcx"
+}

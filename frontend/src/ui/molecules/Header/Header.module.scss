@@ -1,0 +1,64 @@
+.header {
+  font-family: GT-Regular, serif;
+  background: $violet;
+  color: white;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+
+
+  position: sticky;
+  top: 0;
+
+  .wrapper {
+    @extend %footer-header_horizontal-padding;
+    justify-content: space-between;
+    display: flex;
+    @extend %app_width;
+
+    .title {
+      font-size: 24px;
+      margin-left: 0.5rem;
+      font-weight: lighter;
+      color: white;
+    }
+
+    .logo {
+      height: 27px;
+    }
+
+    .flex_1, .flex_2 {
+      display: flex;
+      align-items: center;
+    }
+
+    .flex_1 {
+      cursor: pointer;
+    }
+
+    .flex_2 {
+      .basket, .user {
+        margin-left: 0.5rem;
+      }
+
+      .browse {
+        font-family: IbmPlex-Bold, sans-serif;
+        text-transform: uppercase;
+        margin-left: 0.75rem;
+        font-size: 12px;
+      }
+
+      a {
+        margin-left: 0.75rem;
+        color: white;
+
+      }
+
+      svg {
+        font-size: 16px;
+      }
+
+    }
+  }
+
+
+}

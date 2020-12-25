@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  background-image: url("../../../ui/assets/images/hero_background.jpg");
+  background-image: url("../../assets/images/hero_background.jpg");
 
   .slogan {
     max-width: 42rem;
@@ -70,7 +70,7 @@
 .banner{
   //max-width: $max-width;
   display: block;
-  margin: auto;
+  margin: 0 auto 2rem;
   img{
     width: 100%;
   }

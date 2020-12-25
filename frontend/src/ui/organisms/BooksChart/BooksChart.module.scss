@@ -1,0 +1,43 @@
+.wrapper {
+  @extend %app_width;
+
+  .item_block {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid $gray-lightest;
+
+    .item {
+      flex-basis: 33.33%;
+      display: flex;
+      justify-content: flex-start;
+
+      img{
+        cursor: pointer;
+        width: 6rem;
+        box-shadow: 0px 6px 12px rgba(0,0,0,0.3);
+        transition: transform 300ms ease-in, box-shadow 200ms ease-in;
+      }
+      img:hover{
+        transform: scale(1.1);
+        box-shadow: 1px 7px 13px 0px rgba(67, 0, 17, 0.5);
+      }
+    }
+    .bookInfo{
+      padding: 1rem;
+      font-size: 15px;
+      text-align: left;
+      p:first-child{
+        font-family: GT-Bold, serif;
+      }
+     p:nth-child(2){
+       font-family: IbmPlex-Regular, sans-serif;
+       margin: 0.25rem 0;
+     }
+      p:last-child{
+        font-family: IbmPlex-Bold, sans-serif;
+      }
+    }
+  }
+}

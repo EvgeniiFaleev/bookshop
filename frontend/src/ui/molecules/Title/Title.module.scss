@@ -1,0 +1,23 @@
+.category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    box-shadow: 0 1px 4px 0 rgba(40, 29, 50, 0.2);
+  }
+
+  h2 {
+    margin-left: 0.8rem;
+    flex-grow: 1;
+    flex-shrink: 1;
+    font-family: GT-Bold, serif;
+    font-size: 34px;
+    color: $category_header;
+  }
+
+
+}

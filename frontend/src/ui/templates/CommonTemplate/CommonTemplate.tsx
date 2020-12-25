@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Header } from '@ui/molecules/Header/Header';
-import { Footer } from '@ui/molecules/Footer/Footer';
+import { Header } from '@ui/organisms/Header';
+import { Footer } from '@ui/organisms/Footer';
 import styles from './CommonTemplate.module.scss';
 
 export const CommonTemplate :FC = ({ children }) => (

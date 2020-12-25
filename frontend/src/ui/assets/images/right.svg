@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="57px" viewBox="0 0 56 57" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Right Arrow</title>
+    <defs>
+        <circle id="path-1" cx="21" cy="21" r="21"></circle>
+        <filter x="-26.2%" y="-19.0%" width="152.4%" height="152.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="3" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Organism-/-Book-Lists-/-Carousel-/-LRG-/-Featured" transform="translate(-931.000000, -181.000000)">
+            <g id="Right-Arrow" transform="translate(938.000000, 185.500000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use stroke-opacity="0.104294143" stroke="#979797" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="ic-/-expand_more" transform="translate(21.000000, 21.000000) rotate(-90.000000) translate(-21.000000, -21.000000) translate(5.000000, 5.000000)" fill="#573BA3">
+                    <path d="M25.7266667,10.6733333 C25.2064407,10.1531074 24.3639167,10.1501102 23.8400027,10.6666218 L16,18.3958526 L16,18.3958526 L8.17860708,10.6613634 C7.65200686,10.1406142 6.80368286,10.1429838 6.28,10.6666667 C5.75717044,11.1894962 5.75717044,12.0371704 6.28,12.56 L15.2928932,21.5728932 C15.6834175,21.9634175 16.3165825,21.9634175 16.7071068,21.5728932 L25.7266667,12.5533333 C26.2458143,12.0341857 26.2458143,11.192481 25.7266667,10.6733333 Z" id="Down"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

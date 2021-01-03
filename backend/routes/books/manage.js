@@ -2,6 +2,7 @@ const {Router} = require("express");
 const Book = require("../../models/book");
 const adminCheck = require("../../common/adminCheck");
 const {body, validationResult} = require('express-validator');
+const config = require("config");
 
 const router = Router();
 
@@ -11,7 +12,7 @@ router.post("/add",
   [body("author", "Введите Автора").exists(),
     body('title', "Введите имя книги").exists(),
     body("price", "Введите цену").exists(),
-    body("picture", "Введите ссылку на фото").exists().isURL(),],
+    body("picture", "Введите ссылку на фото").exists()],
   async (req, res) => {
     try {
       const errors = validationResult(req);
@@ -21,10 +22,10 @@ router.post("/add",
           message: "Некоректные данные при вхоже"
         });
       }
-      const {author, title, price, picture} = req.body;
+      let {author, title, price, picture, categories, description} = req.body;
 
       const matchBook = await Book.findOne({title});
-
+      categories = categories.split(" ");
       if (matchBook) {
         return res.status(400).json({
           message: "Такая книга уже существует"
@@ -34,13 +35,15 @@ router.post("/add",
         author,
         title,
         price,
-        picture
+        picture: config.get("staticImagesURI") + picture,
+        categories,
+        description
       });
-
+console.log(book);
       book.save(function (err) {
         if (err) {
           return res.status(500)
-            .json("Ошибка при сохранении в" + " базу ");
+            .json(`Ошибка при сохранении в базу ${err}`);
         }
         return res.status(200).json({message: "Книга сохранена"})
       });

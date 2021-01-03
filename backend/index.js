@@ -5,10 +5,14 @@ const config = require("config");
 const bodyParser = require('body-parser');
 const PORT = config.get("port");
 const URI = config.get("mongoURI");
-var session = require('express-session');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:9000',
+};
 
-app.use("/",  cookieParser());
+app.use("/",  cookieParser(), cors(corsOptions));
 app.use("/",  session({
   secret: config.get("privateSessionKey"),
   cookie:{
@@ -27,8 +31,10 @@ app.use("/books",
   [bodyParser.urlencoded({extended: false}),
     require("./routes/books/paginate"),
     require("./routes/books/manage"),
-    require("./routes/books/order")]);
+    require("./routes/books/order"),
+  require("./routes/books/chart")]);
 
+ app.use(express.static('public'));
 
 async function start() {
   try {

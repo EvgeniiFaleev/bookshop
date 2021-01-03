@@ -1,4 +1,4 @@
-import { ButtonPrimary } from '@ui/atoms/button_primary';
+import { ButtonPrimary } from '@ui/atoms/Button_primary';
 import logo from '@images/logo.svg';
 import styles from './Footer.module.scss';
 

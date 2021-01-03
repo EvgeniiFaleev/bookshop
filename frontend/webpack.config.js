@@ -18,8 +18,10 @@ module.exports = (env) => {
     resolve: {
       alias: {
         '@ui': path.resolve(__dirname, 'src/ui'),
+        '@lib': path.resolve(__dirname, 'src/lib'),
         '@templates': path.resolve(__dirname, 'src/ui/templates'),
         '@features': path.resolve(__dirname, 'src/features'),
+        '@books': path.resolve(__dirname, 'src/features/books'),
         '@images': path.resolve(__dirname, 'src/ui/assets/images'),
         '@fonts': path.resolve(__dirname, 'src/ui/assets/fonts'),
         '@pages': path.resolve(__dirname, 'src/pages'),
@@ -27,7 +29,7 @@ module.exports = (env) => {
         '@api': path.resolve(__dirname, 'src/api'),
         '@icons': path.resolve(__dirname, 'src/ui/assets/icons'),
       },
-      extensions: ['.js', '.jsx', '.scss', '.css', '.img', '.png',
+      extensions: ['.js', '.jsx', '.scss', '.css', '.img', 'gif', '.png',
         '.svg', '.ts', '.tsx'],
     },
     plugins: [new ErrorOverlayPlugin(), new webpack.ProvidePlugin({

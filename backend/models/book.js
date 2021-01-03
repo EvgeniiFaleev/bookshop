@@ -5,7 +5,15 @@ const schema = new Schema({
   author: {
     type: String,
     required: true,
-    unique: true
+    unique: false
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  categories: {
+   type: [String],
+    required: true
   },
   title: {
     type: String,
@@ -19,11 +27,12 @@ const schema = new Schema({
   picture: {
     type: String,
     required: true,
+    unique: true
   },
-  quantity: {
-    type: Number,
-    min: 1
-  }
+  // quantity: {
+  //   type: Number,
+  //   min: 1
+  // }
 
 });
 

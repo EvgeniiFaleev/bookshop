@@ -5,6 +5,9 @@
       "@ui/*": [
         "ui/*"
       ],
+      "@books/*": [
+        "features/books/*"
+      ],
       "@images": [
         "ui/assets/images"
       ],
@@ -20,11 +23,17 @@
       "@icons": [
         "ui/assets/icons"
       ],
+      "@api": [
+        "api"
+      ],
       "@api/*": [
         "api/*"
       ],
       "@pages/*": [
         "pages/*"
+      ],
+      "@store": [
+        "lib/store"
       ],
       "@store/*": [
         "lib/store/*"

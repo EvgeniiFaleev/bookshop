@@ -10,12 +10,15 @@ router.get("/chart",
     try {
 
       const adventure = await Book.find({categories: "Adventure"});
+      const penAwards = await Book.find({categories: "PEN America 2021 Literary Awards Longlist"});
 
       console.log(adventure);
 
       return res.json({
-        Adventure: adventure
-      })
+        categories: {adventure},
+        topLists: {penAwards}
+      });
+
     } catch (e) {
       console.error(e);
       return res.status(500).json({message: "Чтото пошло не так " + e})

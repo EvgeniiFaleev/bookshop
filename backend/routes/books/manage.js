@@ -3,16 +3,28 @@ const Book = require("../../models/book");
 const adminCheck = require("../../common/adminCheck");
 const {body, validationResult} = require('express-validator');
 const config = require("config");
+const multer  = require('multer');
+
+
+const storage = multer.diskStorage({
+  destination: 'public/images',
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// const upload = multer({ dest: 'public/images' });
 
 const router = Router();
 
 
 router.post("/add",
-  adminCheck,
+  adminCheck, upload.single('picture'),
   [body("author", "Введите Автора").exists(),
     body('title', "Введите имя книги").exists(),
-    body("price", "Введите цену").exists(),
-    body("picture", "Введите ссылку на фото").exists()],
+    body("price", "Введите цену").exists()],
   async (req, res) => {
     try {
       const errors = validationResult(req);
@@ -22,10 +34,12 @@ router.post("/add",
           message: "Некоректные данные при вхоже"
         });
       }
-      let {author, title, price, picture, categories, description} = req.body;
+      let {author, title, price,  categories, description} = req.body;
+
+      console.log(req.body)
 
       const matchBook = await Book.findOne({title});
-      categories = categories.split(" ");
+      // categories = categories.split(" ");
       if (matchBook) {
         return res.status(400).json({
           message: "Такая книга уже существует"
@@ -35,7 +49,7 @@ router.post("/add",
         author,
         title,
         price,
-        picture: config.get("staticImagesURI") + picture,
+        picture: `${config.get("staticImagesURI")}${req.file.originalname}`,
         categories,
         description
       });

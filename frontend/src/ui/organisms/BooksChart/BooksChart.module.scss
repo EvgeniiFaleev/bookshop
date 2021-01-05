@@ -1,17 +1,17 @@
 .wrapper {
   @extend %app_width;
 
-  .item_block {
+  .chart{
     display: flex;
     justify-content: space-between;
-    padding-top: 1rem;
-    padding-bottom: 1.4rem;
-    border-bottom: 1px solid $gray-lightest;
+    flex-wrap: wrap;
 
     .item {
       flex-basis: 33.33%;
       display: flex;
-      justify-content: flex-start;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid $gray-lightest;
+      padding-top: 1rem;
 
       img{
         cursor: pointer;

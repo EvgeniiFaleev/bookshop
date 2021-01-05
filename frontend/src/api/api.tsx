@@ -10,8 +10,13 @@ export interface IBook {
 
 }
 
-export interface IChart {
+export interface IBooksList {
   [index: string]: Array<IBook>
+}
+
+export interface IChart {
+  categories : IBooksList,
+  topLists : IBooksList
 }
 
 export const API = {

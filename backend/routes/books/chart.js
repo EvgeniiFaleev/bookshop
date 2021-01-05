@@ -15,8 +15,8 @@ router.get("/chart",
       console.log(adventure);
 
       return res.json({
-        categories: {adventure},
-        topLists: {penAwards}
+        categories: {Adventure: adventure},
+        topLists: {"PEN America 2021 Literary Awards Longlist": penAwards}
       });
 
     } catch (e) {

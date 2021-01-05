@@ -1,14 +1,16 @@
-import { IChart } from '@api/api';
+import { IBooksList } from '@api/api';
 import { Reducer } from 'redux';
 import * as types from './types';
 import { BooksActionTypes } from './actions';
 
 interface IBooksState {
-  categories: null | IChart
+  categories: null | IBooksList,
+  topLists: null | IBooksList
 }
 
 const initialState: IBooksState = {
   categories: null,
+  topLists: null,
 };
 
 export const reducer: Reducer<IBooksState, BooksActionTypes> = (state = initialState, action) => {
@@ -16,7 +18,8 @@ export const reducer: Reducer<IBooksState, BooksActionTypes> = (state = initialS
     case types.SET_CATEGORIES:
       return {
         ...state,
-        categories: action.payload,
+        categories: action.payload.categories,
+        topLists: action.payload.topLists,
       };
     default:
       return state;

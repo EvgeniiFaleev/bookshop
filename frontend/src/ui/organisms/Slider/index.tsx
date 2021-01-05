@@ -2,14 +2,14 @@ import React, { FC, useRef } from 'react';
 import left from '@images/left.svg';
 import right from '@images/right.svg';
 import { Title } from '@ui/molecules/Title';
-import { BookPicture } from '@ui/atoms/BookPicture';
+import { BookSliderItem } from '@ui/atoms/BookSliderItem';
 import { IBook } from '@api/api';
 import styles from './Slider.module.scss';
 
 export interface ISliderProps {
   categoryName: string,
   items: Array<IBook>,
-  booksCount: number
+  booksCount: number,
 }
 
 export const Slider:FC<ISliderProps> = ({ categoryName, items, booksCount }) => {
@@ -25,7 +25,12 @@ export const Slider:FC<ISliderProps> = ({ categoryName, items, booksCount }) => 
     }
   };
 
-  const bookElements = items.map((item) => <BookPicture pictureLink={item.picture} />);
+  const bookElements = items.map((item) => (
+    <BookSliderItem
+      key={item._id}
+      pictureLink={item.picture}
+    />
+  ));
 
   return (
     <section className={styles.wrapper}>

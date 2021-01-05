@@ -1,6 +1,6 @@
-import { API, IChart } from '@api/api';
-import { Action } from 'redux';
-import { DispatchType, ThunkType } from '@store/root-reducer';
+import {API, IChart} from '@api/api';
+import {Action} from 'redux';
+import {DispatchType, ThunkType} from '@store/root-reducer';
 import * as types from './types';
 
 interface ISetCategoriesAction extends Action<typeof types.SET_CATEGORIES>{
@@ -13,8 +13,8 @@ export const setCategories = (payload: IChart): ISetCategoriesAction => ({
 });
 
 export const getChart = (): ThunkType => (dispatch: DispatchType) => {
-  API.getBooksChart().then((categories) => {
-    dispatch(setCategories(categories));
+  API.getBooksChart().then((res) => {
+    dispatch(setCategories(res));
   });
 };
 

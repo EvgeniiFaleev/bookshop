@@ -1,9 +1,11 @@
 import { Action, AnyAction, combineReducers } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { booksReducer } from '../../features/books/modules';
+import { adminAuthReducer } from '../../features/authentification/modules/admin';
 
 export const rootReducer = combineReducers({
   books: booksReducer,
+  admin: adminAuthReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

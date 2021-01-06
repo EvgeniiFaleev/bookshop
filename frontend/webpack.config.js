@@ -40,6 +40,7 @@ module.exports = (env) => {
       filename: 'styles/[name].[contenthash].css',
     })],
     devServer: {
+      historyApiFallback: true,
       port: 9000,
       open: true,
       hot: true,
@@ -118,7 +119,7 @@ module.exports = (env) => {
           options: {
             outputPath: 'assets/images',
             name: '[name][contenthash].[ext]',
-            publicPath: '../assets/images',
+            // publicPath: '../assets/images',
           },
         }, {
           test: /\.(ttf|woff|gif|woff2|eot)$/,

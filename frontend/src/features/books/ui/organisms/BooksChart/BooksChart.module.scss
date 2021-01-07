@@ -1,0 +1,10 @@
+.wrapper {
+  @extend %app_width;
+
+  .chart{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+  }
+}

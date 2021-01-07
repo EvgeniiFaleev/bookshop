@@ -1,7 +1,7 @@
-import { Title } from '@ui/molecules/Title';
-import { ISliderProps } from '@ui/organisms/Slider';
+import { Title } from '@books/ui/molecules/Title';
+import { ISliderProps } from '@books/ui/organisms/Slider';
 import { FC } from 'react';
-import { BookChartItem } from '@ui/atoms/BookChartItem';
+import { BookChartItem } from '@books/ui/atoms/BookChartItem';
 import styles from './BooksChart.module.scss';
 
 interface IBooksChartProps extends ISliderProps{}

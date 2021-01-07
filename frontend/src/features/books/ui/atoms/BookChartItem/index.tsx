@@ -1,5 +1,5 @@
-import styles from '@ui/organisms/BooksChart/BooksChart.module.scss';
 import { FC } from 'react';
+import styles from './BooksChartItem.module.scss';
 
 interface IBooksChartItemProps {
   picture:string,

@@ -1,7 +1,7 @@
 import icon from '@images/Icon_alternative.webp';
 import React, { FC } from 'react';
 import { ButtonPrimary } from '@ui/atoms/Button_primary';
-import { ISliderProps } from '@ui/organisms/Slider';
+import { ISliderProps } from '@books/ui/organisms/Slider';
 import styles from './Title.module.scss';
 
 type TitlePropsType = Omit<ISliderProps, 'items'>;

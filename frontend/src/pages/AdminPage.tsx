@@ -1,14 +1,29 @@
 import { AdminTemplate } from '@templates/AdminTemplate/AdminTemplate';
-import { AdminLogin } from '@ui/organisms/AdminLogin';
+import { AdminLogin } from '@ui/../features/authentification/ui/organisms/AdminLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '@store/root-reducer';
 import { adminAuthActions } from '@authentication/modules/admin';
-import { useForm } from 'react-hook-form';
+import {FieldErrors, useForm} from 'react-hook-form';
 
 interface IFormData extends Object{
   login:string,
   password: string,
   [index: string]: any,
+}
+
+type RefReturn =
+    | string
+    | ((instance: HTMLInputElement | null) => void)
+    | React.RefObject<HTMLInputElement>
+    | null
+    | undefined;
+
+export interface IHookFormProps {
+  register: ({ required }: { required?: boolean }) => RefReturn;
+  onSubmit: () => void,
+  errors: FieldErrors,
+  required : boolean,
+  clearError: ()=> void
 }
 
 export const AdminPage = () => {

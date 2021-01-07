@@ -1,7 +1,7 @@
 import { Home } from '@ui/organisms/Home';
 import { CommonTemplate } from '@templates/CommonTemplate/CommonTemplate';
-import { Slider } from '@ui/organisms/Slider';
-import { BooksChart } from '@ui/organisms/BooksChart';
+import { Slider } from '@books/ui/organisms/Slider';
+import { BooksChart } from '@books/ui/organisms/BooksChart';
 import { ReactNode, useEffect } from 'react';
 import { RootState } from '@store/root-reducer';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';

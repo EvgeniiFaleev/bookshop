@@ -2,22 +2,12 @@ import { FC } from 'react';
 import { FieldErrors } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { IHookFormProps } from '@pages/AdminPage';
 import styles from './AdminLogin.module.scss';
 
-type RefReturn =
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined;
 
-interface IAdminLoginProps {
-  register: ({ required }: { required?: boolean }) => RefReturn;
-  onSubmit: () => void,
-  errors: FieldErrors,
-  required : boolean,
-  clearError: ()=> void
-}
+
+interface IAdminLoginProps extends IHookFormProps{}
 
 export const AdminLogin:FC<IAdminLoginProps> = ({
   onSubmit, errors, register, required, clearError,

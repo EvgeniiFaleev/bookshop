@@ -1,8 +1,8 @@
 import React, { FC, useRef } from 'react';
 import left from '@images/left.svg';
 import right from '@images/right.svg';
-import { Title } from '@ui/molecules/Title';
-import { BookSliderItem } from '@ui/atoms/BookSliderItem';
+import { Title } from '@books/ui/molecules/Title';
+import { BookSliderItem } from '@books/ui/atoms/BookSliderItem';
 import { IBook } from '@api/API';
 import styles from './Slider.module.scss';
 

@@ -1,4 +1,4 @@
-import { IBooksList } from '@api/api';
+import { IBooksList } from '@api/API';
 import { Reducer } from 'redux';
 import * as types from './types';
 import { BooksActionTypes } from './actions';

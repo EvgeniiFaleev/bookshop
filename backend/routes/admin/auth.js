@@ -5,9 +5,12 @@ const config = require("config");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {body, validationResult} = require('express-validator');
+const multer  = require('multer');
+const upload  = multer();
 
 
-router.post("/login",
+
+router.post("/login", upload.none(),
   [body("login", "Введите корректный Login"), body('password',
     "Пароль должен состоять не менее чем из 5 символов").exists()
     .isLength({min: 5})],
@@ -15,9 +18,9 @@ router.post("/login",
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json({
+        return res.status(403).json({
           errors: errors.array(),
-          message: "Некоректные данные при вхоже"
+          message: "Некоректные данные при входе"
         });
       }
 

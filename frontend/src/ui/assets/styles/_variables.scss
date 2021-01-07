@@ -13,14 +13,15 @@ $gray-mid:#F9FAFB;
 $gray-secondary: #E5E7EB;
 $gray-dark-secondary:#24282F;
 $gray-light-secondary: #808C9E;
-
+$red: red;
 
 $max-width: 1024px;
 $admin-nav-font-color: $violet;
-$admin-nav-font-hover: white;
+$admin-nav-font-hover: $white;
 $admin-form-label: $gray-light-secondary;
 $admin-form-head: $dark;
 $admin-form-input-outline: $violet;
+$admin-form-error: $purple;
 $admin-icons: $gray-light-secondary;
 $admin-border: $gray-secondary;
 $admin-bg: $gray-mid;

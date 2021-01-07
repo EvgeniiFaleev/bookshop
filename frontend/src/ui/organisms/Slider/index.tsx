@@ -3,7 +3,7 @@ import left from '@images/left.svg';
 import right from '@images/right.svg';
 import { Title } from '@ui/molecules/Title';
 import { BookSliderItem } from '@ui/atoms/BookSliderItem';
-import { IBook } from '@api/api';
+import { IBook } from '@api/API';
 import styles from './Slider.module.scss';
 
 export interface ISliderProps {

@@ -1,4 +1,4 @@
-import {API, IChart} from '@api/api';
+import {booksAPI, IChart} from '@api/API';
 import {Action} from 'redux';
 import {DispatchType, ThunkType} from '@store/root-reducer';
 import * as types from './types';
@@ -13,7 +13,7 @@ export const setCategories = (payload: IChart): ISetCategoriesAction => ({
 });
 
 export const getChart = (): ThunkType => (dispatch: DispatchType) => {
-  API.getBooksChart().then((res) => {
+  booksAPI.getBooksChart().then((res) => {
     dispatch(setCategories(res));
   });
 };

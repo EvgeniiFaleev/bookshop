@@ -43,4 +43,14 @@
     outline: none;
     background-color: $button_primary_hover;
   }
+  .error, .mainError{
+    color: $admin-form-error;
+    svg{
+      margin-right: 5px;
+    }
+  }
+
+  .error {
+    margin-left: 15px;
+  }
 }

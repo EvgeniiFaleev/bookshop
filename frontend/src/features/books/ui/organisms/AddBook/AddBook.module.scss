@@ -1,10 +1,56 @@
 .addBookForm {
 
-  .mainError {
-    background: #000;
+  .textarea {
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
+  }
+  .description p {
+    @extend %admin_input_name;
+  }
+  .textarea {
+    display: block;
+    width: 400px;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+    @extend %admin_input;
+    //box-sizing: border-box;
+    padding: 0.375rem 0.75rem;
+    //color: #5a6273;
+    //border: 1px solid #D7DAE0;
+    //border-radius: 3px;
+    //font-size: 14px;
+  }
+
+  .textarea[contenteditable]:empty::before {
+    content: "Tell about the book you want to add";
+    color: gray;
+  }
+  @extend %admin_form_font;
+  h3 {
+    @extend %admin_head;
+  }
+
+  label p {
+    @extend %admin_input_name;
+  }
+
+  input {
+    @extend %admin_input;
+  }
+
+  button {
+    @extend %admin_button;
+
+  }
+  .error, .mainError{
+    @extend %admin_error;
   }
 
   .error {
-    color: white;
+    margin-left: 15px;
   }
 }

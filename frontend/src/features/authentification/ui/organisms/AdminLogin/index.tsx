@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { IHookFormProps } from '@pages/admin/login';
-import { InputField } from '@books/../../../../../ui/molecules/InputField';
+import { InputField } from '@ui/molecules/InputField';
 import styles from './AdminLogin.module.scss';
 
 interface IAdminLoginProps extends IHookFormProps{}

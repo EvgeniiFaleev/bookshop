@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { AdminTemplate } from '@templates/AdminTemplate/AdminTemplate';
 import { AddBook } from '@books/ui/organisms/AddBook';
 import { useForm } from 'react-hook-form';
@@ -20,11 +20,14 @@ export const AddBookPage:FC = () => {
     register, handleSubmit, errors, setError, clearErrors,
   } = useForm();
 
+  const [description, setDescription] = useState<string>('');
+
   const onSubmit = async (data:IFormData) => {
     const formData = new FormData();
     Object.entries(data).forEach((item) => {
       formData.append(item[0], item[1]);
     });
+    formData.append('description', description);
     // for (const name in data) {
     //   if (Object.hasOwnProperty.call(data, name)) { formData.append(name, data[name]); }
     // }
@@ -40,6 +43,8 @@ export const AddBookPage:FC = () => {
   return (
     <AdminTemplate>
       <AddBook
+        description={description}
+        setDescription={setDescription}
         register={register}
         onSubmit={handleSubmit(onSubmit)}
         errors={errors}

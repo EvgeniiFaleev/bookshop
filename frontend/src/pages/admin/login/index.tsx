@@ -1,14 +1,16 @@
 import { AdminTemplate } from '@templates/AdminTemplate/AdminTemplate';
-import { AdminLogin } from '@ui/../features/authentification/ui/organisms/AdminLogin';
+import { AdminLogin } from '@authentication/ui/organisms/AdminLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '@store/root-reducer';
 import { adminAuthActions } from '@authentication/modules/admin';
-import {FieldErrors, useForm} from 'react-hook-form';
+import { FieldErrors, useForm } from 'react-hook-form';
+import { FC } from 'react';
+import { useAdminAuthRedirect } from '@authentication/hooks/useAdminAuthRedirect';
 
-interface IFormData extends Object{
+interface IFormData {
   login:string,
   password: string,
-  [index: string]: any,
+  [index: string]: string,
 }
 
 type RefReturn =
@@ -22,14 +24,14 @@ export interface IHookFormProps {
   register: ({ required }: { required?: boolean }) => RefReturn;
   onSubmit: () => void,
   errors: FieldErrors,
-  required : boolean,
+  required? : boolean,
   clearError: ()=> void
 }
 
-export const AdminPage = () => {
-  const isAuth = useSelector((state:RootState) => state.admin.isAuth);
+export const AdminLoginPage: FC = () => {
+  // useAdminAuthRedirect('admin/add_book');
   const {
-    register, handleSubmit, errors, setError, reset, clearErrors,
+    register, handleSubmit, errors, setError, clearErrors,
   } = useForm();
 
   const dispatch:DispatchType = useDispatch();
@@ -42,13 +44,11 @@ export const AdminPage = () => {
     // for (const name in data) {
     //   if (Object.hasOwnProperty.call(data, name)) { formData.append(name, data[name]); }
     // }
-    debugger;
     const error = await dispatch(adminAuthActions.login(formData));
     if (error) setError('loginError', { message: error });
   };
 
   const clearError = () => {
-    console.log(1)
     clearErrors();
   };
 

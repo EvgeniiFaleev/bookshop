@@ -1,11 +1,9 @@
 import { FC } from 'react';
-import { FieldErrors } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
-import { IHookFormProps } from '@pages/AdminPage';
+import { IHookFormProps } from '@pages/admin/login';
+import { InputField } from '@books/../../../../../ui/molecules/InputField';
 import styles from './AdminLogin.module.scss';
-
-
 
 interface IAdminLoginProps extends IHookFormProps{}
 
@@ -20,40 +18,28 @@ export const AdminLogin:FC<IAdminLoginProps> = ({
       {errors.loginError.message}
     </span>
     )}
-    <div>
-      <label>
-        <p>Login</p>
-        <input
-          ref={register({ required })}
-          type="text"
-          name="login"
-          onFocus={clearError}
-        />
-        {errors.login && (
-        <span className={styles.error}>
-          <FontAwesomeIcon icon={faExclamation} />
-          This field is required
-        </span>
-        )}
-      </label>
-    </div>
-    <div>
-      <label>
-        <p>Password</p>
-        <input
-          onFocus={clearError}
-          ref={register({ required: true })}
-          type="password"
-          name="password"
-        />
-        {errors.password && (
-        <span className={styles.error}>
-          <FontAwesomeIcon icon={faExclamation} />
-          This field is required
-        </span>
-        )}
-      </label>
-    </div>
+    <InputField
+      type="text"
+      className={styles.error}
+      fieldText="Login"
+      iconError={faExclamation}
+      fieldName="login"
+      register={register}
+      errors={errors}
+      required={required}
+      clearError={clearError}
+    />
+    <InputField
+      className={styles.error}
+      fieldText="Password"
+      iconError={faExclamation}
+      fieldName="password"
+      type="password"
+      register={register}
+      errors={errors}
+      required={required}
+      clearError={clearError}
+    />
     <button type="submit">Login</button>
   </form>
 );

@@ -12,6 +12,10 @@ module.exports = (env) => {
   return {
     entry: './src/index.tsx',
     output: {
+      publicPath: '/', // This option specifies the public URL of
+      // the output directory when referenced in a browser.
+      // A relative URL is resolved relative to the HTML page (or <base> tag).
+      // Server-relative URLs, protocol-relative URLs or absolute URLs are also possible and sometimes required
       filename: 'scripts/main.[hash].js',
       path: path.resolve(__dirname, 'build'),
     },

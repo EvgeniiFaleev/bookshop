@@ -13,10 +13,10 @@ const corsOptions = {
   credentials: true
 };
 
-app.use("/",  cookieParser(), cors(corsOptions));
-app.use("/",  session({
+app.use("/", cookieParser(), cors(corsOptions));
+app.use("/", session({
   secret: config.get("privateSessionKey"),
-  cookie:{
+  cookie: {
     maxAge: 60000000
   }
 }));
@@ -31,11 +31,10 @@ app.use("/admin",
 app.use("/books",
   [bodyParser.urlencoded({extended: false}),
     require("./routes/books/paginate"),
-    require("./routes/books/manage"),
-    require("./routes/books/order"),
-  require("./routes/books/chart")]);
+    require("./routes/books/manage"), require("./routes/books/order"),
+    require("./routes/books/chart"), require("./routes/books/book"),require("./routes/books/book")]);
 
- app.use(express.static('public'));
+app.use(express.static('public'));
 
 async function start() {
   try {

@@ -17,7 +17,7 @@
     min-height: 40px;
     line-height: 20px;
     @extend %admin_input;
-    //box-sizing: border-box;
+    box-sizing: border-box;
     padding: 0.375rem 0.75rem;
     //color: #5a6273;
     //border: 1px solid #D7DAE0;
@@ -40,17 +40,43 @@
 
   input {
     @extend %admin_input;
+    width: 300px;
   }
 
   button {
     @extend %admin_button;
 
   }
+  button:not(.addCategory){
+    box-sizing: border-box;
+    width: 400px;
+
+  }
   .error, .mainError{
     @extend %admin_error;
   }
-
+  .descError{
+    margin-top: 1rem;
+    @extend %admin_error;
+  }
+  .addCategory{
+    background-color: $button_secondary;
+    &:hover{
+      background-color:$button_secondary_hover;
+    }
+  }
+.minus{
+  color: $admin-minus;
+  margin-left: 1rem;
+  cursor: pointer;
+}
   .error {
     margin-left: 15px;
+  }
+  .success{
+    color: $admin-form-success;
+    svg{
+      margin-right: 0.5rem;
+    }
   }
 }

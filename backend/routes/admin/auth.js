@@ -40,6 +40,7 @@ router.post("/login", upload.none(),
         return res.status(403)
           .json({message: "Неправильный пароль или логин"})
       }
+      console.log(req.session)
       console.log(admin.id)
       // const token = jwt.sign({
       //   id: admin.id
@@ -57,9 +58,9 @@ router.post("/login", upload.none(),
     }
   });
 
-router.get("/logout", async (req, res) => {
+router.delete("/logout", async (req, res) => {
   try {
-
+console.log(req.session)
     if (!req.session.adminId) {
       return res.status(400).json({
         message: "Вы не были залогинены"

@@ -14,18 +14,24 @@ $gray-secondary: #E5E7EB;
 $gray-dark-secondary:#24282F;
 $gray-light-secondary: #808C9E;
 $red: red;
-
+$green: #4AB31A;
 $max-width: 1024px;
+
+
 $admin-nav-font-color: $violet;
 $admin-nav-font-hover: $white;
 $admin-form-label: $gray-light-secondary;
 $admin-form-head: $dark;
 $admin-form-input-outline: $violet;
 $admin-form-error: $purple;
+$admin-form-success :$green;
 $admin-icons: $gray-light-secondary;
 $admin-border: $gray-secondary;
 $admin-bg: $gray-mid;
+$admin-minus:$violet;
 $admin-bg-hover: $violet;
+
+
 $category_header: $violet_dark;
 $dark-text: $dark;
 $hero-text: $biege;
@@ -35,4 +41,5 @@ $border_line: $gray-light;
 $button_primary: $purple;
 $button_primary_hover: $purple-dark;
 $button_secondary: $violet;
+$button_secondary_hover: $violet_dark;
 $modal_Bg: $pink;

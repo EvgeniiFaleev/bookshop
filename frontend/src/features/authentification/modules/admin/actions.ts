@@ -20,4 +20,12 @@ export const login = (data:FormData): ThunkType<Promise<string | void>> => async
   }
 };
 
+export const logout = (): ThunkType<Promise<void>> => async (dispatch: DispatchType) => {
+  const response = await authAPI.adminLogout();
+  if (response.status === 200) { dispatch(authAdmin(false)); } else {
+    const { message } = await response.json() as {message:string};
+    console.log(message);
+  }
+};
+
 export type AuthAdminActionsType = IAuthAdminAction;

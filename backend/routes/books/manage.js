@@ -27,6 +27,7 @@ router.post("/add",
     body("price", "Введите цену").exists()],
   async (req, res) => {
     try {
+      console.log(req)
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -36,7 +37,7 @@ router.post("/add",
       }
       let {author, title, price,  categories, description} = req.body;
 
-      console.log(req.body)
+
 
       const matchBook = await Book.findOne({title});
       // categories = categories.split(" ");

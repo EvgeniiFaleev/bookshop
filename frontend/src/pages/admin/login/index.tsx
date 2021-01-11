@@ -6,6 +6,7 @@ import { adminAuthActions } from '@authentication/modules/admin';
 import { FieldErrors, useForm } from 'react-hook-form';
 import { FC } from 'react';
 import { useAdminAuthRedirect } from '@authentication/hooks/useAdminAuthRedirect';
+import { Redirect } from 'react-router-dom';
 
 interface IFormData {
   login:string,
@@ -29,11 +30,11 @@ export interface IHookFormProps {
 }
 
 export const AdminLoginPage: FC = () => {
-  // useAdminAuthRedirect('admin/add_book');
   const {
     register, handleSubmit, errors, setError, clearErrors,
   } = useForm();
 
+  const isAuth = useSelector((state:RootState) => state.admin.isAuth);
   const dispatch:DispatchType = useDispatch();
 
   const onSubmit = async (data:IFormData) => {
@@ -41,9 +42,6 @@ export const AdminLoginPage: FC = () => {
     Object.entries(data).forEach((item) => {
       formData.append(item[0], item[1]);
     });
-    // for (const name in data) {
-    //   if (Object.hasOwnProperty.call(data, name)) { formData.append(name, data[name]); }
-    // }
     const error = await dispatch(adminAuthActions.login(formData));
     if (error) setError('loginError', { message: error });
   };
@@ -53,14 +51,18 @@ export const AdminLoginPage: FC = () => {
   };
 
   return (
-    <AdminTemplate>
-      <AdminLogin
-        required
-        register={register}
-        errors={errors}
-        onSubmit={handleSubmit(onSubmit)}
-        clearError={clearError}
-      />
-    </AdminTemplate>
+    <>
+      { !isAuth ? (
+        <AdminTemplate>
+          <AdminLogin
+            required
+            register={register}
+            errors={errors}
+            onSubmit={handleSubmit(onSubmit)}
+            clearError={clearError}
+          />
+        </AdminTemplate>
+      ) : <Redirect to="/admin/add_book" />}
+    </>
   );
 };

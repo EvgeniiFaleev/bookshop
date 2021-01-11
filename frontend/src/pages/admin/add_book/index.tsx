@@ -3,18 +3,19 @@ import { AdminTemplate } from '@templates/AdminTemplate/AdminTemplate';
 import { AddBook } from '@books/ui/organisms/AddBook';
 import { useForm } from 'react-hook-form';
 import { useAdminAuthRedirect } from '@authentication/hooks/useAdminAuthRedirect';
+import { booksAPI } from '@api/API';
 
 interface IFormData {
   title:string,
   author: string,
-  picture: File,
+  picture: FileList,
   price: string,
   description: string
-  [index: string]: string | File,
+  [index: string]: string | FileList,
 }
 
 export const AddBookPage:FC = () => {
-  // useAdminAuthRedirect('admin/login');
+  useAdminAuthRedirect();
 
   const {
     register, handleSubmit, errors, setError, clearErrors,
@@ -22,18 +23,29 @@ export const AddBookPage:FC = () => {
 
   const [description, setDescription] = useState<string>('');
 
+  const [isBookAdded, setIsBookAdded] = useState<boolean>(false);
+
+  const [categoriesCount, setCategoriesCount] = useState<number>(1);
+
   const onSubmit = async (data:IFormData) => {
+    if (!description) {
+      setError('descError', {
+        message: 'Enter description of the book',
+      });
+    }
     const formData = new FormData();
     Object.entries(data).forEach((item) => {
-      formData.append(item[0], item[1]);
+      console.log(item[1][0]);
+      formData.append(item[0], item[1][0]);
     });
     formData.append('description', description);
-    // for (const name in data) {
-    //   if (Object.hasOwnProperty.call(data, name)) { formData.append(name, data[name]); }
-    // }
+
     // debugger;
-    // const error = await dispatch(adminAuthActions.login(formData));
-    // if (error) setError('loginError', { message: error });
+    const res = await booksAPI.addBook(formData);
+    if (res.status === 200) { setIsBookAdded(true); } else {
+      const { message } = await res.json();
+      setError('bookError', { message });
+    }
   };
 
   const clearError = () => {
@@ -43,6 +55,9 @@ export const AddBookPage:FC = () => {
   return (
     <AdminTemplate>
       <AddBook
+        setCategoriesCount={setCategoriesCount}
+        categoriesCount={categoriesCount}
+        isBookAdded={isBookAdded}
         description={description}
         setDescription={setDescription}
         register={register}

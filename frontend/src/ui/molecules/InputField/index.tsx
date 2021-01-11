@@ -16,7 +16,7 @@ interface IInputFieldProps extends Omit<IHookFormProps, 'onSubmit'>{
 
 export const InputField:FC<IInputFieldProps> = ({
   type = 'text',
-  register, errors, required = true, fieldText, className, iconError = faExclamation, fieldName, clearError,
+  register, errors, required = true, fieldText, className, iconError = faExclamation, fieldName, clearError, children
 }) => (
   <div>
     <label>
@@ -27,6 +27,7 @@ export const InputField:FC<IInputFieldProps> = ({
         name={fieldName}
         onFocus={clearError}
       />
+      {children}
       {errors[fieldName] && (
       <span className={className}>
         <FontAwesomeIcon icon={iconError} />

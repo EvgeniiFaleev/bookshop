@@ -1,0 +1,83 @@
+.wrapper{
+  max-width: $max-width;
+  display: flex;
+  align-items: flex-start;
+  margin: auto;
+  padding: 2rem 1rem 2rem 10rem;
+.image {
+  width: 250px;
+  img{
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.3);
+  }
+}
+
+  .info {
+    margin-left: 2rem;
+    //flex-grow: 1;
+    flex-basis: 50%;
+
+    h1, h2 {
+      color: $dark-text;
+      font-family: GT-Bold, serif;
+
+      margin-bottom: 1rem;
+    }
+
+    .title {
+      font-size: $font-size-h1;
+    }
+    .description_head{
+      font-size: 28px;
+    }
+
+    .author {
+      display: block;
+      font-family: IbmPlex-Medium, sans-serif;
+      font-size: 15px;
+      color: $violet;
+      margin-bottom: 0.5rem;
+
+      span {
+        color: $gray;
+      }
+    }
+  .price{
+    font-family: IbmPlex-Medium, sans-serif;
+    font-size: 18px;
+    color: $violet;
+    margin-bottom: 1rem;
+    span{
+      font-family: IbmPlex-Bold, sans-serif;
+      font-size: 15px;
+      color: $dark-text;
+    }
+  }
+    .buttons {
+      margin-bottom: 1.5rem;
+      button {
+        margin-right: 0.8rem;
+      }
+    }
+    pre, .categories{
+      white-space: pre-wrap;
+      font-family: IbmPlex-Regular, sans-serif;
+      font-size: 16px;
+      color: $dark-text;
+    }
+    .categories{
+      margin-top: 1rem;
+      &_head{
+        font-family: GT-Bold, serif;
+      }
+      .categories_link{
+        cursor: pointer;
+
+      }
+      .categories_link:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}

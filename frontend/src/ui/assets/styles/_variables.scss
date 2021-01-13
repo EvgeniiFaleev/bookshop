@@ -1,4 +1,5 @@
 $violet: #573BA3;
+$violet_opacity : rgba(222,36,84,0.05);
 $violet_dark: #2b0f42;
 $purple: #DE2454;
 $purple-dark: #b41b43;
@@ -9,13 +10,18 @@ $pink: #FFFFFF;
 $biege: #ffeee6;
 $white: #ffffff;
 $dark: #2c293b;
+$gray: #808080;
 $gray-mid:#F9FAFB;
 $gray-secondary: #E5E7EB;
 $gray-dark-secondary:#24282F;
 $gray-light-secondary: #808C9E;
 $red: red;
 $green: #4AB31A;
+
+
 $max-width: 1024px;
+$font-size-h1: 46px;
+$font-size-h2: 34px;
 
 
 $admin-nav-font-color: $violet;
@@ -42,4 +48,5 @@ $button_primary: $purple;
 $button_primary_hover: $purple-dark;
 $button_secondary: $violet;
 $button_secondary_hover: $violet_dark;
+$button_secondary_hover_opacity: $violet_opacity;
 $modal_Bg: $pink;

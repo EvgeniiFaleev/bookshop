@@ -12,10 +12,10 @@ export const setCategories = (payload: IChart): ISetCategoriesAction => ({
   payload,
 });
 interface ISetBookAction extends Action<typeof types.SET_BOOK>{
-  payload: IBook
+  payload: IBook | null
 }
 
-export const setBook = (payload: IBook): ISetBookAction => ({
+export const setBook = (payload: IBook | null): ISetBookAction => ({
   type: types.SET_BOOK,
   payload,
 });
@@ -27,8 +27,8 @@ export const getChart = (): ThunkType => (dispatch: DispatchType) => {
 };
 
 export const getBook = (id:string): ThunkType => (dispatch: DispatchType) => {
-  booksAPI.getBook(id).then((res) => {
-    dispatch(setBook(res));
+  booksAPI.getBook(id).then((book) => {
+    dispatch(setBook(book));
   });
 };
 

@@ -1,4 +1,4 @@
-import { ButtonPrimary } from '@ui/atoms/Button_primary';
+import { ButtonPrimary } from '@ui/atoms/ButtonPrimary';
 import logo from '@images/logo.svg';
 import styles from './Footer.module.scss';
 
@@ -12,8 +12,8 @@ export const Footer = () => (
         </div>
       </div>
       <div className={styles.flex2}>
-        <ButtonPrimary buttonText="login" />
-        <ButtonPrimary buttonText="Sign up" />
+        <ButtonPrimary type="link">login </ButtonPrimary>
+        <ButtonPrimary type="link">Sign up</ButtonPrimary>
       </div>
     </div>
   </footer>

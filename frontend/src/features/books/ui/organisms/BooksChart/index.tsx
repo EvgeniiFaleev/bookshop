@@ -10,6 +10,7 @@ export const BooksChart:FC<IBooksChartProps> = ({ categoryName, booksCount, item
   const bookChartElems = items
     .map((item) => (
       <BookChartItem
+        id={item._id}
         key={item._id}
         picture={item.picture}
         author={item.author}

@@ -27,6 +27,7 @@ export const Slider:FC<ISliderProps> = ({ categoryName, items, booksCount }) => 
 
   const bookElements = items.map((item) => (
     <BookSliderItem
+      id={item._id}
       key={item._id}
       pictureLink={item.picture}
     />
@@ -40,7 +41,6 @@ export const Slider:FC<ISliderProps> = ({ categoryName, items, booksCount }) => 
         {bookElements}
         <img src={right} onClick={arrowScroll} className={styles.right_arrow} data-direction="right" alt="" />
       </div>
-
     </section>
   );
 };

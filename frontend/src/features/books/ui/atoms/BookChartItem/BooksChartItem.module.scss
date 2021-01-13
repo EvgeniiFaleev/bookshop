@@ -21,6 +21,13 @@
   padding: 1rem;
   font-size: 15px;
   text-align: left;
+  color: $dark-text;
+  a{
+    transition: all 0.5s;
+  }
+  a:hover{
+    color: $violet;
+  }
   p:first-child{
     font-family: GT-Bold, serif;
   }

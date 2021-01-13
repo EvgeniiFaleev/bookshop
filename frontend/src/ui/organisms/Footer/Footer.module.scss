@@ -3,11 +3,13 @@
   margin-top: 6rem;
 
   .wrapper {
-    padding: 2.5rem 0;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
     align-items: center;
     display: flex;
     justify-content: space-between;
     @extend %app_width;
+    @extend %footer-header_horizontal-padding;
     margin: auto;
 
     .flex1 {

@@ -8,4 +8,9 @@ article, aside, figure, footer, header, hgroup, nav, section {
 }
 a{
   text-decoration: none;
+  color: inherit;
+}
+
+*{
+  box-sizing: border-box;
 }

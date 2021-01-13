@@ -4,6 +4,7 @@
   color: white;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+  box-sizing: border-box;
 
 
   position: sticky;
@@ -13,6 +14,7 @@
     @extend %footer-header_horizontal-padding;
     justify-content: space-between;
     display: flex;
+    box-sizing: border-box;
     @extend %app_width;
 
     .title {

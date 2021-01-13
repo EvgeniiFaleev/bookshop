@@ -23,7 +23,8 @@ export const booksAPI = {
   async getBook(id:string):Promise<IBook | never> {
     try {
       const res: Response = await fetch(`${this.url}item/?id=${id}`);
-      return res.json();
+      const { book } = await res.json() as {book: IBook};
+      return book;
     } catch (e) {
       throw new Error(e);
     }

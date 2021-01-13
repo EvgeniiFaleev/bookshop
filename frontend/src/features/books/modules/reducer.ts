@@ -1,4 +1,4 @@
-import {IBook, IBooksList} from '@api/API';
+import { IBook, IBooksList } from '@api/API';
 import { Reducer } from 'redux';
 import * as types from './types';
 import { BooksActionTypes } from './actions';
@@ -6,13 +6,17 @@ import { BooksActionTypes } from './actions';
 interface IBooksState {
   categories: null | IBooksList,
   topLists: null | IBooksList,
-  book: null | IBook
+  book: null | IBook,
+  categoryName: string | null,
+  books: Array<IBook> | null
 }
 
 const initialState: IBooksState = {
   categories: null,
   topLists: null,
   book: null,
+  categoryName: null,
+  books: null,
 };
 
 export const reducer: Reducer<IBooksState, BooksActionTypes> = (state = initialState, action) => {
@@ -27,6 +31,16 @@ export const reducer: Reducer<IBooksState, BooksActionTypes> = (state = initialS
       return {
         ...state,
         book: action.payload,
+      };
+    case types.SET_BOOKS:
+      return {
+        ...state,
+        books: action.payload,
+      };
+    case types.SET_CATEGORY:
+      return {
+        ...state,
+        categoryName: action.payload,
       };
     default:
       return state;

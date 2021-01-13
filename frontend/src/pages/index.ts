@@ -2,6 +2,7 @@ import { MainPage } from '@pages/main';
 import { AdminLoginPage } from '@pages/admin/login';
 import { AddBookPage } from '@pages/admin/add_book';
 import { BookPage } from '@pages/book';
+import { CategoryPage } from '@pages/category';
 
 export const routes = () => [
   {
@@ -23,5 +24,10 @@ export const routes = () => [
     path: '/book/:id',
     exact: true,
     component: BookPage,
+  },
+  {
+    path: '/category/:category',
+    exact: true,
+    component: CategoryPage,
   },
 ];

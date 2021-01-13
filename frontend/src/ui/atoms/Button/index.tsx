@@ -4,11 +4,12 @@ import React, { FC } from 'react';
 export interface IButtonProps {
   type: 'button' | 'link',
   onClick?: () => void
-  style : string
+  style : string,
+  path? : string
 }
 
 export const Button:FC<IButtonProps> = ({
-  type, onClick, style, children,
+  type, onClick, style, children, path = '/',
 }) => {
   if (type === 'button') {
     return (
@@ -22,7 +23,7 @@ export const Button:FC<IButtonProps> = ({
     );
   }
   return (
-    <Link className={style} to="/">
+    <Link className={style} to={path}>
       {children}
     </Link>
   );

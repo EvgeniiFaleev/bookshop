@@ -10,6 +10,6 @@ export const Title:FC<TitlePropsType> = ({ categoryName, booksCount }) => (
   <div className={styles.category}>
     <img src={icon} alt="logo" />
     <h2>{categoryName}</h2>
-    <ButtonPrimary type={"link"} >{`view List (${booksCount})`}</ButtonPrimary>
+    <ButtonPrimary path={`/category/${categoryName}`} type="link">{`view List (${booksCount})`}</ButtonPrimary>
   </div>
 );

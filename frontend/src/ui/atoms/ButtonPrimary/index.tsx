@@ -5,9 +5,10 @@ import styles from './ButtonPrimary.module.scss';
 export type ButtonSpecificPropsType = Omit<IButtonProps, 'style'>;
 
 export const ButtonPrimary:FC<ButtonSpecificPropsType> = ({
-  type, onClick, children,
+  type, onClick, children, path,
 }) => (
   <Button
+    path={path}
     type={type}
     onClick={onClick}
     style={styles.button_primary}

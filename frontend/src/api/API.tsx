@@ -43,10 +43,15 @@ export const booksAPI = {
         method: 'POST',
         credentials: 'include',
         body: data,
-        // headers: {
-        //   'Content-Type': 'multipart/form-data; boundary=---------------------------974767299852498929531610575',
-        // },
       });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
+  async getBooksByCategory(category: string): Promise<Response> {
+    try {
+      const res: Response = await fetch(`${this.url}category/?cat=${category}`);
       return res;
     } catch (e) {
       throw new Error(e);

@@ -11,6 +11,9 @@
       "@authentication/*": [
         "features/authentification/*"
       ],
+      "@cart/*": [
+        "features/cart/*"
+      ],
       "@images": [
         "ui/assets/images"
       ],

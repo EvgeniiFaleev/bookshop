@@ -6,6 +6,8 @@ import { booksActions } from '@books/modules';
 import { Preloader } from '@ui/atoms/Preloader';
 import { useParams } from 'react-router-dom';
 import { RootState } from '@store/root-reducer';
+import { CategoryBooks } from '@books/ui/organisms/CategoryBooks';
+import {useCart} from "@cart/hooks/useCart";
 
 export const CategoryPage = () => {
   const { category } = useParams<{category: string}>();
@@ -20,10 +22,13 @@ export const CategoryPage = () => {
     if (!categoryName) dispatch(booksActions.getBooksByCategory(category));
   }, []);
 
+  const cartBooks = useCart();
   return (
     <CommonTemplate>
       <Home booksCount={10} />
-      {categoryName ? categoryName : <Preloader />}
+      {categoryName && books
+        ? <CategoryBooks books={books} cartBooks={cartBooks} categoryName={categoryName} />
+        : <Preloader />}
     </CommonTemplate>
   );
 };

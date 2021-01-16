@@ -1,3 +1,6 @@
 .button_primary {
   @extend %button_primary;
 }
+.button_primary_disabled {
+  @extend %button_primary_disabled;
+}

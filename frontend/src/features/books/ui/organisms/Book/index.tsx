@@ -3,16 +3,36 @@ import { ButtonSecondary } from '@ui/atoms/ButtonSecondary';
 import { FC } from 'react';
 import { IBook } from '@api/API';
 import { Link } from 'react-router-dom';
+import { cartActions } from '@cart/modules';
+import { useDispatch } from 'react-redux';
+import { IBookInCart } from '@cart/modules/reducer';
 import styles from './Book.module.scss';
 
-export const Book:FC<IBook > = ({
-  categories, _id: id, title, price, author, picture, description,
+interface IBookProps extends IBook {
+  cartBooks: Array<IBookInCart> | null
+}
+export const Book:FC<IBookProps > = ({
+  categories, _id: id, title, price, author, picture, description, cartBooks,
 }) => {
   const categoriesElements = categories.map((item, index, arr) => {
     const space = index < arr.length - 1 ? ',  ' : '';
     return <Link className={styles.categories_link} to="/">{`${item}${space}`}</Link>;
   });
 
+  let match = -1;
+  if (cartBooks) {
+    match = cartBooks.findIndex((item) => id === item.id);
+  }
+  console.log(match);
+  const dispatch = useDispatch();
+  const onAddToCart = () => {
+    dispatch(cartActions.addBook({
+      id,
+      author,
+      title,
+      price,
+    }));
+  };
   return (
 
     <div className={styles.wrapper}>
@@ -36,7 +56,7 @@ export const Book:FC<IBook > = ({
           </span>
         </div>
         <div className={styles.buttons}>
-          <ButtonPrimary type="button">ADD TO CART</ButtonPrimary>
+          <ButtonPrimary onClick={onAddToCart} isDisabled={match >= 0} type="button">ADD TO CART</ButtonPrimary>
           <ButtonSecondary type="button">
             ADD TO
             WISHLIST

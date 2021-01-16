@@ -5,15 +5,17 @@ export interface IButtonProps {
   type: 'button' | 'link',
   onClick?: () => void
   style : string,
-  path? : string
+  path? : string,
+  isDisabled?: boolean
 }
 
 export const Button:FC<IButtonProps> = ({
-  type, onClick, style, children, path = '/',
+  type, onClick, style, children, path = '/', isDisabled = false,
 }) => {
   if (type === 'button') {
     return (
       <button
+        disabled={isDisabled}
         onClick={onClick}
         type="button"
         className={style}

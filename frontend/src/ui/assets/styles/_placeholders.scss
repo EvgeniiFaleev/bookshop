@@ -32,6 +32,31 @@
   }
 
 }
+%button_primary_disabled {
+  //border: none;
+  outline: none;
+  padding: 0.5rem 1.5rem;
+  font-family: IbmPlex-Bold, sans-serif;
+  box-sizing: border-box;
+  font-size: 15px;
+  color: $button_primary;
+  background: $white;
+  border-radius: 999999px;
+  border: 1px solid $button_primary;
+  box-shadow: 1px 1px 5px 0px rgba(67, 0, 17, 0);
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background: $button_primary_bg_disabled;
+    box-shadow: 1px 7px 13px 0px rgba(67, 0, 17, 0.13);
+    transform: scale(1.02);
+  }
+
+}
 
 %button_secondary{
   border:2px $button_secondary solid;

@@ -7,6 +7,7 @@ $gray: #F6F5F7;
 $gray-light: #e1e1e3;
 $gray-lightest: #eae9ed;
 $pink: #FFFFFF;
+$pink_lightest: rgba(222,36,84,0.05);
 $biege: #ffeee6;
 $white: #ffffff;
 $dark: #2c293b;
@@ -17,6 +18,8 @@ $gray-dark-secondary:#24282F;
 $gray-light-secondary: #808C9E;
 $red: red;
 $green: #4AB31A;
+$color-callout: #f6f5f7;
+
 
 
 $max-width: 1024px;
@@ -46,6 +49,7 @@ $search_bg:$gray-light;
 $border_line: $gray-light;
 $button_primary: $purple;
 $button_primary_hover: $purple-dark;
+$button_primary_bg_disabled: $pink_lightest;
 $button_secondary: $violet;
 $button_secondary_hover: $violet_dark;
 $button_secondary_hover_opacity: $violet_opacity;

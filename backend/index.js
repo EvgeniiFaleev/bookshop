@@ -32,7 +32,10 @@ app.use("/books",
   [bodyParser.urlencoded({extended: false}),
     require("./routes/books/paginate"),
     require("./routes/books/manage"), require("./routes/books/order"),
-    require("./routes/books/chart"), require("./routes/books/book"),require("./routes/books/book")]);
+    require("./routes/books/chart"), require("./routes/books/book"),
+    require("./routes/books/book"),
+    require("./routes/books/category"),
+  ]);
 
 app.use(express.static('public'));
 

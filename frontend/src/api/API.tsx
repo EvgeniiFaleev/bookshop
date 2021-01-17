@@ -57,6 +57,21 @@ export const booksAPI = {
       throw new Error(e);
     }
   },
+  async updateCart (cart: string){
+    try {
+      const res: Response = await fetch(`${this.url}update_cart`, {
+        method: 'POST',
+        credentials: 'include',
+        body: cart,
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
 };
 
 export const authAPI = {

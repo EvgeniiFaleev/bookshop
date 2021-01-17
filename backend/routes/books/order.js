@@ -19,11 +19,39 @@ router.get("/orders", adminCheck, async (req, res) => {
     })
   } catch (e) {
     console.error(e);
-    return  res.status(500).json({message: "Чтото пошло не так "})
+    return res.status(500).json({message: "Чтото пошло не так "})
   }
 });
 
-router.post("/buy",express.json(),
+router.post("/update_cart", express.json(), async (req, res) => {
+  try {
+    console.log(req.body);
+    const cartBooks = req.body
+    const updatedCart = await Promise.all(cartBooks.map(async (item) => {
+      const match = await Book.findById(item.id);
+      if (match) {
+        const updatedBook = {
+          id: match._id,
+          price: match.price,
+          author: match.author,
+          title: match.title,
+          picture: match.picture,
+          quantity: item.quantity,
+        }
+        return updatedBook
+      }
+      return false
+    }))
+    console.log(updatedCart)
+    res.json(updatedCart)
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({message: "Чтото пошло не так "})
+  }
+});
+
+router.post("/buy",
+  express.json(),
   [body("orderList", "Список заказов пуст").exists().isLength({
     min: 1,
     max: 20
@@ -50,8 +78,8 @@ router.post("/buy",express.json(),
           });
         }
         const book = {
-          id:match.id,
-          author:match.author,
+          id: match.id,
+          author: match.author,
           title: match.title,
           price: match.price,
           count: item.count
@@ -61,10 +89,16 @@ router.post("/buy",express.json(),
       }));
 
       const total = books.reduce((acc, item) => {
-        acc.count = acc.count + Number(item.count);
-        acc.price = acc.price + Number(item.price)*(+item.count);
-        return acc;
-      },{count: 0, price: 0});
+          acc.count = acc.count + Number(item.count);
+          acc.price = acc.price + Number(item.price) * (
+            +item.count
+          );
+          return acc;
+        },
+        {
+          count: 0,
+          price: 0
+        });
 
       const newOrder = new Order({
         orderList: books,
@@ -87,7 +121,6 @@ router.post("/buy",express.json(),
       return res.status(500).json({message: "Чтото пошло не так "})
     }
   });
-
 
 
 module.exports = router;

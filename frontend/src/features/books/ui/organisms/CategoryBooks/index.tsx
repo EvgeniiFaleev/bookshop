@@ -3,9 +3,9 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonPrimary } from '@ui/atoms/ButtonPrimary';
 import { IBookInCart } from '@cart/modules/reducer';
+import { cartActions } from '@cart/modules';
+import { useDispatch } from 'react-redux';
 import styles from './CategoryBooks.module.scss';
-import {cartActions} from "@cart/modules";
-import {useDispatch} from "react-redux";
 
 interface IcategoryBooksProps {
   books: Array<IBook>,
@@ -28,6 +28,8 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
         author,
         title,
         price,
+        quantity: 1,
+        picture
       }));
     };
     return (

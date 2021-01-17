@@ -7,6 +7,8 @@ export interface IBookInCart {
   author: string,
   title: string,
   price: number,
+  quantity: number,
+  picture:string
 }
 interface ICartState {
   books: Array<IBookInCart> | null;

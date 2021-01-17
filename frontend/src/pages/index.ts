@@ -3,6 +3,7 @@ import { AdminLoginPage } from '@pages/admin/login';
 import { AddBookPage } from '@pages/admin/add_book';
 import { BookPage } from '@pages/book';
 import { CategoryPage } from '@pages/category';
+import {CartPage} from "@pages/cart";
 
 export const routes = () => [
   {
@@ -29,5 +30,10 @@ export const routes = () => [
     path: '/category/:category',
     exact: true,
     component: CategoryPage,
+  },
+  {
+    path: '/cart',
+    exact: true,
+    component: CartPage,
   },
 ];

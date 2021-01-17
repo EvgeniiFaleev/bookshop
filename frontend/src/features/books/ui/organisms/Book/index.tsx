@@ -31,6 +31,8 @@ export const Book:FC<IBookProps > = ({
       author,
       title,
       price,
+      quantity: 1,
+      picture
     }));
   };
   return (

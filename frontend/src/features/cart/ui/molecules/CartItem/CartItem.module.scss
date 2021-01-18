@@ -1,0 +1,84 @@
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: $dark-text;
+  border-top: 1px solid $gray-border;
+  margin-bottom: 0.3rem;
+.flex1, .flex2{
+  display: flex;
+  align-items: flex-start;
+}
+  .flex1{
+    a{
+      display: block;
+      line-height: 0;
+      max-width: 155px;
+      box-shadow: 0px 6px 12px rgba(0,0,0,0.3);
+      transition: transform 200ms ease-in, box-shadow 200ms ease-in;
+      margin-right: 1rem;
+      position: relative;
+    }
+    a:after{
+      background-image: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.0666667) 4%, rgba(255,255,255,0) 10%, rgba(255,255,255,0) 90%, rgba(0,0,0,0.0666667) 96%, rgba(0,0,0,0.2) 100%);
+    position: absolute;
+      z-index: 20;
+      border-radius: 3px;
+      content: '';
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+    img{
+      width: 100%;
+
+    }
+    a:hover{
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.3);
+      transform: scale(1.1);
+    }
+    .info{
+      padding-top: 0.6rem;
+      .title{
+        font-size: 20px;
+        font-family: GT-Bold, serif;
+        padding-bottom: 0.1rem ;
+      }
+      .author{
+        font-family: IbmPlex-Regular, sans-serif;
+        font-size: 15px;
+      }
+    }
+    }
+    .flex2{
+      padding-top: 0.6rem;
+      justify-content: space-between;
+      gap: 1.5rem;
+        input{
+          font-size: 15px;
+          box-sizing: border-box;
+          border: 1px solid $gray-border;
+          border-radius: 0.25rem;
+          padding: 0.30rem;
+          text-align: right;
+          width: 3rem;
+          outline: none;
+        }
+      .price{
+        font-family: IbmPlex-Medium, sans-serif;
+        font-size: 16px;
+      }
+      svg{
+        cursor: pointer;
+        color: inherit;
+        transition: all 0.5s;
+        font-size: 18px;
+      }
+      svg:hover{
+        color: $violet;
+      }
+    }
+  }
+

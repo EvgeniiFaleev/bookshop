@@ -19,7 +19,7 @@ export const Header = () => (
         <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
         <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
         <p className={styles.browse}>Find a bookstore browse</p>
-        <Link className={styles.basket} to="/basket"><img src={basket} alt="basket" /></Link>
+        <Link className={styles.basket} to="/cart"><img src={basket} alt="basket" /></Link>
         <Link className={styles.user} to="/user"><img src={user} alt="user" /></Link>
         <div />
       </div>

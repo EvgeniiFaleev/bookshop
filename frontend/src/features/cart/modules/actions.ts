@@ -1,8 +1,8 @@
-import { Action } from 'redux';
-import { DispatchType, RootState, ThunkType } from '@store/root-reducer';
-import { booksAPI } from '@api/API';
+import {Action} from 'redux';
+import {DispatchType, ThunkType} from '@store/root-reducer';
+import {booksAPI} from '@api/API';
 import * as types from './types';
-import { IBookInCart } from './reducer';
+import {IBookInCart} from './reducer';
 
 interface IAddBookAction extends Action<typeof types.ADD_BOOK>{
   payload: IBookInCart;
@@ -27,7 +27,6 @@ export const updateCart = (): ThunkType => async (dispatch: DispatchType) => {
     const response = await booksAPI.updateCart(cart);
     if (response.status === 200) {
       const updatedCart = await response.json();
-      debugger;
       dispatch(setBooks(updatedCart));
     }
   }

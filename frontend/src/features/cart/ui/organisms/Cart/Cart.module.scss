@@ -1,0 +1,23 @@
+.wrapper{
+  max-width: $max-width;
+  margin: auto;
+  @extend %content_horizontal-padding;
+  h1{
+    margin-top: 3rem;
+    color: $dark-text;
+    font-family: GT-Bold, serif;
+    font-size: 46px;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid $gray-border
+  }
+  .checkout_link{
+    margin-bottom: 1.5rem;
+    text-align: right;
+    a{
+      @extend %button_primary;
+      border-radius: 0.25rem;
+    }
+  }
+}
+

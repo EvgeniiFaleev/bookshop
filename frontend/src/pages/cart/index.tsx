@@ -22,10 +22,10 @@ export const CartPage = () => {
     }
   }, [cartBooks]);
 
-  // useCart();
+
   return (
     <CommonTemplate>
-      {isFirstRun ? <Preloader /> : <Cart cartBooks={cartBooks} /> }
+      {isFirstRun.current ? <Preloader /> : <Cart cartBooks={cartBooks} /> }
     </CommonTemplate>
   );
 };

@@ -111,14 +111,14 @@
     background-color: $button_primary_hover;
   }
 }
-%admin_input{
+%custom_input{
   outline-color: $admin-form-input-outline;
   box-sizing: border-box;
   padding: 0.375rem 0.75rem;
-  color: #5a6273;
-  border: 1px solid #D7DAE0;
+  color: $gray-input;
+  border: 1px solid $gray-input-border;
   border-radius: 3px;
-  background: #fff;
+  background: $white;
   font-size: 14px;
   line-height: 1;
 }

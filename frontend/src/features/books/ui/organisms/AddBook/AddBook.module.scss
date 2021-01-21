@@ -16,7 +16,7 @@
     resize: both;
     min-height: 40px;
     line-height: 20px;
-    @extend %admin_input;
+    @extend %custom_input;
     box-sizing: border-box;
     padding: 0.375rem 0.75rem;
     //color: #5a6273;
@@ -39,7 +39,7 @@
   }
 
   input {
-    @extend %admin_input;
+    @extend %custom_input;
     width: 300px;
   }
 

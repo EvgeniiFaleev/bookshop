@@ -1,0 +1,15 @@
+.counter{
+  position: absolute;
+  background: $purple;
+  color: $hero-text;
+  border-radius: 50%;
+  padding:   0 0.4rem;
+  right: -35%;
+  top: -50%;;
+  text-align: left;
+  box-sizing: border-box;
+  font-size: 18px;
+  a{
+    margin-left: 0 !important;
+  }
+}

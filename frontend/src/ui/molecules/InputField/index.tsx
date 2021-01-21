@@ -7,29 +7,32 @@ import { IHookFormProps } from '@pages/admin/login';
 import { FC } from 'react';
 
 interface IInputFieldProps extends Omit<IHookFormProps, 'onSubmit'>{
-  className: string,
-  fieldText: string,
+  errorClassName: string,
+  fieldText?: string,
   iconError?: IconDefinition,
   fieldName: string,
-  type?: string
+  type?: string,
+  value?:string
 }
 
 export const InputField:FC<IInputFieldProps> = ({
-  type = 'text',
-  register, errors, required = true, fieldText, className, iconError = faExclamation, fieldName, clearError, children
+  type = 'text', value,
+  register, errors, required = true, fieldText, errorClassName, iconError = faExclamation, fieldName, clearError, children,
 }) => (
   <div>
     <label>
-      <p>{fieldText}</p>
+      {fieldText && <p>{fieldText}</p>}
       <input
         ref={register({ required })}
         type={type}
         name={fieldName}
         onFocus={clearError}
+        value={value}
+        readOnly={Boolean(value)}
       />
       {children}
       {errors[fieldName] && (
-      <span className={className}>
+      <span className={errorClassName}>
         <FontAwesomeIcon icon={iconError} />
         This field is required
       </span>

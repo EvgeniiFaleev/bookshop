@@ -10,7 +10,7 @@
   }
 
   input {
-    @extend %admin_input;
+    @extend %custom_input;
   }
 
   button {

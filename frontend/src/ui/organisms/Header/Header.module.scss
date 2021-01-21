@@ -41,7 +41,10 @@
       .basket, .user {
         margin-left: 0.5rem;
       }
-
+    .basket{
+      display: block;
+      position: relative;
+    }
       .browse {
         font-family: IbmPlex-Bold, sans-serif;
         text-transform: uppercase;

@@ -67,6 +67,13 @@ export const Cart: FC<ICartProps> = ({ cartBooks }) => {
               )
             </Link>
           </div>
+          <div className={styles.cart_description}>
+            <p>Item</p>
+            <p>
+              <span className={styles.cart_description_qty}>Qty</span>
+              <span>Price</span>
+            </p>
+          </div>
           {cartItems}
         </>
       )

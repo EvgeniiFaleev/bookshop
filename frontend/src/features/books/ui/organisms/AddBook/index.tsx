@@ -26,7 +26,7 @@ export const AddBook:FC<IAddBokProps> = ({
   for (let i = 0; i < categoriesCount; i++) {
     categoryElements.push(
       <InputField
-        className={styles.error}
+        errorClassName={styles.error}
         fieldText="Category"
         fieldName="categories"
         register={register}
@@ -63,7 +63,7 @@ export const AddBook:FC<IAddBokProps> = ({
       </span>
       )}
       <InputField
-        className={styles.error}
+        errorClassName={styles.error}
         fieldText="Author Name"
         fieldName="author"
         register={register}
@@ -71,7 +71,7 @@ export const AddBook:FC<IAddBokProps> = ({
         clearError={clearError}
       />
       <InputField
-        className={styles.error}
+        errorClassName={styles.error}
         fieldText="Book Title"
         fieldName="title"
         register={register}
@@ -79,7 +79,7 @@ export const AddBook:FC<IAddBokProps> = ({
         clearError={clearError}
       />
       <InputField
-        className={styles.error}
+        errorClassName={styles.error}
         fieldText="Price"
         fieldName="price"
         register={register}
@@ -88,7 +88,7 @@ export const AddBook:FC<IAddBokProps> = ({
       />
       <InputField
         type="file"
-        className={styles.error}
+        errorClassName={styles.error}
         fieldText="Add Picture"
         fieldName="picture"
         register={register}

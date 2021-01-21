@@ -6,8 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 
 import styles from './Header.module.scss';
+import {FC} from "react";
 
-export const Header = () => (
+export const Header:FC = ({children}) => (
   <header className={styles.header}>
     <div className={styles.wrapper}>
       <Link to="/" className={styles.flex_1}>
@@ -19,7 +20,8 @@ export const Header = () => (
         <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
         <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
         <p className={styles.browse}>Find a bookstore browse</p>
-        <Link className={styles.basket} to="/cart"><img src={basket} alt="basket" /></Link>
+        <Link className={styles.basket} to="/cart"><img src={basket} alt="basket" />
+          {children}</Link>
         <Link className={styles.user} to="/user"><img src={user} alt="user" /></Link>
         <div />
       </div>

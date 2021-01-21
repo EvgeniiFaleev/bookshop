@@ -4,6 +4,7 @@ import { AddBookPage } from '@pages/admin/add_book';
 import { BookPage } from '@pages/book';
 import { CategoryPage } from '@pages/category';
 import {CartPage} from "@pages/cart";
+import {CheckoutPage} from "@pages/checkout";
 
 export const routes = () => [
   {
@@ -35,5 +36,10 @@ export const routes = () => [
     path: '/cart',
     exact: true,
     component: CartPage,
+  },
+  {
+    path: '/checkout',
+    exact: true,
+    component: CheckoutPage,
   },
 ];

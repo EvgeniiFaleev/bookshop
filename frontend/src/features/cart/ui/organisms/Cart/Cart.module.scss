@@ -1,10 +1,11 @@
 .wrapper{
   max-width: $max-width;
   margin: auto;
+  color: $dark-text;
   @extend %content_horizontal-padding;
   h1{
     margin-top: 3rem;
-    color: $dark-text;
+
     font-family: GT-Bold, serif;
     font-size: 46px;
     padding-top: 1rem;
@@ -19,5 +20,16 @@
       border-radius: 0.25rem;
     }
   }
+  .cart_description{
+    display: flex;
+    font-family: IbmPlex-Bold, sans-serif;
+    font-size: 14px;
+    justify-content: space-between;
+    padding: 0.5rem 3rem 0.5rem 1rem;
+    &_qty{
+      margin-right: 3rem;
+    }
+  }
+
 }
 

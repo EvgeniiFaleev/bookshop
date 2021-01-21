@@ -20,7 +20,7 @@ export const AdminLogin:FC<IAdminLoginProps> = ({
     )}
     <InputField
       type="text"
-      className={styles.error}
+      errorClassName={styles.error}
       fieldText="Login"
       iconError={faExclamation}
       fieldName="login"
@@ -30,7 +30,7 @@ export const AdminLogin:FC<IAdminLoginProps> = ({
       clearError={clearError}
     />
     <InputField
-      className={styles.error}
+      errorClassName={styles.error}
       fieldText="Password"
       iconError={faExclamation}
       fieldName="password"

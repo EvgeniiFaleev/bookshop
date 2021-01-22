@@ -20,7 +20,15 @@ const schema = new Schema({
     type: Number,
     required: true
   },
-  address: {
+  city: {
+    type:String,
+    required: true
+  },
+  streetAddress: {
+    type:String,
+    required: true
+  },
+  email: {
     type:String,
     required: true
   },
@@ -28,7 +36,11 @@ const schema = new Schema({
     type: Number,
     required:true
   },
-  name:{
+  firstName:{
+    type: String,
+    required: true
+  },
+  lastName:{
     type: String,
     required: true
   }

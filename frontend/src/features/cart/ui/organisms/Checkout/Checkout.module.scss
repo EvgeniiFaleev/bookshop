@@ -1,4 +1,4 @@
-.wrapper {
+.form {
   display: flex;
   max-width: $max-width;
   width: 100%;
@@ -50,7 +50,7 @@
   }
 }
 
-.form {
+.inputs {
   border-top: 1px solid $gray-border;
   padding-top: 2rem;
   flex-shrink: 1;

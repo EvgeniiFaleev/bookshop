@@ -17,13 +17,15 @@ interface IInputFieldProps extends Omit<IHookFormProps, 'onSubmit'>{
 
 export const InputField:FC<IInputFieldProps> = ({
   type = 'text', value,
-  register, errors, required = true, fieldText, errorClassName, iconError = faExclamation, fieldName, clearError, children,
+  register, errors, required = true, fieldText, errorClassName, iconError = faExclamation, fieldName, clearError, children, pattern, minLength, maxLength,
 }) => (
   <div>
     <label>
       {fieldText && <p>{fieldText}</p>}
       <input
-        ref={register({ required })}
+        ref={register({
+          required, pattern, minLength, maxLength,
+        })}
         type={type}
         name={fieldName}
         onFocus={clearError}
@@ -34,7 +36,8 @@ export const InputField:FC<IInputFieldProps> = ({
       {errors[fieldName] && (
       <span className={errorClassName}>
         <FontAwesomeIcon icon={iconError} />
-        This field is required
+        {' '}
+        {errors[fieldName].message || 'This field is required'}
       </span>
       )}
     </label>

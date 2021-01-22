@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React, { FC } from 'react';
 
 export interface IButtonProps {
-  type: 'button' | 'link',
+  type: 'button' | 'link' | 'submit',
   onClick?: () => void
   style : string,
   path? : string,
@@ -12,12 +12,12 @@ export interface IButtonProps {
 export const Button:FC<IButtonProps> = ({
   type, onClick, style, children, path = '/', isDisabled = false,
 }) => {
-  if (type === 'button') {
+  if (type === 'button' || type === 'submit') {
     return (
       <button
         disabled={isDisabled}
         onClick={onClick}
-        type="button"
+        type={type}
         className={style}
       >
         {children}

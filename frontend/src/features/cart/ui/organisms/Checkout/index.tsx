@@ -1,27 +1,39 @@
 import { useForm } from 'react-hook-form';
 import { InputField } from '@ui/molecules/InputField';
+import { ButtonPrimary } from '@ui/atoms/ButtonPrimary';
 import styles from './Checkout.module.scss';
-import {ButtonPrimary} from "@ui/atoms/ButtonPrimary";
+import {shallowEqual, useSelector} from "react-redux";
+import {RootState} from "@store/root-reducer";
 
 export const Checkout = () => {
   const {
-    register, handleSubmit, errors, setError, clearErrors,
+    register, handleSubmit, errors, setError, clearErrors, trigger,
   } = useForm();
-  const clearError = () => {
-    clearErrors();
-  };
+  // const clearError = (e:FocusEvent<HTMLInputElement>) => {
+  //   clearErrors(e.currentTarget.name);
+  // };
+  const cartBooks = useSelector((state:RootState) => state.cart.books, shallowEqual);
+  const onSubmit = (data: FormData) => {
+    const order = {...data, orderList:  cartBooks}
+    console.log(JSON.stringify(order)); };
   return (
-    <div className={styles.wrapper}>
-      <form className={styles.form}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <div className={styles.inputs}>
         <p className={styles.email}>Email Address</p>
 
         <InputField
+          type="email"
           errorClassName={styles.error}
               // fieldText="E-mail"
           fieldName="email"
           register={register}
           errors={errors}
-          clearError={clearError}
+          required="Enter your e-mail"
+          pattern={{
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+            message: 'Enter a valid e-mail address',
+          }}
+          // clearError={clearError}
         />
         <p className={styles.billing}>Billing Address</p>
         <InputField
@@ -30,7 +42,7 @@ export const Checkout = () => {
           fieldName="firstName"
           register={register}
           errors={errors}
-          clearError={clearError}
+          // clearError={clearError}
         />
         <InputField
           errorClassName={styles.error}
@@ -38,7 +50,7 @@ export const Checkout = () => {
           fieldName="lastName"
           register={register}
           errors={errors}
-          clearError={clearError}
+          // clearError={clearError}
         />
         <InputField
           errorClassName={styles.error}
@@ -46,7 +58,7 @@ export const Checkout = () => {
           fieldName="streetAddress"
           register={register}
           errors={errors}
-          clearError={clearError}
+          // clearError={clearError}
         />
         <InputField
           errorClassName={styles.error}
@@ -54,7 +66,7 @@ export const Checkout = () => {
           fieldName="city"
           register={register}
           errors={errors}
-          clearError={clearError}
+          // clearError={clearError}
         />
         <InputField
           errorClassName={styles.error}
@@ -63,27 +75,33 @@ export const Checkout = () => {
           value="Russia"
           register={register}
           errors={errors}
-          clearError={clearError}
+          // clearError={clearError}
         />
         <InputField
           errorClassName={styles.error}
-          fieldText="Zip Code"
-          fieldName="zip"
+          fieldText="Phone Number"
+          fieldName="phoneNumber"
           register={register}
+          type="tel"
+          required="Enter valid phone number"
           errors={errors}
-          clearError={clearError}
+          // clearError={clearError}
         />
-      </form>
+      </div>
+
       <div className={styles.summary}>
         <p className={styles.summary_head}>Order Summary</p>
         <p className={styles.summary_total}>
           <span>Order total</span>
           <span>1000</span>
         </p>
-        <ButtonPrimary type={'button'}>
+        <ButtonPrimary
+          type="submit"
+        >
           Make an order
         </ButtonPrimary>
       </div>
-    </div>
+    </form>
+
   );
 };

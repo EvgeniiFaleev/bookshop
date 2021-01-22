@@ -3,9 +3,13 @@ import { AdminLogin } from '@authentication/ui/organisms/AdminLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '@store/root-reducer';
 import { adminAuthActions } from '@authentication/modules/admin';
-import { FieldErrors, useForm } from 'react-hook-form';
-import { FC } from 'react';
-import { useAdminAuthRedirect } from '@authentication/hooks/useAdminAuthRedirect';
+import {
+  FieldErrors,
+  RegisterOptions,
+  useForm,
+  UseFormMethods,
+} from 'react-hook-form';
+import { FC, FocusEvent } from 'react';
 import { Redirect } from 'react-router-dom';
 
 interface IFormData {
@@ -13,20 +17,23 @@ interface IFormData {
   password: string,
   [index: string]: string,
 }
-
-type RefReturn =
-    | string
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined;
+//
+// type RefReturn =
+//     | string
+//     | ((instance: HTMLInputElement | null) => void)
+//     | React.RefObject<HTMLInputElement>
+//     | null
+//     | undefined;
 
 export interface IHookFormProps {
-  register: ({ required }: { required?: boolean }) => RefReturn;
+  register: UseFormMethods['register'],
   onSubmit: () => void,
   errors: FieldErrors,
-  required? : boolean,
-  clearError: ()=> void
+  required? : RegisterOptions['required'],
+  clearError?: (e:FocusEvent<HTMLInputElement>)=> void,
+  pattern? : RegisterOptions['pattern'],
+  minLength?: RegisterOptions['minLength'],
+  maxLength?: RegisterOptions['maxLength'],
 }
 
 export const AdminLoginPage: FC = () => {

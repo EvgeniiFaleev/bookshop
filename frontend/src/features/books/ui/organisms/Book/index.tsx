@@ -3,7 +3,7 @@ import { ButtonSecondary } from '@ui/atoms/ButtonSecondary';
 import { FC } from 'react';
 import { IBook } from '@api/API';
 import { Link } from 'react-router-dom';
-import { cartActions } from '@cart/modules';
+import { cartActions } from '@cart';
 import { useDispatch } from 'react-redux';
 import { IBookInCart } from '@cart/modules/reducer';
 import styles from './Book.module.scss';

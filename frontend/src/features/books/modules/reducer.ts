@@ -8,7 +8,7 @@ interface IBooksState {
   topLists: null | IBooksList,
   book: null | IBook,
   categoryName: string | null,
-  books: Array<IBook> | null
+  booksOnCategory: Array<IBook> | null
 }
 
 const initialState: IBooksState = {
@@ -16,7 +16,7 @@ const initialState: IBooksState = {
   topLists: null,
   book: null,
   categoryName: null,
-  books: null,
+  booksOnCategory: null,
 };
 
 export const reducer: Reducer<IBooksState, BooksActionTypes> = (state = initialState, action) => {
@@ -35,7 +35,7 @@ export const reducer: Reducer<IBooksState, BooksActionTypes> = (state = initialS
     case types.SET_BOOKS:
       return {
         ...state,
-        books: action.payload,
+        booksOnCategory: action.payload,
       };
     case types.SET_CATEGORY:
       return {

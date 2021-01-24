@@ -7,10 +7,9 @@ import { RootState } from '@store/root-reducer';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { booksActions } from '@books/modules';
 import { Preloader } from '@ui/atoms/Preloader';
-import { useCart } from '@cart/hooks/useCart';
+import { useCart } from '@cart';
 
 export const MainPage = () => {
-  useCart();
 
   const { categories, topLists } = useSelector((state: RootState) => ({
     categories: state.books.categories,

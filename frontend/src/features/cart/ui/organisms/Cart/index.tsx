@@ -2,7 +2,7 @@ import { IBookInCart } from '@cart/modules/reducer';
 import {
   ChangeEvent, FC, ReactNode, MouseEvent,
 } from 'react';
-import { CartItem } from '@cart/ui/molecules/CartItem/CartItem';
+import { CartItem } from '@cart/ui/molecules/CartItem';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '@cart/modules';
 import cartItemStyles from '@cart/ui/molecules/CartItem/CartItem.module.scss';

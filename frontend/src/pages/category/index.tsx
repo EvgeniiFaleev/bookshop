@@ -7,7 +7,7 @@ import { Preloader } from '@ui/atoms/Preloader';
 import { useParams } from 'react-router-dom';
 import { RootState } from '@store/root-reducer';
 import { CategoryBooks } from '@books/ui/organisms/CategoryBooks';
-import {useCart} from "@cart/hooks/useCart";
+import { useCart } from '@cart';
 
 export const CategoryPage = () => {
   const { category } = useParams<{category: string}>();
@@ -15,14 +15,16 @@ export const CategoryPage = () => {
 
   const { categoryName, books } = useSelector((state: RootState) => ({
     categoryName: state.books.categoryName,
-    books: state.books.books,
+    books: state.books.booksOnCategory,
   }), shallowEqual);
 
   useEffect(() => {
     if (!categoryName) dispatch(booksActions.getBooksByCategory(category));
+    return () => { dispatch(booksActions.setCategory(null)); };
   }, []);
 
-  const cartBooks = useCart();
+  const cartBooks = useSelector((state:RootState) => state.cart.books, shallowEqual);
+
   return (
     <CommonTemplate>
       <Home booksCount={10} />

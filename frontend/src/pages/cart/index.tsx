@@ -1,15 +1,14 @@
 import { CommonTemplate } from '@templates/CommonTemplate/CommonTemplate';
-import { Cart } from '@cart/ui/organisms/Cart';
+import { Cart, cartActions } from '@cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '@store/root-reducer';
 import { useEffect, useRef } from 'react';
-import { cartActions } from '@cart/modules';
 import { Preloader } from '@ui/atoms/Preloader';
 
 export const CartPage = () => {
   const cartBooks = useSelector((state: RootState) => state.cart.books);
   const dispatch:DispatchType = useDispatch();
-  useEffect(() => dispatch(cartActions.updateCart()), []);
+  useEffect(() => { if (cartBooks) dispatch(cartActions.updateCart()); }, []);
   const isFirstRun = useRef(true);
   useEffect(() => {
     if (isFirstRun.current) {
@@ -22,10 +21,9 @@ export const CartPage = () => {
     }
   }, [cartBooks]);
 
-
   return (
     <CommonTemplate>
-      {isFirstRun.current ? <Preloader /> : <Cart cartBooks={cartBooks} /> }
+      {isFirstRun.current && cartBooks ? <Preloader /> : <Cart cartBooks={cartBooks} /> }
     </CommonTemplate>
   );
 };

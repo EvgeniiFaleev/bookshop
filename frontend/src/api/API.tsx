@@ -57,7 +57,7 @@ export const booksAPI = {
       throw new Error(e);
     }
   },
-  async updateCart (cart: string){
+  async updateCart(cart: string): Promise<Response> {
     try {
       const res: Response = await fetch(`${this.url}update_cart`, {
         method: 'POST',
@@ -71,7 +71,22 @@ export const booksAPI = {
     } catch (e) {
       throw new Error(e);
     }
-  }
+  },
+  async order(orderInfo: string): Promise<Response> {
+    try {
+      const res: Response = await fetch(`${this.url}buy`, {
+        method: 'POST',
+        credentials: 'include',
+        body: orderInfo,
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
 };
 
 export const authAPI = {

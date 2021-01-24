@@ -18,3 +18,6 @@ unknown, // extra arg
 Action<string>>;
 
 export type DispatchType = ThunkDispatch<RootState, void, AnyAction>;
+
+// @ts-ignore
+

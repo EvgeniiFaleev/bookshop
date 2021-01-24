@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Header } from '@ui/organisms/Header';
 import { Footer } from '@ui/organisms/Footer';
-import { CartCounter } from '@cart/ui/atoms/CartCounter';
+import { CartCounter } from '@cart';
 import styles from './CommonTemplate.module.scss';
 
 export const CommonTemplate :FC = ({ children }) => (

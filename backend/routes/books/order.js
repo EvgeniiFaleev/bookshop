@@ -115,7 +115,7 @@ router.post("/buy",
       const savedOrder = await newOrder.save();
       console.log(savedOrder)
       return res.status(200)
-        .json({message: `Заказ  номер ${savedOrder._id} сохранен`})
+        .json({id: savedOrder._id})
     } catch (e) {
       console.error(e);
       return res.status(500).json({message: "Чтото пошло не так "})

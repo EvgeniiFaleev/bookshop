@@ -1,5 +1,5 @@
 import { CommonTemplate } from '@templates/CommonTemplate/CommonTemplate';
-import { Checkout } from '@cart/ui/organisms/Checkout';
+import { Checkout } from '@cart';
 import { useForm } from 'react-hook-form';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/root-reducer';
@@ -27,7 +27,6 @@ export const CheckoutPage:FC = () => {
     dispatch(cartActions.setOrderError(false));
     dispatch(cartActions.setOrderId(null));
   }, []);
-
 
   if (orderError) {
     return (

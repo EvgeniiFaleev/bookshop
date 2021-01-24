@@ -18,6 +18,7 @@ interface IInputFieldProps extends Omit<IHookFormProps, 'onSubmit'>{
 export const InputField:FC<IInputFieldProps> = ({
   type = 'text', value,
   register, errors, required = true, fieldText, errorClassName, iconError = faExclamation, fieldName, clearError, children, pattern, minLength, maxLength,
+
 }) => (
   <div>
     <label>

@@ -1,8 +1,5 @@
-import { useForm } from 'react-hook-form';
 import { InputField } from '@ui/molecules/InputField';
 import { ButtonPrimary } from '@ui/atoms/ButtonPrimary';
-import { shallowEqual, useSelector } from 'react-redux';
-import { RootState } from '@store/root-reducer';
 import { FC } from 'react';
 import { IHookFormProps } from '@pages/admin/login';
 import styles from './Checkout.module.scss';
@@ -90,5 +87,4 @@ export const Checkout: FC<IHookFormProps> = ({ register, errors, onSubmit }) => 
       </ButtonPrimary>
     </div>
   </form>
-
 );

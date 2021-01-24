@@ -1,4 +1,4 @@
-import {useCart} from '@cart';
+import { useCart } from '@cart';
 import styles from './CartCounter.module.scss';
 
 export const CartCounter = () => {

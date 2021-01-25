@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { AdminTemplate } from '@templates/AdminTemplate/AdminTemplate';
+import { AdminTemplate } from '@templates/AdminTemplate';
 import { AddBook } from '@books/ui/organisms/AddBook';
 import { useForm } from 'react-hook-form';
 import { useAdminAuthRedirect } from '@authentication/hooks/useAdminAuthRedirect';

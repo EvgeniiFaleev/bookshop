@@ -5,8 +5,10 @@
 
 
   .content {
+    position: relative;
     flex-shrink: 0;
     flex-grow: 1;
+    padding-bottom:  6rem;
   }
 }
 

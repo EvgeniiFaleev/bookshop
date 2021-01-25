@@ -1,5 +1,5 @@
 import { Home } from '@ui/organisms/Home';
-import { CommonTemplate } from '@templates/CommonTemplate/CommonTemplate';
+import { CommonTemplate } from '@templates/CommonTemplate';
 import { Slider } from '@books/ui/organisms/Slider';
 import { BooksChart } from '@books/ui/organisms/BooksChart';
 import { ReactNode, useEffect } from 'react';

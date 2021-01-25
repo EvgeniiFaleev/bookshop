@@ -17,7 +17,11 @@ interface IInputFieldProps extends Omit<IHookFormProps, 'onSubmit'>{
 
 export const InputField:FC<IInputFieldProps> = ({
   type = 'text', value,
-  register, errors, required = true, fieldText, errorClassName, iconError = faExclamation, fieldName, clearError, children, pattern, minLength, maxLength,
+  register, errors, required = true,
+  fieldText,
+  errorClassName, iconError = faExclamation,
+  fieldName, clearError, children,
+  pattern, minLength, maxLength, validate,
 
 }) => (
   <div>
@@ -25,7 +29,7 @@ export const InputField:FC<IInputFieldProps> = ({
       {fieldText && <p>{fieldText}</p>}
       <input
         ref={register({
-          required, pattern, minLength, maxLength,
+          required, pattern, minLength, maxLength, validate,
         })}
         type={type}
         name={fieldName}

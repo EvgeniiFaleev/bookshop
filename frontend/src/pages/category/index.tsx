@@ -1,5 +1,5 @@
 import { Home } from '@ui/organisms/Home';
-import { CommonTemplate } from '@templates/CommonTemplate/CommonTemplate';
+import { CommonTemplate } from '@templates/CommonTemplate';
 import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { booksActions } from '@books/modules';

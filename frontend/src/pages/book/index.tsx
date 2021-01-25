@@ -1,4 +1,4 @@
-import { CommonTemplate } from '@templates/CommonTemplate/CommonTemplate';
+import { CommonTemplate } from '@templates/CommonTemplate';
 import { FC, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { booksActions } from '@books/modules';

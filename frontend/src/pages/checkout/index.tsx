@@ -1,4 +1,4 @@
-import { CommonTemplate } from '@templates/CommonTemplate/CommonTemplate';
+import { CommonTemplate } from '@templates/CommonTemplate';
 import { Checkout } from '@cart';
 import { useForm } from 'react-hook-form';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';

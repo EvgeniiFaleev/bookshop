@@ -1,0 +1,58 @@
+.wrapper {
+  color: $dark-text;
+  background-color: $gray;
+  height: 100%;
+  margin-bottom: -6rem;
+  box-sizing: border-box;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  button{
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+
+
+.login_head {
+  font-family: GT-Bold, serif;
+  font-size: 46px;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+  margin-bottom: 3rem;
+}
+.form {
+  padding: 3rem 2rem;
+  background-color: $white;
+  border: 1px solid $gray-border;
+  border-radius: 0.25rem;
+  max-width: 23rem;
+  width: 100%;
+
+
+  div {
+    margin-bottom: 1.5rem;
+
+    p {
+      font-size: 15px;
+      margin-bottom: 0.5rem;
+      font-family: IbmPlex-Medium, sans-serif;
+    }
+    input{
+
+      @extend %custom_input;
+      padding:0.5rem 0.75rem;
+      width: 100%;
+    }
+  }
+
+  .error {
+    color: red;
+  }
+}

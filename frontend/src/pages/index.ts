@@ -3,8 +3,10 @@ import { AdminLoginPage } from '@pages/admin/login';
 import { AddBookPage } from '@pages/admin/add_book';
 import { BookPage } from '@pages/book';
 import { CategoryPage } from '@pages/category';
-import {CartPage} from "@pages/cart";
-import {CheckoutPage} from "@pages/checkout";
+import { CartPage } from '@pages/cart';
+import { CheckoutPage } from '@pages/checkout';
+import { LoginPage } from '@pages/login';
+import { SignUpPage } from '@pages/sign_up';
 
 export const routes = () => [
   {
@@ -41,5 +43,15 @@ export const routes = () => [
     path: '/checkout',
     exact: true,
     component: CheckoutPage,
+  },
+  {
+    path: '/login',
+    exact: true,
+    component: LoginPage,
+  },
+  {
+    path: '/sign_up',
+    exact: true,
+    component: SignUpPage,
   },
 ];

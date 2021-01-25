@@ -1,4 +1,4 @@
-import { CommonTemplate } from '@templates/CommonTemplate/CommonTemplate';
+import { CommonTemplate } from '@templates/CommonTemplate';
 import { Cart, cartActions } from '@cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '@store/root-reducer';

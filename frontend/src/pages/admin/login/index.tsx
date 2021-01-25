@@ -1,4 +1,4 @@
-import { AdminTemplate } from '@templates/AdminTemplate/AdminTemplate';
+import { AdminTemplate } from '@templates/AdminTemplate';
 import { AdminLogin } from '@authentication/ui/organisms/AdminLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '@store/root-reducer';
@@ -34,6 +34,7 @@ export interface IHookFormProps {
   pattern? : RegisterOptions['pattern'],
   minLength?: RegisterOptions['minLength'],
   maxLength?: RegisterOptions['maxLength'],
+  validate?: RegisterOptions['validate']
 }
 
 export const AdminLoginPage: FC = () => {

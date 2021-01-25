@@ -8,6 +8,9 @@
       "@books/*": [
         "features/books/*"
       ],
+      "@authentication": [
+        "features/authentification"
+      ],
       "@authentication/*": [
         "features/authentification/*"
       ],

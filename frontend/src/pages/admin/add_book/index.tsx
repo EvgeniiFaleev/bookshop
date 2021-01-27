@@ -35,11 +35,13 @@ export const AddBookPage:FC = () => {
     }
     const formData = new FormData();
     Object.entries(data).forEach((item) => {
-      console.log(item[1][0]);
-      formData.append(item[0], item[1][0]);
+      if (item[1] instanceof FileList) {
+        formData.append(item[0], item[1][0]);
+      } else {
+        formData.append(item[0], item[1]);
+      }
     });
     formData.append('description', description);
-
     // debugger;
     const res = await booksAPI.addBook(formData);
     if (res.status === 200) { setIsBookAdded(true); } else {

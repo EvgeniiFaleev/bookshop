@@ -8,7 +8,7 @@ import styles from './AdminLogin.module.scss';
 interface IAdminLoginProps extends IHookFormProps{}
 
 export const AdminLogin:FC<IAdminLoginProps> = ({
-  onSubmit, errors, register, required, clearError,
+  onSubmit, errors, register, required,
 }) => (
   <form onSubmit={onSubmit} className={styles.adminLogin}>
     <h3>Admin Login</h3>
@@ -27,7 +27,6 @@ export const AdminLogin:FC<IAdminLoginProps> = ({
       register={register}
       errors={errors}
       required={required}
-      clearError={clearError}
     />
     <InputField
       errorClassName={styles.error}
@@ -38,7 +37,6 @@ export const AdminLogin:FC<IAdminLoginProps> = ({
       register={register}
       errors={errors}
       required={required}
-      clearError={clearError}
     />
     <button type="submit">Login</button>
   </form>

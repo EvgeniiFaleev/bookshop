@@ -23,7 +23,6 @@
 .login_head {
   font-family: GT-Bold, serif;
   font-size: 46px;
-  margin-bottom: 0.5rem;
   letter-spacing: -1px;
   margin-bottom: 3rem;
 }
@@ -53,6 +52,11 @@
   }
 
   .error {
+    display: block;
+    margin: 0.5rem 0;
     color: red;
+    svg{
+      margin-right: 0.3rem;
+    }
   }
 }

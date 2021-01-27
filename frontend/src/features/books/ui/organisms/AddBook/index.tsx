@@ -19,8 +19,7 @@ interface IAddBokProps extends IHookFormProps {
 export const AddBook:FC<IAddBokProps> = ({
   onSubmit,
   errors,
-  register,
-  clearError, setDescription, isBookAdded, categoriesCount, setCategoriesCount,
+  register, setDescription, isBookAdded, categoriesCount, setCategoriesCount,
 }) => {
   const categoryElements = [];
   for (let i = 0; i < categoriesCount; i++) {
@@ -31,7 +30,6 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="categories"
         register={register}
         errors={errors}
-        clearError={clearError}
         key={i}
       >
         {i > 0 ? (
@@ -68,7 +66,6 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="author"
         register={register}
         errors={errors}
-        clearError={clearError}
       />
       <InputField
         errorClassName={styles.error}
@@ -76,7 +73,6 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="title"
         register={register}
         errors={errors}
-        clearError={clearError}
       />
       <InputField
         errorClassName={styles.error}
@@ -84,7 +80,6 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="price"
         register={register}
         errors={errors}
-        clearError={clearError}
       />
       <InputField
         type="file"
@@ -93,7 +88,6 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="picture"
         register={register}
         errors={errors}
-        clearError={clearError}
       />
       {categoryElements}
       <button

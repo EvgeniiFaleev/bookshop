@@ -50,9 +50,9 @@ export const AddBookPage:FC = () => {
     }
   };
 
-  const clearError = () => {
-    clearErrors();
-  };
+  // const clearError = () => {
+  //   clearErrors();
+  // };
 
   return (
     <AdminTemplate>
@@ -65,7 +65,6 @@ export const AddBookPage:FC = () => {
         register={register}
         onSubmit={handleSubmit(onSubmit)}
         errors={errors}
-        clearError={clearError}
       />
     </AdminTemplate>
   );

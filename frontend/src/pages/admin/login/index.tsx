@@ -6,10 +6,16 @@ import { adminAuthActions } from '@authentication/modules/admin';
 import {
   FieldErrors,
   RegisterOptions,
+  SubmitHandler,
   useForm,
   UseFormMethods,
 } from 'react-hook-form';
-import { FC, FocusEvent } from 'react';
+import {
+  FC,
+  FocusEventHandler,
+  FormEvent,
+  FormEventHandler
+} from 'react';
 import { Redirect } from 'react-router-dom';
 
 interface IFormData {
@@ -25,22 +31,26 @@ interface IFormData {
 //     | null
 //     | undefined;
 
+export interface ILoginFormValues {
+  login?: string, password : string, email?:string,
+  loginError: string
+}
 export interface IHookFormProps {
   register: UseFormMethods['register'],
-  onSubmit: () => void,
+  onSubmit:FormEventHandler<HTMLFormElement>,
   errors: FieldErrors,
   required? : RegisterOptions['required'],
-  clearError?: (e:FocusEvent<HTMLInputElement>)=> void,
   pattern? : RegisterOptions['pattern'],
   minLength?: RegisterOptions['minLength'],
   maxLength?: RegisterOptions['maxLength'],
-  validate?: RegisterOptions['validate']
+  validate?: RegisterOptions['validate'],
+  onFocus?: FocusEventHandler<HTMLInputElement>
 }
 
 export const AdminLoginPage: FC = () => {
   const {
-    register, handleSubmit, errors, setError, clearErrors,
-  } = useForm();
+    register, handleSubmit, errors, setError,
+  } = useForm<ILoginFormValues>();
 
   const isAuth = useSelector((state:RootState) => state.admin.isAuth);
   const dispatch:DispatchType = useDispatch();
@@ -54,10 +64,6 @@ export const AdminLoginPage: FC = () => {
     if (error) setError('loginError', { message: error });
   };
 
-  const clearError = () => {
-    clearErrors();
-  };
-
   return (
     <>
       { !isAuth ? (
@@ -67,7 +73,6 @@ export const AdminLoginPage: FC = () => {
             register={register}
             errors={errors}
             onSubmit={handleSubmit(onSubmit)}
-            clearError={clearError}
           />
         </AdminTemplate>
       ) : <Redirect to="/admin/add_book" />}

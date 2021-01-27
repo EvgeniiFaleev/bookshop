@@ -5,44 +5,43 @@ const config = require("config");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {body, validationResult} = require('express-validator');
+const express = require('express');
 
 
-router.post("/me", async (req, res) => {
+router.get("/me", async (req, res) => {
   try {
-    if (!req.cookies["access_token"]) {
+
+   const id =  req.session.userId;
+    if(!id){
       return res.json({
         resultCode: 1,
         message: "Пользователь не авторизован"
       });
     }
 
-    console.log(req.cookies);
-
-    const token = req.cookies["access_token"].split(" ")[1];
-    const {id} = jwt.verify(token, config.get("privateKey"));
-
-    const user = await User.findById(id).exec();
-    console.log(user);
+    const user = await User.findById(id);
     if (!user) {
       return res.json({
         resultCode: 1,
-        message: "Пользователь не авторизован"
+        message: "Не найден пользователь с данным id"
       });
     }
 
-    let {passwordHash, ...userInfo} = user;
-    res.json({
-      resultCode: 1,
-      userInfo
+    let { id: userId, email} = user;
+    return  res.json({
+      resultCode: 0,
+      userInfo:{
+        userId,email
+      }
     })
   } catch (e) {
     console.error(e);
-    res.status(500).json({message: "Чтото пошло не так "})
+   return  res.status(500).json({message: "Чтото пошло не так "})
   }
 });
 
-router.post("/register", [body("email").isEmail(), body('password')
-  .isLength({min: 5})], async (req, res) => {
+router.post("/register", [ body("email").isEmail(), body('password')
+  .isLength({min: 5}),], async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -51,7 +50,6 @@ router.post("/register", [body("email").isEmail(), body('password')
         message: "Некоректные данные " + JSON.stringify(req.body)
       });
     }
-
     const {email, password} = req.body;
 
     const candidate = await User.findOne({email}).exec();
@@ -71,21 +69,18 @@ router.post("/register", [body("email").isEmail(), body('password')
       passwordHash
     });
 
-    // const token = jwt.sign({
-    //   id: user.id
-    // }, config.get("privateKey"), {
-    //   expiresIn: "1h"
-    // });
-console.log(req.session)
-    user.save(function (err) {
-      if (err) {
-        return res.status(500)
-          .json("Ошибка при сохранении в" + " базу ");
-      }
-      res.json({
-        message: "Пользователь сохранен в базу"
-      })
-    })
+
+
+
+    const savedUser = await user.save();
+    if (savedUser) {
+      req.session.userId = user.id;
+      return res.json({
+        message: "вы успешно вошли"
+      });
+    }
+      return res.status(500)
+        .json("Ошибка при сохранении в" + " базу ");
 
 
   } catch (e) {
@@ -100,7 +95,7 @@ router.post("/login",
       .isLength({min: 5})],
   async (req, res) => {
     try {
-
+console.log(req.body)
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -128,13 +123,7 @@ router.post("/login",
       return res.json({
         message: "вы успешно вошли"
       })
-      // const token = jwt.sign({
-      //   id: user.id
-      // }, config.get("privateKey"), {
-      //   expiresIn: "1h"
-      // });
-      // return await res.cookie('access_token', 'Bearer ' + token)
-      //   .json({message: "вы успешно вошли"})
+
     } catch (e) {
       console.error(e);
       res.status(500).json({message: "Чтото пошло не так "})

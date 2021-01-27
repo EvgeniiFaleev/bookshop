@@ -20,7 +20,7 @@ export const InputField:FC<IInputFieldProps> = ({
   register, errors, required = true,
   fieldText,
   errorClassName, iconError = faExclamation,
-  fieldName, clearError, children,
+  fieldName, onFocus, children,
   pattern, minLength, maxLength, validate,
 
 }) => (
@@ -33,7 +33,7 @@ export const InputField:FC<IInputFieldProps> = ({
         })}
         type={type}
         name={fieldName}
-        onFocus={clearError}
+        onFocus={onFocus}
         value={value}
         readOnly={Boolean(value)}
       />

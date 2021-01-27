@@ -95,7 +95,6 @@ export const authAPI = {
     try {
       const res: Response = await fetch(`${this.url}admin/login`, {
         method: 'POST',
-        credentials: 'include',
         // headers: {
         //   'Content-Type': 'multipart/form-data',
         // },
@@ -111,6 +110,20 @@ export const authAPI = {
       const res: Response = await fetch(`${this.url}admin/logout`, {
         method: 'DELETE',
         credentials: 'include',
+      });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
+  async userLogin(data: FormData): Promise<Response> {
+    try {
+      const res: Response = await fetch(`${this.url}auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(data),
       });
       return res;
     } catch (e) {

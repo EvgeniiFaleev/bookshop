@@ -21,15 +21,15 @@ app.use("/", session({
   }
 }));
 app.use("/auth",
-  [bodyParser.urlencoded({extended: false}),
+  [express.json(),
     require("./routes/user/auth")]);
 
 app.use("/admin",
-  [bodyParser.urlencoded({extended: false}),
+  [express.json(),
     require("./routes/admin/auth")]);
 
 app.use("/books",
-  [bodyParser.urlencoded({extended: false}),
+  [express.json(),
     require("./routes/books/paginate"),
     require("./routes/books/manage"), require("./routes/books/order"),
     require("./routes/books/chart"), require("./routes/books/book"),

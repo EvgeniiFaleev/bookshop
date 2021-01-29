@@ -54,9 +54,6 @@
   }
 
   .error {
-    display: block;
-    margin-top: 0.6rem;
-    color: red;
-    font-family: IbmPlex-Regular, sans-serif;
+    @extend %error_auth;
   }
 }

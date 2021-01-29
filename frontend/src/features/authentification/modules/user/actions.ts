@@ -28,4 +28,12 @@ export const login = (data:FormData): ThunkType<Promise<string | void>> => async
 //   }
 // };
 
+export const signUp = (data:FormData): ThunkType<Promise<string | void>> => async (dispatch) => {
+  const response = await authAPI.signUp(data);
+  if (response.status === 200) { dispatch(authUser(true)); } else {
+    const { message } = await response.json() as {message:string};
+    return message;
+  }
+};
+
 export type AuthUserActionsType = IAuthUserAction;

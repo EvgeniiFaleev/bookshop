@@ -21,6 +21,8 @@ const changeQuantity = (id: string, count: number, cartBooks: Array<IBookInCart>
 });
 
 const deleteItem = (id: string, cartBooks: Array<IBookInCart>): Array<IBookInCart> => cartBooks.filter((item) => item.id !== id);
+
+
 export const Cart: FC<ICartProps> = ({ cartBooks }) => {
   let cartItems: Array<ReactNode> | null = null;
 
@@ -54,6 +56,7 @@ export const Cart: FC<ICartProps> = ({ cartBooks }) => {
       />
     ));
   }
+  console.log(styles.wrapper)
   return (
     <div className={styles.wrapper}>
       <h1>Shopping Cart</h1>

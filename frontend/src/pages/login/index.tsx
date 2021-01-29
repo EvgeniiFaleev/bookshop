@@ -24,7 +24,12 @@ export const LoginPage:FC = () => {
   }
   return (
     <CommonTemplate>
-      <UserLogin onFocus={onFocus} register={register} onSubmit={handleSubmit(onSubmit)} errors={errors} />
+      <UserLogin
+        onFocus={onFocus}
+        register={register}
+        onSubmit={handleSubmit(onSubmit)}
+        errors={errors}
+      />
     </CommonTemplate>
   );
 };

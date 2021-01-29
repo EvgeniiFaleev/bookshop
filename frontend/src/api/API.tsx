@@ -130,4 +130,32 @@ export const authAPI = {
       throw new Error(e);
     }
   },
+  async signUp(data: FormData): Promise<Response> {
+    try {
+      const res: Response = await fetch(`${this.url}auth/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(data),
+      });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
+  async me(): Promise<Response> {
+    try {
+      const res: Response = await fetch(`${this.url}auth/me`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          credentials: 'include',
+        },
+      });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
 };

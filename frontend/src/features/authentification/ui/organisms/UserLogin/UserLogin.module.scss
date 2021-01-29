@@ -13,7 +13,8 @@
   bottom: 0;
   right: 0;
   left: 0;
-  button{
+
+  button {
     margin-top: 1rem;
     width: 100%;
   }
@@ -26,6 +27,7 @@
   letter-spacing: -1px;
   margin-bottom: 3rem;
 }
+
 .form {
   padding: 3rem 2rem;
   background-color: $white;
@@ -43,20 +45,16 @@
       margin-bottom: 0.5rem;
       font-family: IbmPlex-Medium, sans-serif;
     }
-    input{
+
+    input {
 
       @extend %custom_input;
-      padding:0.5rem 0.75rem;
+      padding: 0.5rem 0.75rem;
       width: 100%;
     }
   }
 
   .error {
-    display: block;
-    margin: 0.5rem 0;
-    color: red;
-    svg{
-      margin-right: 0.3rem;
-    }
+    @extend %error_auth;
   }
 }

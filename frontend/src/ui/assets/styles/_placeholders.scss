@@ -145,4 +145,15 @@
     margin-right: 5px;
   }
 }
+%error_auth{
+
+    display: block;
+    margin: 0.5rem 0;
+    color: red;
+    font-family: IbmPlex-Regular, sans-serif;
+    svg{
+      margin-right: 0.3rem;
+    }
+
+}
 

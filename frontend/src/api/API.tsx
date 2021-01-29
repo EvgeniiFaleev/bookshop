@@ -17,6 +17,14 @@ export interface IChart {
   categories : IBooksList,
   topLists : IBooksList
 }
+export interface IResponseMe{
+
+  resultCode: number,
+  userInfo: {
+    userId:string,
+    email: string
+  }
+}
 
 export const booksAPI = {
   url: 'http://localhost:5000/books/',
@@ -120,6 +128,7 @@ export const authAPI = {
     try {
       const res: Response = await fetch(`${this.url}auth/login`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
@@ -134,6 +143,7 @@ export const authAPI = {
     try {
       const res: Response = await fetch(`${this.url}auth/register`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
@@ -144,18 +154,16 @@ export const authAPI = {
       throw new Error(e);
     }
   },
-  async me(): Promise<Response> {
+
+  async me(): Promise<IResponseMe | void> {
     try {
       const res: Response = await fetch(`${this.url}auth/me`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          credentials: 'include',
-        },
+        method: 'POST',
+        credentials: 'include',
       });
-      return res;
+      return await res.json();
     } catch (e) {
-      throw new Error(e);
+      return console.log(e);
     }
   },
 };

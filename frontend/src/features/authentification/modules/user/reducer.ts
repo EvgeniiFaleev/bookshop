@@ -4,9 +4,16 @@ import { AuthUserActionsType } from './actions';
 
 const initialState = {
   isAuth: false,
+  userInfo: null,
 };
 
-type AuthStateType = typeof initialState;
+type AuthStateType = {
+  isAuth: boolean,
+  userInfo: null | {
+    email: string,
+    userId: string
+  }
+};
 
 export const reducer: Reducer<AuthStateType, AuthUserActionsType> = (state = initialState,
   action) => {
@@ -15,6 +22,11 @@ export const reducer: Reducer<AuthStateType, AuthUserActionsType> = (state = ini
       return {
         ...state,
         isAuth: action.payload,
+      };
+    case types.SET_USER_INFO:
+      return {
+        ...state,
+        userInfo: action.payload,
       };
     default:
       return state;

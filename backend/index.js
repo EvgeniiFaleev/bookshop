@@ -17,7 +17,9 @@ app.use("/", cookieParser(), cors(corsOptions));
 app.use("/", session({
   secret: config.get("privateSessionKey"),
   cookie: {
-    maxAge: 60000000
+    path: '/',
+    maxAge: 60000000,
+    httpOnly: false
   }
 }));
 app.use("/auth",

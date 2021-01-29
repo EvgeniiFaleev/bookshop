@@ -12,7 +12,7 @@ router.get("/chart",
       const adventure = await Book.find({categories: "Adventure"});
       const penAwards = await Book.find({categories: "PEN America 2021 Literary Awards Longlist"});
 
-      console.log(adventure);
+
 
       return res.json({
         categories: {Adventure: adventure},

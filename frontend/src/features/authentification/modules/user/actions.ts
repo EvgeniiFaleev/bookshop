@@ -12,6 +12,20 @@ export const authUser = (payload: boolean): IAuthUserAction => ({
   payload,
 });
 
+export interface IUserInfo {
+  userId: string,
+  email:string
+}
+
+interface ISetUserInfoAction extends Action<typeof types.SET_USER_INFO>{
+  payload:IUserInfo | null
+}
+
+export const setUserInfo = (payload: IUserInfo | null): ISetUserInfoAction => ({
+  type: types.SET_USER_INFO,
+  payload,
+});
+
 export const login = (data:FormData): ThunkType<Promise<string | void>> => async (dispatch) => {
   const response = await authAPI.userLogin(data);
   if (response.status === 200) { dispatch(authUser(true)); } else {
@@ -35,5 +49,12 @@ export const signUp = (data:FormData): ThunkType<Promise<string | void>> => asyn
     return message;
   }
 };
+export const me = (): ThunkType<Promise<string | void>> => async (dispatch) => {
+  const response = await authAPI.me();
+  if (!response) return;
 
-export type AuthUserActionsType = IAuthUserAction;
+  if (response.resultCode === 0) dispatch(setUserInfo(response.userInfo));
+
+};
+
+export type AuthUserActionsType = IAuthUserAction | ISetUserInfoAction;

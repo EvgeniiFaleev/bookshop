@@ -8,37 +8,7 @@ const {body, validationResult} = require('express-validator');
 const express = require('express');
 
 
-router.get("/me", async (req, res) => {
-  try {
 
-   const id =  req.session.userId;
-    if(!id){
-      return res.json({
-        resultCode: 1,
-        message: "Пользователь не авторизован"
-      });
-    }
-
-    const user = await User.findById(id);
-    if (!user) {
-      return res.json({
-        resultCode: 1,
-        message: "Не найден пользователь с данным id"
-      });
-    }
-
-    let { id: userId, email} = user;
-    return  res.json({
-      resultCode: 0,
-      userInfo:{
-        userId,email
-      }
-    })
-  } catch (e) {
-    console.error(e);
-   return  res.status(500).json({message: "Чтото пошло не так "})
-  }
-});
 
 router.post("/register", [ body("email").isEmail(), body('password')
   .isLength({min: 5}),], async (req, res) => {
@@ -47,7 +17,7 @@ router.post("/register", [ body("email").isEmail(), body('password')
     if (!errors.isEmpty()) {
       return res.status(401).json({
         errors: errors.array(),
-        message: "Некоректные данные " + JSON.stringify(req.body)
+        message: "Password must be at least 5 symbols"
       });
     }
     const {email, password} = req.body;
@@ -95,7 +65,6 @@ router.post("/login",
       .isLength({min: 5})],
   async (req, res) => {
     try {
-console.log(req.body)
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -115,11 +84,12 @@ console.log(req.body)
       const match = await bcrypt.compare(password, user.passwordHash);
 
       if (!match) {
-        res.status(403)
+       return  res.status(403)
           .json({message: "Неправильный пароль или логин"})
       }
 
       req.session.userId = user.id;
+      console.log(req.session)
       return res.json({
         message: "вы успешно вошли"
       })
@@ -153,4 +123,37 @@ router.get("/logout", async (req, res) => {
   }
 });
 
+router.post("/me", async (req, res) => {
+  try {
+    console.log(req.cookies)
+    const id =  req.session.userId;
+    if(!id){
+      return res.json({
+        resultCode: 1,
+        message: "Пользователь не авторизован"
+      });
+    }
+
+    const user = await User.findById(id);
+    if (!user) {
+      return res.json({
+        resultCode: 1,
+        message: "Не найден пользователь с данным id"
+      });
+    }
+
+    let { id: userId, email} = user;
+    return  res.json({
+      resultCode: 0,
+      userInfo:{
+        userId,email
+      }
+    })
+  } catch (e) {
+    console.error(e);
+    return  res.status(500).json({message: "Чтото пошло не так "})
+  }
+});
+
 module.exports = router;
+

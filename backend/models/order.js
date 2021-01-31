@@ -47,8 +47,11 @@ const schema = new Schema({
     required: true
   },
   date: {
-    type: Number,
+    type: String,
     required: true
+  },
+  userId: {
+    type: Schema.Types.ObjectId, ref: 'User'
   }
 });
 

@@ -4,7 +4,9 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const schema = new Schema({
   orderList: {
     type: [{
-      id:String,
+      bookId: {
+      type:  Schema.Types.ObjectId, ref: 'Book'
+      },
       count: Number,
       author: String,
       title: String,
@@ -42,6 +44,10 @@ const schema = new Schema({
   },
   lastName:{
     type: String,
+    required: true
+  },
+  date: {
+    type: Number,
     required: true
   }
 });

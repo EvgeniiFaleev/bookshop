@@ -4,6 +4,7 @@ const {body, validationResult} = require('express-validator');
 const Order = require("../../models/order");
 const Book = require("../../models/book");
 const express = require('express');
+const User = require("../../models/user");
 const adminCheck = require("../../common/adminCheck");
 
 
@@ -71,6 +72,8 @@ router.post("/buy",
       }
       const {orderList, streetAddress, city, phoneNumber, firstName, lastName, email} = req.body;
 
+
+
       const books = await Promise.all(orderList.map(async (item) => {
         const match = await Book.findById(item.id);
         if (!match) {
@@ -79,7 +82,7 @@ router.post("/buy",
           });
         }
         const book = {
-          id: match.id,
+          bookId: match._id,
           author: match.author,
           title: match.title,
           price: match.price,
@@ -109,11 +112,22 @@ router.post("/buy",
         email,
         streetAddress,
         totalCount: total.count,
-        totalPrice: total.price
+        totalPrice: total.price,
+        date: Date.now()
       });
 
       const savedOrder = await newOrder.save();
-      console.log(savedOrder)
+      console.log(savedOrder._id, "savedOrder")
+      const {userId} = req.session;
+      console.log(userId + " userID")
+      if(userId){
+        const user = await User.findById(userId);
+        console.log(Boolean(user) , " user")
+        if(user){
+          user.orderList= [...user.orderList, savedOrder._id];
+          await user.save();
+        }
+      }
       return res.status(200)
         .json({id: savedOrder._id})
     } catch (e) {

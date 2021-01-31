@@ -18,7 +18,8 @@ const schema = new Schema({
       title: String,
       price: Number,
     }],
-  }
+  },
+  orderList:[{ type: Schema.Types.ObjectId, ref: "Order" }]
 });
 
 module.exports = model("User", schema);

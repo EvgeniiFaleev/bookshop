@@ -36,7 +36,8 @@ router.post("/register", [ body("email").isEmail(), body('password')
 
     const user = new User({
       email,
-      passwordHash
+      passwordHash,
+      wishList: []
     });
 
 

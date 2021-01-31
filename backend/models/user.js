@@ -10,6 +10,15 @@ const schema = new Schema({
     type: String,
     required: true,
   },
+  wishList: {
+    type: [{
+      id:String,
+      count: Number,
+      author: String,
+      title: String,
+      price: Number,
+    }],
+  }
 });
 
 module.exports = model("User", schema);

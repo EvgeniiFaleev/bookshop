@@ -5,6 +5,8 @@ import { ButtonPrimary } from '@ui/atoms/ButtonPrimary';
 import { IBookInCart } from '@cart/modules/reducer';
 import { cartActions } from '@cart/modules';
 import { useDispatch } from 'react-redux';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './CategoryBooks.module.scss';
 
 interface IcategoryBooksProps {
@@ -29,7 +31,7 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
         title,
         price,
         quantity: 1,
-        picture
+        picture,
       }));
     };
     return (
@@ -63,7 +65,9 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
             {price}
           </p>
           <ButtonPrimary onClick={onAddToCart} isDisabled={match >= 0} type="button">
-            Add To Cart
+            <FontAwesomeIcon icon={faShoppingBasket} />
+            {' '}
+            {match >= 0 ? 'In Cart' : 'Add To Cart'}
           </ButtonPrimary>
         </div>
       </div>

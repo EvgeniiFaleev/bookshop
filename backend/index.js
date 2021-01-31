@@ -26,6 +26,11 @@ app.use("/auth",
   [express.json(),
     require("./routes/user/auth")]);
 
+app.use("/user",
+  [express.json(),
+    require("./routes/user/wishlist")]);
+
+
 app.use("/admin",
   [express.json(),
     require("./routes/admin/auth")]);

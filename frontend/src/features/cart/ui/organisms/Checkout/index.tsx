@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { IHookFormProps } from '@pages/admin/login';
 import styles from './Checkout.module.scss';
 
-export const Checkout: FC<IHookFormProps> = ({ register, errors, onSubmit }) => (
+export const Checkout: FC<IHookFormProps & {totalPrice: undefined | number}> = ({ register, errors, onSubmit,totalPrice }) => (
   <form onSubmit={onSubmit} className={styles.form}>
     <div className={styles.inputs}>
       <p className={styles.email}>Email Address</p>
@@ -78,7 +78,7 @@ export const Checkout: FC<IHookFormProps> = ({ register, errors, onSubmit }) => 
       <p className={styles.summary_head}>Order Summary</p>
       <p className={styles.summary_total}>
         <span>Order total</span>
-        <span>1000</span>
+        <span>{totalPrice}</span>
       </p>
       <ButtonPrimary
         type="submit"

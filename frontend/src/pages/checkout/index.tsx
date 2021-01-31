@@ -12,7 +12,8 @@ export const CheckoutPage:FC = () => {
   const {
     register, handleSubmit, errors,
   } = useForm();
-
+  const cartBooks = useSelector((state: RootState) => state.cart.books);
+ const  totalPrice = cartBooks?.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   const dispatch = useDispatch();
 
   const { orderId, orderError } = useSelector((state: RootState) => ({
@@ -39,7 +40,7 @@ export const CheckoutPage:FC = () => {
     <CommonTemplate>
       {orderId ? (
         <OrderInfo orderId={orderId} />
-      ) : <Checkout register={register} errors={errors} onSubmit={handleSubmit(onSubmit)} />}
+      ) : <Checkout totalPrice={totalPrice} register={register} errors={errors} onSubmit={handleSubmit(onSubmit)} />}
     </CommonTemplate>
   );
 };

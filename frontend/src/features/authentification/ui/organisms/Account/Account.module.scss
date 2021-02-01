@@ -1,0 +1,38 @@
+.wrapper{
+  max-width: $max-width;
+  margin: auto;
+  @extend %content_horizontal-padding;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: $dark-text;
+  font-size: 18px;
+  h1{
+    font-family: GT-Bold, serif;
+    font-size: 46px;
+    margin-bottom: 0.3rem;
+    margin-top:2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $gray-border;
+  }
+  .email{
+    margin-top: 1rem;
+    span{
+      display: inline-block;
+      margin-right:  0.8rem;
+      font-family: IbmPlex-Bold, sans-serif;
+      font-size: 18px;
+    }
+  }
+  .orders, .wishlist{
+    margin-top: 3rem;
+    font-family: IbmPlex-Bold, sans-serif;
+    font-size: 24px;
+    color: $pink;
+    p{
+      padding-top: 0.3rem;
+      font-family: IbmPlex-Regular, sans-serif;
+      font-size: 15px;
+      color: $dark-text;
+    }
+  }
+}

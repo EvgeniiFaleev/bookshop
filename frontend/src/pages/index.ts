@@ -7,6 +7,7 @@ import { CartPage } from '@pages/cart';
 import { CheckoutPage } from '@pages/checkout';
 import { LoginPage } from '@pages/login';
 import { SignUpPage } from '@pages/sign_up';
+import {AccountPage} from "@pages/account";
 
 export const routes = () => [
   {
@@ -53,5 +54,10 @@ export const routes = () => [
     path: '/sign_up',
     exact: true,
     component: SignUpPage,
+  },
+  {
+    path: '/account',
+    exact: true,
+    component: AccountPage,
   },
 ];

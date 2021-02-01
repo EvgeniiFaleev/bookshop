@@ -144,11 +144,13 @@ router.post("/me", async (req, res) => {
       });
     }
 
-    let { id: userId, email} = user;
+    let { id: userId, email, orderList, wishList} = user;
     return  res.json({
       resultCode: 0,
       userInfo:{
-        userId,email
+        userId,email,
+        ordersCount: orderList.length,
+        wishListCount: wishList.length
       }
     })
   } catch (e) {

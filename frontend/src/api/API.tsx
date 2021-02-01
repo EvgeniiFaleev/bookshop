@@ -1,3 +1,5 @@
+import {IUserInfo} from "@authentication/modules/user/actions";
+
 export interface IBook {
   categories: Array<string>,
   _id: string,
@@ -20,10 +22,7 @@ export interface IChart {
 export interface IResponseMe{
 
   resultCode: number,
-  userInfo: {
-    userId:string,
-    email: string
-  }
+  userInfo: IUserInfo
 }
 
 export const booksAPI = {

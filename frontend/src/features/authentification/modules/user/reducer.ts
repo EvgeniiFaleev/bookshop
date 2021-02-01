@@ -1,21 +1,18 @@
 import { Reducer } from 'redux';
 import * as types from './types';
-import { AuthUserActionsType } from './actions';
+import {AuthUserActionsType, IUserInfo} from './actions';
 
 const initialState = {
   isAuth: false,
   userInfo: null,
 };
 
-type AuthStateType = {
+type UserStateType = {
   isAuth: boolean,
-  userInfo: null | {
-    email: string,
-    userId: string
-  }
+  userInfo: null | IUserInfo;
 };
 
-export const reducer: Reducer<AuthStateType, AuthUserActionsType> = (state = initialState,
+export const reducer: Reducer<UserStateType, AuthUserActionsType> = (state = initialState,
   action) => {
   switch (action.type) {
     case types.AUTH_USER:

@@ -1,6 +1,7 @@
 import { Action } from 'redux';
 import { ThunkType } from '@store/root-reducer';
 import { authAPI } from '@api/API';
+import { batch } from 'react-redux';
 import * as types from './types';
 
 interface IAuthUserAction extends Action<typeof types.AUTH_USER>{
@@ -14,7 +15,9 @@ export const authUser = (payload: boolean): IAuthUserAction => ({
 
 export interface IUserInfo {
   userId: string,
-  email:string
+  email:string,
+  ordersCount: number,
+  wishListCount: number
 }
 
 interface ISetUserInfoAction extends Action<typeof types.SET_USER_INFO>{
@@ -52,9 +55,12 @@ export const signUp = (data:FormData): ThunkType<Promise<string | void>> => asyn
 export const me = (): ThunkType<Promise<string | void>> => async (dispatch) => {
   const response = await authAPI.me();
   if (!response) return;
-
-  if (response.resultCode === 0) dispatch(setUserInfo(response.userInfo));
-
+  if (response.resultCode === 0) {
+    batch(() => {
+      dispatch(setUserInfo(response.userInfo));
+      dispatch(authUser(true));
+    });
+  }
 };
 
 export type AuthUserActionsType = IAuthUserAction | ISetUserInfoAction;

@@ -6,9 +6,9 @@ const initialState = {
   isAuth: false,
 };
 
-type AuthStateType = typeof initialState;
+type AdminStateType = typeof initialState;
 
-export const reducer: Reducer<AuthStateType, AuthAdminActionsType> = (state = initialState,
+export const reducer: Reducer<AdminStateType, AuthAdminActionsType> = (state = initialState,
   action) => {
   switch (action.type) {
     case types.AUTH_ADMIN:

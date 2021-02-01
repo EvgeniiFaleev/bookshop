@@ -16,6 +16,7 @@ const userCheck = async (req, res, next) => {
       message: "Нет прав для данного" + " действия"
     })
   }
+  res.locals.user = candidate;
   next();
 };
 module.exports = userCheck;

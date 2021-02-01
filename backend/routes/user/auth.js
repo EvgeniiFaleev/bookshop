@@ -91,7 +91,6 @@ router.post("/login",
       }
 
       req.session.userId = user.id;
-      console.log(req.session)
       return res.json({
         message: "вы успешно вошли"
       })

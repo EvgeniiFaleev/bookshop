@@ -17,6 +17,7 @@ const schema = new Schema({
       author: String,
       title: String,
       price: Number,
+      picture: String
     }],
   },
   orderList:[{ type: Schema.Types.ObjectId, ref: "Order" }]

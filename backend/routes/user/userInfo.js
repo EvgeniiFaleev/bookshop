@@ -1,6 +1,7 @@
 const {Router} = require("express");
 const User = require("../../models/user");
 const Book = require('../../models/book');
+const Order = require('../../models/order');
 const router = Router();
 const {body, validationResult} = require('express-validator');
 const express = require('express');
@@ -21,9 +22,7 @@ router.post("/wishlist",
         });
       }
       const {bookId} = req.body;
-      const {userId} = req.session;
-      const user = await User.findById(userId);
-
+      const user = res.locals.user;
       const match = user.wishList.findIndex((item) => {
         return bookId === item._id.toString()
       });
@@ -50,6 +49,30 @@ router.post("/wishlist",
     }
   });
 
+router.get("/wishlist",
+  userCheck,
+  express.json(),
+  async (req, res) => {
+    try {
+
+
+      const wishList = res.locals.user.wishList;
+      if (wishList.length === 0) {
+        return res.json({
+          resultCode: 1,
+          message: "У вас пустой wishlist"
+        })
+      }
+      return res.json({
+        resultCode: 0,
+        wishList
+      });
+    } catch (e) {
+      console.error(e);
+      return res.status(500).json({message: "Чтото пошло не так "})
+    }
+  });
+
 router.delete("/wishlist",
   userCheck,
   express.json(),
@@ -65,8 +88,7 @@ router.delete("/wishlist",
         });
       }
       const {bookId} = req.body;
-      const {userId} = req.session;
-      const user = await User.findById(userId);
+      const user = res.locals.user;
 
       if (user.wishList.length === 0) {
         res.status(400).json({
@@ -85,5 +107,32 @@ router.delete("/wishlist",
     }
   });
 
+router.get("/orders",
+  userCheck,
+  express.json(),
+  async (req, res) => {
+    try {
+
+
+      let orders = res.locals.user.orderList;
+      if (orders.length === 0) {
+        return await res.json({
+          resultCode: 1,
+          message: "У вас нет заказов"
+        })
+      }
+      orders = await Promise.all(orders.map(async (item) => {
+        return await Order.findById(item)
+      }));
+
+      return await res.json({
+        resultCode: 0,
+        orders
+      });
+    } catch (e) {
+      console.error(e);
+      return res.status(500).json({message: "Чтото пошло не так "})
+    }
+  });
 
 module.exports = router;

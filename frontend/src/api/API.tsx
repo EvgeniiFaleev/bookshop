@@ -1,4 +1,4 @@
-import {IUserInfo} from "@authentication/modules/user/actions";
+import {IUserInfo} from '@authentication/modules/user/actions';
 
 export interface IBook {
   categories: Array<string>,
@@ -19,10 +19,18 @@ export interface IChart {
   categories : IBooksList,
   topLists : IBooksList
 }
-export interface IResponseMe{
 
+export interface IAPIResponse {
   resultCode: number,
+}
+export interface IResponseMe extends IAPIResponse{
+
   userInfo: IUserInfo
+}
+
+export interface IResponseWishList extends IAPIResponse{
+
+  wishList:Array<IBook>
 }
 
 export const booksAPI = {
@@ -90,6 +98,22 @@ export const booksAPI = {
         },
       });
       return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
+
+};
+
+export const userAPI = {
+  async getWishList(): Promise<IResponseWishList | void> {
+    try {
+      const res: Response = await fetch(`${this.url}wishlist`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+      if (res.status !== 200) return undefined;
+      return await res.json();
     } catch (e) {
       throw new Error(e);
     }

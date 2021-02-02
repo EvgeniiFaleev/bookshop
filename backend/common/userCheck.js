@@ -9,7 +9,6 @@ const userCheck = async (req, res, next) => {
   }
   const {userId} = req.session;
 
-
   const candidate = await User.findById(userId).exec();
   if (!candidate) {
     return res.status(401).json({

@@ -1,12 +1,11 @@
 import { CommonTemplate } from '@templates/CommonTemplate';
 import { FC, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { booksActions } from '@books/modules';
+import { booksActions } from '@books';
 import { RootState } from '@store/root-reducer';
 import { useParams } from 'react-router-dom';
 import { Book } from '@books/ui/organisms/Book';
 import { Preloader } from '@ui/atoms/Preloader';
-import { useCart } from '@cart';
 
 export const BookPage:FC = () => {
   const book = useSelector((state:RootState) => state.books.book, shallowEqual);

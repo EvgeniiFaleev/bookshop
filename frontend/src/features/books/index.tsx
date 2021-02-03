@@ -1,7 +1,9 @@
-export {
-  booksReducer, booksActions,
-  booksTypes,
-} from './modules';
+import * as booksActions from './modules/actions';
+import * as booksTypes from './modules/types';
+
+export { reducer as booksReducer } from './modules/reducer';
+export { booksActions };
+export { booksTypes };
 
 export { BookChartItem } from './ui/atoms/BookChartItem';
 export { BookSliderItem } from './ui/atoms/BookSliderItem';

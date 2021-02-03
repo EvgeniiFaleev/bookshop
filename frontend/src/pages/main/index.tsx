@@ -5,7 +5,7 @@ import { BooksChart } from '@books/ui/organisms/BooksChart';
 import { ReactNode, useEffect } from 'react';
 import { RootState } from '@store/root-reducer';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { booksActions } from '@books/modules';
+import { booksActions } from '@books';
 import { Preloader } from '@ui/atoms/Preloader';
 
 export const MainPage = () => {

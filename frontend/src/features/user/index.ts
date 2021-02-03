@@ -1,6 +1,10 @@
+import * as userActions from './modules/actions';
+import * as userTypes from './modules/types';
+
 export {
-  userReducer, userActions,
+  userActions,
   userTypes,
-} from './modules';
+};
+export { reducer as userReducer } from './modules/reducer';
 
 export { WishList } from './ui/organisms/WishList';

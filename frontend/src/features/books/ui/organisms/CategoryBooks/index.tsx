@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonPrimary } from '@ui/atoms/ButtonPrimary';
 import { IBookInCart } from '@cart/modules/reducer';
-import { cartActions } from '@cart/modules';
+import { cartActions } from '@cart';
 import { useDispatch } from 'react-redux';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

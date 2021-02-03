@@ -4,7 +4,7 @@ import {
 } from 'react';
 import { CartItem } from '@cart/ui/molecules/CartItem';
 import { useDispatch } from 'react-redux';
-import { cartActions } from '@cart/modules';
+import { cartActions } from '@cart';
 import cartItemStyles from '@cart/ui/molecules/CartItem/CartItem.module.scss';
 import { Link } from 'react-router-dom';
 import styles from './Cart.module.scss';

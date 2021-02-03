@@ -3,7 +3,7 @@ import { Checkout } from '@cart';
 import { useForm } from 'react-hook-form';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/root-reducer';
-import { cartActions } from '@cart/modules';
+import { cartActions } from '@cart';
 import { IOrderInfo } from '@cart/modules/actions';
 import { FC, useEffect } from 'react';
 import { OrderInfo } from '@cart/ui/molecules/OrderSuccess';

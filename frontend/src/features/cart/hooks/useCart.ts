@@ -1,7 +1,7 @@
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/root-reducer';
 import { useEffect, useRef } from 'react';
-import { cartActions } from '@cart/modules';
+import { cartActions } from '@cart';
 
 export const useCart = () => {
   const dispatch = useDispatch();

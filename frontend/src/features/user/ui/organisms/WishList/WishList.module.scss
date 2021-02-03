@@ -1,5 +1,42 @@
-.wrapper{
-  display: flex;
+.wrapper {
   max-width: $max-width;
-  @extend %content_horizontal-padding;
+  @extend %footer-header_horizontal-padding;
+  margin: 0  auto  -6rem auto;
+.head{
+  color: $dark-text;
+  font-family: GT-Bold, serif;
+  font-size: 46px;
+  margin: 3rem 0;
+}
+  .wishListItem {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    color: $dark-text;
+    border-top: 1px solid $gray-border;
+    margin-bottom: 0.3rem;
+    .buttons{
+      display: flex;
+      flex-direction: column;
+      flex-basis: 40%;
+      align-items: flex-start;
+      padding-top: 0.6rem;
+      justify-content: stretch;
+      gap: 1.5rem;
+      svg{
+        margin-right: 0.5rem;
+      }
+      button{
+        padding: 0.7rem 0;
+        width: 100%;
+      }
+    }
+  }
+  .home_button{
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid $gray-border;
+    //margin-bottom: -6rem;
+  }
 }

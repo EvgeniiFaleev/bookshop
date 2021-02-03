@@ -5,9 +5,9 @@ import { Account } from '@authentication';
 
 export const AccountPage = () => {
   const { email, wishListCount, ordersCount } = useSelector((state: RootState) => ({
-    email: state.user.userInfo?.email,
-    ordersCount: state.user.userInfo?.ordersCount,
-    wishListCount: state.user.userInfo?.wishListCount,
+    email: state.auth.user.userInfo?.email,
+    ordersCount: state.auth.user.userInfo?.ordersCount,
+    wishListCount: state.auth.user.userInfo?.wishListCount,
   }), shallowEqual);
 
   return (

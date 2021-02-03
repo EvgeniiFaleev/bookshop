@@ -1,11 +1,9 @@
 import { CommonTemplate } from '@templates';
 import { useForm } from 'react-hook-form';
 import { FC, useState } from 'react';
-import { SignUp } from '@authentication';
+import { SignUp, userAuthActions } from '@authentication';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '@store/root-reducer';
-import { userAuthActions } from '@authentication/modules/user';
-import { Redirect } from 'react-router';
 
 export const SignUpPage:FC = () => {
   const {
@@ -14,7 +12,7 @@ export const SignUpPage:FC = () => {
   const [isRegister, setIsRegister] = useState(false);
   const watchPassword: string = watch('password');
   const dispatch:DispatchType = useDispatch();
-  const isAuth = useSelector((state: RootState) => state.user.isAuth);
+  const isAuth = useSelector((state: RootState) => state.auth.user.isAuth);
 
   const onSubmit = async (data: FormData) => {
     const error = await dispatch(userAuthActions.signUp(data));

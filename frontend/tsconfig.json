@@ -2,8 +2,17 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "@ui": [
+        "ui"
+      ],
       "@ui/*": [
         "ui/*"
+      ],
+      "@user": [
+        "features/user"
+      ],
+      "@books": [
+        "features/books"
       ],
       "@books/*": [
         "features/books/*"

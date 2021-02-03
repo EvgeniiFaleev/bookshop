@@ -8,6 +8,7 @@ import { CheckoutPage } from '@pages/checkout';
 import { LoginPage } from '@pages/login';
 import { SignUpPage } from '@pages/sign_up';
 import {AccountPage} from "@pages/account";
+import {WishListPage} from "@pages/account/wishlist";
 
 export const routes = () => [
   {
@@ -59,5 +60,10 @@ export const routes = () => [
     path: '/account',
     exact: true,
     component: AccountPage,
+  },
+  {
+    path: '/account/wishlist',
+    exact: true,
+    component: WishListPage,
   },
 ];

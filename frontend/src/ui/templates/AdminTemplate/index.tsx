@@ -1,9 +1,9 @@
 import logo from '@images/Icon_alternative.webp';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBook, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
-import {FC} from 'react';
-import {adminAuthActions} from '@authentication/modules/admin';
-import {useDispatch} from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBook, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { FC } from 'react';
+import { adminAuthActions } from '@authentication';
+import { useDispatch } from 'react-redux';
 import styles from './AdminTemplate.module.scss';
 
 export const AdminTemplate:FC = ({ children }) => {

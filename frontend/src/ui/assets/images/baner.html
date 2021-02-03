@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- saved from url=(0029)chrome-error://chromewebdata/ -->
 <html dir="ltr" lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+
   <meta name="theme-color" content="#fff">
   <meta name="viewport" content="width=device-width, initial-scale=1.0,
-                                 maximum-scale=1.0, user-scalable=no">
+                                 maximum-scale=1.0, userAuth-scalable=no">
   <title>chrome-extension://baner/suspended.html#ttl=font%20family%20second%20font%20disable%20first%20one%20-%20Поиск%20в%20Google&amp;pos=0&amp;uri=https://www.google.com/search?sxsrf=ALeKk02AyOTP6oMPhRJT_nsrWY3ms4HkdQ%3A1608798451324&amp;ei=81DkX8-hE-rLrgT2m6WACA&amp;q=font+family+second+font+disable+first+one&amp;oq=font+family+second+font+disable+first+one&amp;gs_lcp=baner&amp;sclient=psy-ab&amp;ved=0ahUKEwiP59KhmebtAhXqpYsKHfZNCYAQ4dUDCA0&amp;uact=5</title>
   <style>/* Copyright 2017 The Chromium Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
@@ -1614,10 +1614,10 @@ whereas Blink does not. */
 
   .offline.inverted {
     filter: invert(0);
-  
+
     background-color: var(--background-color);
-  
-  
+
+
   }
 
   .offline.inverted body {
@@ -1691,18 +1691,18 @@ function toggleHelpBox() {
 }
 
 function diagnoseErrors() {
-// 
+//
 if (window.errorPageController) {
   errorPageController.diagnoseErrorsButtonClick();
 }
-// 
-// 
+//
+//
 }
 
 // Subframes use a different layout but the same html file.  This is to make it
 // easier to support platforms that load the error page via different
 // mechanisms (Currently just iOS). We also use the subframe style for portals
-// as they are embedded like subframes and can't be interacted with by the user.
+// as they are embedded like subframes and can't be interacted with by the userAuth.
 if (window.top.location !== window.location || window.portalHost) {
   document.documentElement.setAttribute('subframe', '');
 }
@@ -1782,7 +1782,7 @@ function detailsButtonClick() {
 }
 
 let primaryControlOnLeft = true;
-// 
+//
 
 function setAutoFetchState(scheduled, can_schedule) {
   document.getElementById('cancel-save-page-button')
@@ -2940,7 +2940,7 @@ Runner.prototype = {
 
   /**
    * Handle interactions on the game over screen state.
-   * A user is able to tap the high score twice to reset it.
+   * A userAuth is able to tap the high score twice to reset it.
    * @param {Event} e
    */
   handleGameOverClicks(e) {
@@ -2990,7 +2990,7 @@ Runner.prototype = {
   },
 
   /**
-   * Set the initial high score as stored in the user's profile.
+   * Set the initial high score as stored in the userAuth's profile.
    * @param {number} highScore
    */
   initializeHighScore(highScore) {

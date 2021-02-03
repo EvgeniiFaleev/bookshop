@@ -1,15 +1,15 @@
 import { Action, AnyAction, combineReducers } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import { cartReducer } from '@cart/modules';
-import { booksReducer } from '@books/modules';
-import { adminAuthReducer } from '@authentication/modules/admin';
-import { userAuthReducer } from '@authentication/modules/user';
+import { cartReducer } from '@cart';
+import { booksReducer } from '@books';
+import { userReducer } from '@user';
+import { authReducer } from '@authentication';
 
 export const rootReducer = combineReducers({
   books: booksReducer,
-  admin: adminAuthReducer,
   cart: cartReducer,
-  user: userAuthReducer,
+  user: userReducer,
+  auth: authReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -20,4 +20,3 @@ unknown, // extra arg
 Action<string>>;
 
 export type DispatchType = ThunkDispatch<RootState, void, AnyAction>;
-

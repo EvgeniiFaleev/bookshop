@@ -1,14 +1,14 @@
 import { Component } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { Routes } from './Routes';
 import './App.module.scss';
 import { DispatchType, RootState } from '@store/root-reducer';
-import { userAuthActions } from '@authentication/modules/user';
-import { connect, ConnectedProps } from 'react-redux';
+import { userAuthActions } from '@authentication';
+import { Routes } from './Routes';
 
 const MapStateToProps = (state: RootState) => (
   {
-    isAuth: state.user.isAuth,
+    isAuth: state.auth.user.isAuth,
   });
 
 const mapDispatchToProps = (dispatch: DispatchType) => ({

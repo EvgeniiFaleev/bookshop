@@ -26,6 +26,7 @@ module.exports = (env) => {
         '@templates': path.resolve(__dirname, 'src/ui/templates'),
         '@features': path.resolve(__dirname, 'src/features'),
         '@books': path.resolve(__dirname, 'src/features/books'),
+        '@user': path.resolve(__dirname, 'src/features/user'),
         '@cart': path.resolve(__dirname, 'src/features/cart'),
         '@authentication': path.resolve(__dirname, 'src/features/authentification'),
         '@images': path.resolve(__dirname, 'src/ui/assets/images'),

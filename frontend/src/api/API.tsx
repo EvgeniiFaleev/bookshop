@@ -106,6 +106,7 @@ export const booksAPI = {
 };
 
 export const userAPI = {
+  url: 'http://localhost:5000/user/',
   async getWishList(): Promise<IResponseWishList | void> {
     try {
       const res: Response = await fetch(`${this.url}wishlist`, {

@@ -2,20 +2,14 @@ import { AdminTemplate } from '@templates/AdminTemplate';
 import { AdminLogin } from '@authentication/ui/organisms/AdminLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, RootState } from '@store/root-reducer';
-import { adminAuthActions } from '@authentication/modules/admin';
+import { adminAuthActions } from '@authentication';
 import {
   FieldErrors,
   RegisterOptions,
-  SubmitHandler,
   useForm,
   UseFormMethods,
 } from 'react-hook-form';
-import {
-  FC,
-  FocusEventHandler,
-  FormEvent,
-  FormEventHandler
-} from 'react';
+import { FC, FocusEventHandler, FormEventHandler } from 'react';
 import { Redirect } from 'react-router-dom';
 
 interface IFormData {
@@ -52,7 +46,7 @@ export const AdminLoginPage: FC = () => {
     register, handleSubmit, errors, setError,
   } = useForm<ILoginFormValues>();
 
-  const isAuth = useSelector((state:RootState) => state.admin.isAuth);
+  const isAuth = useSelector((state:RootState) => state.auth.admin.isAuth);
   const dispatch:DispatchType = useDispatch();
 
   const onSubmit = async (data:IFormData) => {

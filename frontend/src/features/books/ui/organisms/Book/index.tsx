@@ -9,10 +9,13 @@ import { IBookInCart } from '@cart/modules/reducer';
 import styles from './Book.module.scss';
 
 interface IBookProps extends IBook {
-  cartBooks: Array<IBookInCart> | null
+  cartBooks: Array<IBookInCart> | null,
+  wishList: Array<IBook> | [],
+  addItemWishList: (bookId:string) => void
 }
 export const Book:FC<IBookProps > = ({
-  categories, _id: id, title, price, author, picture, description, cartBooks,
+  categories, _id: id, title, price, author, picture, description, cartBooks, wishList,
+    addItemWishList
 }) => {
   const categoriesElements = categories.map((item, index, arr) => {
     const space = index < arr.length - 1 ? ',  ' : '';
@@ -20,8 +23,12 @@ export const Book:FC<IBookProps > = ({
   });
 
   let match = -1;
+  let wishListMatch = -1;
   if (cartBooks) {
     match = cartBooks.findIndex((item) => id === item.id);
+  }
+  if(wishList){
+    wishListMatch= wishList.findIndex((item) => id === item._id);
   }
   console.log(match);
   const dispatch = useDispatch();
@@ -32,7 +39,7 @@ export const Book:FC<IBookProps > = ({
       title,
       price,
       quantity: 1,
-      picture
+      picture,
     }));
   };
   return (
@@ -58,10 +65,15 @@ export const Book:FC<IBookProps > = ({
           </span>
         </div>
         <div className={styles.buttons}>
-          <ButtonPrimary onClick={onAddToCart} isDisabled={match >= 0} type="button">ADD TO CART</ButtonPrimary>
-          <ButtonSecondary type="button">
-            ADD TO
-            WISHLIST
+          <ButtonPrimary
+            onClick={onAddToCart}
+            isDisabled={match >= 0}
+            type="button"
+          >
+            {match >= 0 ? 'IN CART' : 'ADD TO CART'}
+          </ButtonPrimary>
+          <ButtonSecondary isDisabled={wishListMatch >= 0} type="button" onClick={()=> addItemWishList(id)}>
+            {wishListMatch >= 0 ? 'IN WISHLIST' : 'ADD TO WISHLIST'}
           </ButtonSecondary>
         </div>
         <h2 className={styles.description_head}>Description</h2>

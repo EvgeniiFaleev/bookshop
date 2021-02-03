@@ -22,7 +22,23 @@ export const setWishList = (payload: Array<IBook> | []): ISetWishListAction => (
 export const getWishList = () : ThunkType => async (dispatch) => {
   const res = await userAPI.getWishList();
   if (!res) return;
-  if (res?.resultCode === 0) dispatch(setWishList(res.wishList));
+  if (res?.resultCode === 0) {
+    dispatch(setWishList(res.wishList));
+  } else dispatch(setWishList([]));
+};
+export const deleteItemWishList = (bookId:string) :ThunkType => async (dispatch) => {
+  const res = await userAPI.deleteItemWishList(bookId);
+
+  if (res.status === 200) {
+    dispatch(getWishList());
+  }
+};
+export const addItemWishList = (bookId:string) :ThunkType => async (dispatch) => {
+  const res = await userAPI.addItemWishList(bookId);
+
+  if (res.status === 200) {
+    dispatch(getWishList());
+  }
 };
 
 export type UserActionTypes = ISetWishListAction;

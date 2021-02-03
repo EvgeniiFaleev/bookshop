@@ -119,6 +119,40 @@ export const userAPI = {
       throw new Error(e);
     }
   },
+  async deleteItemWishList(bookId: string): Promise<Response> {
+    try {
+      const res: Response = await fetch(`${this.url}wishlist`, {
+        method: 'DELETE',
+        credentials: 'include',
+        body: JSON.stringify({
+          bookId,
+        }),
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
+  async addItemWishList(bookId: string): Promise<Response> {
+    try {
+      const res: Response = await fetch(`${this.url}wishlist`, {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify({
+          bookId,
+        }),
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
 };
 
 export const authAPI = {

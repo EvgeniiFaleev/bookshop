@@ -10,7 +10,7 @@ const userCheck = require("../../common/userCheck");
 router.post("/wishlist",
   userCheck,
   express.json(),
-  [body("bookId", "Список заказов пуст")
+  [body("bookId", "Нет bookId")
     .exists()],
   async (req, res) => {
     try {
@@ -92,7 +92,7 @@ router.delete("/wishlist",
 
       if (user.wishList.length === 0) {
         res.status(400).json({
-          message: "woshList пуст"
+          message: "wishList пуст"
         })
       }
       user.wishList =

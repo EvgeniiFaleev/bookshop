@@ -1,15 +1,16 @@
 import { Reducer } from 'redux';
-import { IBook } from '@api/API';
+import {IBook, IUserOrder} from '@api/API';
 import * as types from './types';
 import { UserActionTypes } from './actions';
 
 interface IUserState {
-  wishList: Array<IBook> | [];
+  wishList: Array<IBook> | []
+  orders: Array<IUserOrder> | []
 }
 
 const initialState : IUserState = {
   wishList: [],
-  // orders: [],
+  orders: [],
 };
 
 export const reducer: Reducer<IUserState, UserActionTypes> = (state = initialState, action) => {
@@ -19,11 +20,11 @@ export const reducer: Reducer<IUserState, UserActionTypes> = (state = initialSta
         ...state,
         wishList: action.payload,
       };
-    // case types.SET_ORDERS:
-    //   return {
-    //     ...state,
-    //     orders: [...action.payload],
-    //   };
+    case types.SET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+      };
     default:
       return state;
   }

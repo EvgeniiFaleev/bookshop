@@ -32,7 +32,34 @@ export interface IResponseWishList extends IAPIResponse{
 
   wishList:Array<IBook>
 }
+// [
+//   {
+//     "_id": "6016d17f8a6563282c694c2d",
+//     "orderList": [
+//       {
+//         "_id": "6016d17f8a6563282c694c2e",
+//         "bookId": "5ff06635ac3bb94a001420a9",
+//         "author": "Jack London",
+//         "title": "White Fang",
+//         "price": 500,
+//         "count": 1
+//       },
 
+export interface IUserOrderItem {
+  bookId: string,
+  author: string,
+  picture:string,
+  title: string,
+  price: number,
+  quantity: number
+}
+export interface IUserOrder {
+  _id: string,
+  orderList: Array<IUserOrderItem>
+}
+export interface IUserOrdersResponse extends IAPIResponse{
+  orders: Array<IUserOrder>
+}
 export const booksAPI = {
   url: 'http://localhost:5000/books/',
   async getBook(id:string):Promise<IBook | never> {
@@ -110,6 +137,18 @@ export const userAPI = {
   async getWishList(): Promise<IResponseWishList | void> {
     try {
       const res: Response = await fetch(`${this.url}wishlist`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+      if (res.status !== 200) return undefined;
+      return await res.json();
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
+  async getOrders(): Promise<IUserOrdersResponse | void> {
+    try {
+      const res: Response = await fetch(`${this.url}orders`, {
         method: 'GET',
         credentials: 'include',
       });

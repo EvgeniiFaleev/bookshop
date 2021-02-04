@@ -1,0 +1,12 @@
+.orderBooks{
+  .cart_description{
+    display: flex;
+    font-family: IbmPlex-Bold, sans-serif;
+    font-size: 14px;
+    justify-content: space-between;
+    padding: 0.5rem 3rem 0.5rem 1rem;
+    &_qty{
+      margin-right: 3rem;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.oders{
+  max-width: $max-width;
+  @extend %footer-header_horizontal-padding;
+  color: $dark-text;
+}

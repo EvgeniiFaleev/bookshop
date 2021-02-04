@@ -9,6 +9,7 @@ import { LoginPage } from '@pages/login';
 import { SignUpPage } from '@pages/sign_up';
 import {AccountPage} from "@pages/account";
 import {WishListPage} from "@pages/account/wishlist";
+import {UserOrdersPage} from "@pages/account/orders";
 
 export const routes = () => [
   {
@@ -65,5 +66,10 @@ export const routes = () => [
     path: '/account/wishlist',
     exact: true,
     component: WishListPage,
+  },
+  {
+    path: '/account/orders',
+    exact: true,
+    component: UserOrdersPage,
   },
 ];

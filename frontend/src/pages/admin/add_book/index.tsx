@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { AdminTemplate } from '@templates/AdminTemplate';
 import { AddBook } from '@books/ui/organisms/AddBook';
 import { useForm } from 'react-hook-form';
-import { useAdminAuthRedirect } from '@authentication/hooks/useAdminAuthRedirect';
+import { useAuthRedirect } from '@authentication/hooks/useAuthRedirect';
 import { booksAPI } from '@api/API';
 
 interface IFormData {
@@ -15,7 +15,7 @@ interface IFormData {
 }
 
 export const AddBookPage:FC = () => {
-  useAdminAuthRedirect();
+  useAuthRedirect('admin');
 
   const {
     register, handleSubmit, errors, setError, clearErrors,

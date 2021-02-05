@@ -12,8 +12,8 @@ export const Footer = () => (
         </div>
       </div>
       <div className={styles.flex2}>
-        <ButtonPrimary type="link">login </ButtonPrimary>
-        <ButtonPrimary type="link">Sign up</ButtonPrimary>
+        <ButtonPrimary path="/login" type="link">login </ButtonPrimary>
+        <ButtonPrimary path="/sign_up" type="link">Sign up</ButtonPrimary>
       </div>
     </div>
   </footer>

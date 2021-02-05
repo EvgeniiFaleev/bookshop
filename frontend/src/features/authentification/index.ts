@@ -20,3 +20,4 @@ export { Account } from './ui/organisms/Account';
 export { SignUp } from './ui/organisms/SignUp';
 export { UserLogin } from './ui/organisms/UserLogin';
 export { AdminLogin } from './ui/organisms/AdminLogin';
+export { useAuthRedirect } from './hooks/useAuthRedirect';

@@ -35,7 +35,7 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
       }));
     };
     return (
-      <div className={styles.item_container}>
+      <div className={styles.item_container} key={id}>
         <div className={styles.book_item}>
 
           <div className={styles.picture}>

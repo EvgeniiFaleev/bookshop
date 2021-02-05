@@ -5,10 +5,7 @@ import styles from './UserOrderBook.module.scss';
 
 export const UserOrderBook: FC<IBookInCart> = ({
   picture, title, author, id, price, quantity,
-}) => {
-  debugger
-  return (
-
+}) => (
   <div className={styles.wrapper} data-id={id} key={id}>
     <BookInListInfo title={title} author={author} picture={picture} id={id} />
     <div className={styles.flex2}>
@@ -16,4 +13,4 @@ export const UserOrderBook: FC<IBookInCart> = ({
       <p className={styles.price}>{+price * +quantity}</p>
     </div>
   </div>
-)};
+);

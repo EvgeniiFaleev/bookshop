@@ -7,10 +7,11 @@ const schema = new Schema({
       bookId: {
       type:  Schema.Types.ObjectId, ref: 'Book'
       },
-      count: Number,
+      quantity: Number,
       author: String,
       title: String,
       price: Number,
+      picture:String
 
     }],
   },

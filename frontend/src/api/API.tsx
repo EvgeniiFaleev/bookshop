@@ -55,6 +55,8 @@ export interface IUserOrderItem {
 }
 export interface IUserOrder {
   _id: string,
+  totalPrice: number,
+  totalCount: number,
   orderList: Array<IUserOrderItem>
 }
 export interface IUserOrdersResponse extends IAPIResponse{

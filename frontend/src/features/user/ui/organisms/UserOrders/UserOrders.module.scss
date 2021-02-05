@@ -1,5 +1,32 @@
-.oders{
+.orders{
   max-width: $max-width;
   @extend %footer-header_horizontal-padding;
   color: $dark-text;
+  margin: 0 auto -3rem auto;
+  .order{
+    margin-top: 3rem;
+    h1{
+      padding-bottom: 1.3rem;
+      font-size: 40px;
+      font-family: GT-Bold, serif;
+    }
+  }
+  .total{
+    padding-left: 1rem;
+    margin-top: 1rem;
+
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $gray-border;
+    font-family: IbmPlex-Regular, sans-serif;
+    font-size: 14px;
+    span{
+      font-size: 16px;
+      font-family: GT-Bold, serif;
+    }
+  }
+    a{
+      margin-top: 2rem;
+      display: block;
+      max-width: 40%;
+    }
 }

@@ -86,20 +86,21 @@ router.post("/buy",
           author: match.author,
           title: match.title,
           price: match.price,
-          count: item.quantity
+          quantity: item.quantity,
+          picture: match.picture
         };
         console.log(book);
         return book;
       }));
 
       const total = books.reduce((acc, item) => {
-        acc.count = acc.count + Number(item.count);
+        acc.quantity = acc.quantity + Number(item.quantity);
         acc.price = acc.price + Number(item.price) * (
-          +item.count
+          +item.quantity
         );
         return acc;
       }, {
-        count: 0,
+        quantity: 0,
         price: 0
       });
       const {userId} = req.session;
@@ -113,7 +114,7 @@ router.post("/buy",
         city,
         email,
         streetAddress,
-        totalCount: total.count,
+        totalCount: total.quantity,
         totalPrice: total.price,
         date: date.toString(),
         userId: userId ? mongoose.Types.ObjectId(userId) : undefined,

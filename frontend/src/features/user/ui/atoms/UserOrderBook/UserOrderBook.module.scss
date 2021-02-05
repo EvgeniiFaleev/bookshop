@@ -6,6 +6,9 @@
   color: $dark-text;
   border-top: 1px solid $gray-border;
   margin-bottom: 0.3rem;
+  div> a:first-child{
+    max-width: 100px;
+  }
   .flex2{
     display: flex;
     align-items: flex-start;
@@ -13,8 +16,8 @@
   .flex2{
     padding-top: 0.6rem;
     justify-content: space-between;
-    gap: 1.5rem;
-
+    gap: 3rem;
+    padding-right: 3rem;
     .price{
       font-family: IbmPlex-Medium, sans-serif;
       font-size: 16px;

@@ -35,7 +35,6 @@ const schema = new Schema({
   // }
 
 });
-
 schema.plugin(mongoosePaginate);
 
 module.exports = model("Book", schema);

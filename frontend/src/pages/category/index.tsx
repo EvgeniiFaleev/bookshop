@@ -20,7 +20,7 @@ export const CategoryPage = () => {
 
   useEffect(() => {
     if (!categoryName) dispatch(booksActions.getBooksByCategory(category));
-    return () => { dispatch(booksActions.setCategory(null)); };
+    return () => { dispatch(booksActions.setCategory('')); };
   }, []);
 
   return (

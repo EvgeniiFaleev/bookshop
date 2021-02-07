@@ -14,10 +14,10 @@ export const setCategories = (payload: IChart): ISetCategoriesAction => ({
 });
 
 interface ISetCategoryAction extends Action<typeof types.SET_CATEGORY>{
-  payload: string | null
+  payload: string
 }
 
-export const setCategory = (payload: string | null): ISetCategoryAction => ({
+export const setCategory = (payload: string): ISetCategoryAction => ({
   type: types.SET_CATEGORY,
   payload,
 });
@@ -63,6 +63,20 @@ export const getBooksByCategory = (category: string) :ThunkType => async (dispat
     const { message } = await res.json();
     console.log(message);
   }
+};
+
+export const search = (keyword:string) :ThunkType => async (dispatch) => {
+  const res = await booksAPI.search(keyword);
+  if (!res) return;
+  const { authors, titles } = res;
+  const filteredTitles = titles.filter((titleItem) => {
+    const index = authors.findIndex((authorItem) => titleItem._id === authorItem._id);
+    if (index >= 0) return false;
+    return true;
+  });
+  const searchedBooks = [...filteredTitles, ...authors];
+  dispatch(setBooks(searchedBooks));
+  dispatch(setCategory(keyword));
 };
 
 export type BooksActionTypes = ISetCategoriesAction

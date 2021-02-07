@@ -7,7 +7,7 @@ interface IBooksState {
   categories: null | IBooksList,
   topLists: null | IBooksList,
   book: null | IBook,
-  categoryName: string | null,
+  categoryName: string,
   booksOnCategory: Array<IBook> | null
 }
 
@@ -15,7 +15,7 @@ const initialState: IBooksState = {
   categories: null,
   topLists: null,
   book: null,
-  categoryName: null,
+  categoryName: '',
   booksOnCategory: null,
 };
 

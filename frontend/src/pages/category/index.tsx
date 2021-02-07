@@ -12,17 +12,16 @@ export const CategoryPage = () => {
   const { category } = useParams<{category: string}>();
   const dispatch = useDispatch();
 
-  const { categoryName, books } = useSelector((state: RootState) => ({
+  const { categoryName, books, cartBooks } = useSelector((state: RootState) => ({
     categoryName: state.books.categoryName,
     books: state.books.booksOnCategory,
+    cartBooks: state.cart.books,
   }), shallowEqual);
 
   useEffect(() => {
     if (!categoryName) dispatch(booksActions.getBooksByCategory(category));
     return () => { dispatch(booksActions.setCategory(null)); };
   }, []);
-
-  const cartBooks = useSelector((state:RootState) => state.cart.books, shallowEqual);
 
   return (
     <CommonTemplate>

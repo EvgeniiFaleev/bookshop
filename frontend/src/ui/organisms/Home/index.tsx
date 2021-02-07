@@ -8,7 +8,7 @@ export interface IHomeProps {
   booksCount: number;
 }
 
-export const Home:FC<IHomeProps> = ({ booksCount }) => (
+export const Home:FC<IHomeProps> = ({ booksCount, children }) => (
   <>
     <section className={styles.home}>
       <h1 className={styles.slogan}>
@@ -17,10 +17,7 @@ export const Home:FC<IHomeProps> = ({ booksCount }) => (
         Shop Online
         with Bookshop.
       </h1>
-      <form className={styles.search}>
-        <input type="search" placeholder="Search" />
-        <button type="submit"><img src={search} alt="find" /></button>
-      </form>
+      {children}
     </section>
     <p className={styles.booksCount}>
       At this moment our count is

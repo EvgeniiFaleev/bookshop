@@ -62,6 +62,11 @@ export interface IUserOrder {
 export interface IUserOrdersResponse extends IAPIResponse{
   orders: Array<IUserOrder>
 }
+export interface ISearchResponse extends IAPIResponse{
+  titles: Array<IBook>,
+  authors: Array<IBook>
+}
+
 export const booksAPI = {
   url: 'http://localhost:5000/books/',
   async getBook(id:string):Promise<IBook | never> {
@@ -97,6 +102,16 @@ export const booksAPI = {
     try {
       const res: Response = await fetch(`${this.url}category/?cat=${category}`);
       return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
+  async search(keyword: string): Promise<ISearchResponse | void > {
+    try {
+      const res: Response = await fetch(`${this.url}search/?keyword=${keyword}`);
+
+      if (res.status !== 200) return undefined;
+      return await res.json();
     } catch (e) {
       throw new Error(e);
     }

@@ -7,6 +7,7 @@ import { RootState } from '@store/root-reducer';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { booksActions } from '@books';
 import { Preloader } from '@ui/atoms/Preloader';
+import { Search } from '@books/ui/molecules/Search';
 
 export const MainPage = () => {
   const { categories, topLists } = useSelector((state: RootState) => ({
@@ -54,7 +55,9 @@ export const MainPage = () => {
 
   return (
     <CommonTemplate>
-      <Home booksCount={10} />
+      <Home booksCount={10}>
+        <Search />
+      </Home>
       {categories ? mixedElems : <Preloader />}
     </CommonTemplate>
   );

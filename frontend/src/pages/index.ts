@@ -10,6 +10,8 @@ import { SignUpPage } from '@pages/sign_up';
 import {AccountPage} from "@pages/account";
 import {WishListPage} from "@pages/account/wishlist";
 import {UserOrdersPage} from "@pages/account/orders";
+import {Search} from "@books/ui/molecules/Search";
+import {SearchPage} from "@pages/search";
 
 export const routes = () => [
   {
@@ -36,6 +38,11 @@ export const routes = () => [
     path: '/category/:category',
     exact: true,
     component: CategoryPage,
+  },
+  {
+    path: '/search',
+    exact: true,
+    component: SearchPage,
   },
   {
     path: '/cart',

@@ -22,34 +22,7 @@
     margin-bottom: 4rem;
   }
 
-  .search {
-    background: $light_search_bg;
-    width: 21rem;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-    border-radius: 999999px;
 
-    input {
-      border: 0;
-      color: $dark-text;
-      background-color: transparent;
-      flex-grow: 1;
-      margin-right: 5px;
-      outline: none;
-      font-size: 100%;
-    }
-
-    button {
-      border: 0;
-      background-color: $button_primary;
-      width: 40px;
-      height: 40px;
-      text-align: center;
-      padding: 0;
-      border-radius: 100%;
-    }
-  }
 }
 
 .booksCount {

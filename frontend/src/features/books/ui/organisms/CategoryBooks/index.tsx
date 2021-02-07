@@ -10,13 +10,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './CategoryBooks.module.scss';
 
 interface IcategoryBooksProps {
-  books: Array<IBook>,
+  books: Array<IBook> | null,
   categoryName: string,
   cartBooks: Array<IBookInCart> | null,
 }
 
 export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, cartBooks }) => {
-  const booksElems = books.map(({
+  const booksElems = books?.map(({
     picture, author, title, price, _id: id,
   }) => {
     const dispatch = useDispatch();
@@ -78,7 +78,7 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
     <>
       <h1 className={styles.head}>{categoryName}</h1>
       <section className={styles.wrapper}>
-        {booksElems}
+        {booksElems || <div> Nothing Found</div>}
       </section>
     </>
   );

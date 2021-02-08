@@ -1,14 +1,15 @@
 import { IBook, IBooksList } from '@api/API';
 import { Reducer } from 'redux';
 import * as types from './types';
-import { BooksActionTypes } from './actions';
+import {BooksActionTypes, ISearchResult} from './actions';
 
 interface IBooksState {
   categories: null | IBooksList,
   topLists: null | IBooksList,
   book: null | IBook,
   categoryName: string,
-  booksOnCategory: Array<IBook> | null
+  booksOnCategory: Array<IBook> | null,
+  searchResults : Array<ISearchResult> | null;
 }
 
 const initialState: IBooksState = {
@@ -17,6 +18,7 @@ const initialState: IBooksState = {
   book: null,
   categoryName: '',
   booksOnCategory: null,
+  searchResults: null
 };
 
 export const reducer: Reducer<IBooksState, BooksActionTypes> = (state = initialState, action) => {
@@ -41,6 +43,11 @@ export const reducer: Reducer<IBooksState, BooksActionTypes> = (state = initialS
       return {
         ...state,
         categoryName: action.payload,
+      };
+    case types.SET_SEARCH_RESULTS:
+      return {
+        ...state,
+        searchResults: action.payload,
       };
     default:
       return state;

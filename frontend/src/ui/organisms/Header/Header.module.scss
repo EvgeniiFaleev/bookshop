@@ -6,7 +6,7 @@
   padding-bottom: 0.75rem;
   box-sizing: border-box;
 
-  z-index: 9;
+  z-index: 20;
   position: sticky;
   top: 0;
 
@@ -24,54 +24,6 @@
       color: white;
     }
 
-    .user_wrapper {
-      position: relative;
-      cursor: pointer;
-
-      img {
-        display: block;
-        margin-left: 0.75rem;
-      }
-
-      .account_nav {
-        //display: none;
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0s, opacity 0.5s linear;
-        right: -10px;
-        top: 100%;
-        padding: 10px 18px;
-        background-color: $biege;
-        position: absolute;
-        margin-top: 0.5rem;
-        box-shadow: 0 0 10px 6px rgb(0 0 0 / 10%);
-        border-radius: 5px;
-
-        .arrow_up {
-          position: absolute;
-          top: -5px;
-          right: 15px;
-          width: 0;
-          height: 0;
-          border-left: 5px solid transparent;
-          border-right: 5px solid transparent;
-          border-bottom: 5px solid $biege;
-        }
-
-        a {
-          color: $pink;
-          white-space: nowrap;
-          display: block;
-          margin: 0;
-          font-family: IbmPlex-Medium, sans-serif;
-          font-size: 14px;
-        }
-
-        a:hover {
-          text-decoration: underline;
-        }
-      }
-    }
 
     .logo {
       height: 27px;
@@ -114,12 +66,6 @@
       }
 
     }
-  }
-
-  .active {
-    //display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
   }
 
 }

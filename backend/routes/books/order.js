@@ -63,7 +63,6 @@ router.post("/buy",
     body('firstName', "Введите ФИО").exists()],
   async (req, res) => {
     try {
-      console.log(req.body)
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -89,7 +88,6 @@ router.post("/buy",
           quantity: item.quantity,
           picture: match.picture
         };
-        console.log(book);
         return book;
       }));
 
@@ -122,7 +120,6 @@ router.post("/buy",
 
 
       const savedOrder = await newOrder.save();
-      console.log(userId + " userID")
       if (userId) {
         const user = await User.findById(userId);
         if (user) {

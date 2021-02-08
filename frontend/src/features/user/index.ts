@@ -9,3 +9,4 @@ export { reducer as userReducer } from './modules/reducer';
 
 export { WishList } from './ui/organisms/WishList';
 export { UserOrderBook } from './ui/atoms/UserOrderBook';
+export { UserIcon } from './ui/atoms/UserIcon';

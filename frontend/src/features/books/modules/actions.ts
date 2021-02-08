@@ -31,6 +31,18 @@ export const setBook = (payload: IBook | null): ISetBookAction => ({
   payload,
 });
 
+interface ISetSearchResultsAction extends Action<typeof types.SET_SEARCH_RESULTS>{
+  payload: Array<ISearchResult> | null
+}
+
+export interface ISearchResult {
+  id: string,
+  keyword: string
+}
+export const setSearchResults = (payload: Array<ISearchResult> | null): ISetSearchResultsAction => ({
+  type: types.SET_SEARCH_RESULTS,
+  payload,
+});
 interface ISetBooksAction extends Action<typeof types.SET_BOOKS>{
   payload: Array<IBook> | null
 }
@@ -74,10 +86,19 @@ export const search = (keyword:string) :ThunkType => async (dispatch) => {
     if (index >= 0) return false;
     return true;
   });
+  const authorsNames = authors.map((item) => ({
+    keyword: item.author,
+    id: item._id,
+  }));
+  const bookTitles = titles.map((item) => ({
+    keyword: item.title,
+    id: item._id,
+  }));
   const searchedBooks = [...filteredTitles, ...authors];
+  dispatch(setSearchResults([...authorsNames, ...bookTitles]));
   dispatch(setBooks(searchedBooks));
   dispatch(setCategory(keyword));
 };
 
 export type BooksActionTypes = ISetCategoriesAction
-| ISetBookAction | ISetBooksAction | ISetCategoryAction;
+| ISetBookAction | ISetBooksAction | ISetCategoryAction | ISetSearchResultsAction;

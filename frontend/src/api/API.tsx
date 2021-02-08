@@ -253,6 +253,17 @@ export const authAPI = {
       throw new Error(e);
     }
   },
+  async userLogout(): Promise<Response> {
+    try {
+      const res: Response = await fetch(`${this.url}auth/logout`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+      return res;
+    } catch (e) {
+      throw new Error(e);
+    }
+  },
   async signUp(data: FormData): Promise<Response> {
     try {
       const res: Response = await fetch(`${this.url}auth/register`, {

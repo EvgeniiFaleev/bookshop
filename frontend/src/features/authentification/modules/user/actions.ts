@@ -36,14 +36,14 @@ export const login = (data:FormData): ThunkType<Promise<string | void>> => async
     return message;
   }
 };
-//
-// export const logout = (): ThunkType<Promise<void>> => async (dispatch) => {
-//   const response = await authAPI.adminLogout();
-//   if (response.status === 200) { dispatch(authUser(false)); } else {
-//     const { message } = await response.json() as {message:string};
-//     console.log(message);
-//   }
-// };
+
+export const logout = (): ThunkType<Promise<void>> => async (dispatch) => {
+  const response = await authAPI.userLogout();
+  if (response.status === 200) { dispatch(authUser(false)); } else {
+    const { message } = await response.json() as {message:string};
+    console.log(message);
+  }
+};
 
 export const signUp = (data:FormData): ThunkType<Promise<string | void>> => async (dispatch) => {
   const response = await authAPI.signUp(data);

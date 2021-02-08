@@ -19,5 +19,6 @@ export const authReducer = combineReducers({
 export { Account } from './ui/organisms/Account';
 export { SignUp } from './ui/organisms/SignUp';
 export { UserLogin } from './ui/organisms/UserLogin';
+export { FooterButtons } from './ui/molecules/FooterButtons';
 export { AdminLogin } from './ui/organisms/AdminLogin';
 export { useAuthRedirect } from './hooks/useAuthRedirect';

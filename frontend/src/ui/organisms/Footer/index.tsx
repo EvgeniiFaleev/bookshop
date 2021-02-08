@@ -1,5 +1,5 @@
-import { ButtonPrimary } from '@ui/atoms/ButtonPrimary';
 import logo from '@images/logo.svg';
+import { FooterButtons } from '@authentication';
 import styles from './Footer.module.scss';
 
 export const Footer = () => (
@@ -11,10 +11,7 @@ export const Footer = () => (
           <span>Bookshop</span>
         </div>
       </div>
-      <div className={styles.flex2}>
-        <ButtonPrimary path="/login" type="link">login </ButtonPrimary>
-        <ButtonPrimary path="/sign_up" type="link">Sign up</ButtonPrimary>
-      </div>
+      <FooterButtons />
     </div>
   </footer>
 );

@@ -14,3 +14,4 @@ export { BooksChart } from './ui/organisms/BooksChart';
 export { CategoryBooks } from './ui/organisms/CategoryBooks';
 export { Slider } from './ui/organisms/Slider';
 export { SearchResults } from './ui/atoms/SearchResults';
+export { Search } from './ui/molecules/Search';

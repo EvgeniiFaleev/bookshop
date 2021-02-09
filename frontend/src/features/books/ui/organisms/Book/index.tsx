@@ -4,8 +4,10 @@ import { FC } from 'react';
 import { IBook } from '@api/API';
 import { Link } from 'react-router-dom';
 import { cartActions } from '@cart';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IBookInCart } from '@cart/modules/reducer';
+import { v4 as uuidv4 } from 'uuid';
+import { RootState } from '@store/root-reducer';
 import styles from './Book.module.scss';
 
 interface IBookProps extends IBook {
@@ -15,20 +17,20 @@ interface IBookProps extends IBook {
 }
 export const Book:FC<IBookProps > = ({
   categories, _id: id, title, price, author, picture, description, cartBooks, wishList,
-    addItemWishList
+  addItemWishList,
 }) => {
   const categoriesElements = categories.map((item, index, arr) => {
     const space = index < arr.length - 1 ? ',  ' : '';
-    return <Link className={styles.categories_link} to="/">{`${item}${space}`}</Link>;
+    return <Link key={uuidv4()} className={styles.categories_link} to="/">{`${item}${space}`}</Link>;
   });
-
+  const isAuth = useSelector((state:RootState) => state.auth.user.isAuth);
   let match = -1;
   let wishListMatch = -1;
   if (cartBooks) {
     match = cartBooks.findIndex((item) => id === item.id);
   }
-  if(wishList){
-    wishListMatch= wishList.findIndex((item) => id === item._id);
+  if (wishList) {
+    wishListMatch = wishList.findIndex((item) => id === item._id);
   }
   console.log(match);
   const dispatch = useDispatch();
@@ -72,9 +74,19 @@ export const Book:FC<IBookProps > = ({
           >
             {match >= 0 ? 'IN CART' : 'ADD TO CART'}
           </ButtonPrimary>
-          <ButtonSecondary isDisabled={wishListMatch >= 0} type="button" onClick={()=> addItemWishList(id)}>
-            {wishListMatch >= 0 ? 'IN WISHLIST' : 'ADD TO WISHLIST'}
-          </ButtonSecondary>
+          { isAuth ? (
+            <ButtonSecondary
+              isDisabled={wishListMatch >= 0}
+              type="button"
+              onClick={() => addItemWishList(id)}
+            >
+              {wishListMatch >= 0 ? 'IN WISHLIST' : 'ADD TO WISHLIST'}
+            </ButtonSecondary>
+          ) : (
+            <ButtonSecondary type="link" path="/sign_up">
+              ADD TO WISHLIST
+            </ButtonSecondary>
+          )}
         </div>
         <h2 className={styles.description_head}>Description</h2>
         <pre>{description}</pre>

@@ -16,10 +16,10 @@ interface IcategoryBooksProps {
 }
 
 export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, cartBooks }) => {
+  const dispatch = useDispatch();
   const booksElems = books?.map(({
     picture, author, title, price, _id: id,
   }) => {
-    const dispatch = useDispatch();
     let match = -1;
     if (cartBooks) {
       match = cartBooks.findIndex((item) => id === item.id);
@@ -37,7 +37,6 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
     return (
       <div className={styles.item_container} key={id}>
         <div className={styles.book_item}>
-
           <div className={styles.picture}>
             <Link to={`/book/${id}`}>
               <div className={styles.picture_cover}>

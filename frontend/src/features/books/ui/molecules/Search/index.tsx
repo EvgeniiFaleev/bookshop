@@ -22,6 +22,7 @@ const debounce = (fn: (input: string)=> void, time: number) => {
 export const Search = () => {
   const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
+
   const onChange = (e:ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value);
   };
@@ -33,11 +34,15 @@ export const Search = () => {
   const searchBooks = (input: string) => dispatch(booksActions.search(input));
   const debounceSearch = useCallback(debounce(searchBooks, 1000), []);
 
-  useEffect(() => document.addEventListener('click',
-    (e) => {
-      const target = e.target as Element;
-      if (!target.closest(`.${styles.search}`)) dispatch(booksActions.setSearchResults(null));
-    }), []);
+  const clearSearch = useCallback((e) => {
+    const target = e.target as Element;
+    if (!target.closest(`.${styles.search}`)) dispatch(booksActions.setSearchResults(null));
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('click', clearSearch);
+    return () => removeEventListener('click', clearSearch);
+  }, []);
 
   useEffect(() => {
     if (inputValue) debounceSearch(inputValue);

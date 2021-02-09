@@ -2,7 +2,7 @@ import { Home } from '@ui/organisms/Home';
 import { CommonTemplate } from '@templates/CommonTemplate';
 import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { booksActions } from '@books';
+import { booksActions, Search } from '@books';
 import { Preloader } from '@ui/atoms/Preloader';
 import { useParams } from 'react-router-dom';
 import { RootState } from '@store/root-reducer';
@@ -25,7 +25,9 @@ export const CategoryPage = () => {
 
   return (
     <CommonTemplate>
-      <Home booksCount={10} />
+      <Home booksCount={10}>
+        <Search />
+      </Home>
       {categoryName && books
         ? <CategoryBooks books={books} cartBooks={cartBooks} categoryName={categoryName} />
         : <Preloader />}

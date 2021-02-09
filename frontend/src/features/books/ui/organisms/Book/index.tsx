@@ -13,11 +13,12 @@ import styles from './Book.module.scss';
 interface IBookProps extends IBook {
   cartBooks: Array<IBookInCart> | null,
   wishList: Array<IBook> | [],
-  addItemWishList: (bookId:string) => void
+  addItemWishList: (bookId:string) => void,
+  openModal: ()=> void
 }
 export const Book:FC<IBookProps > = ({
   categories, _id: id, title, price, author, picture, description, cartBooks, wishList,
-  addItemWishList,
+  addItemWishList, openModal,
 }) => {
   const categoriesElements = categories.map((item, index, arr) => {
     const space = index < arr.length - 1 ? ',  ' : '';
@@ -43,6 +44,7 @@ export const Book:FC<IBookProps > = ({
       quantity: 1,
       picture,
     }));
+    openModal()
   };
   return (
 

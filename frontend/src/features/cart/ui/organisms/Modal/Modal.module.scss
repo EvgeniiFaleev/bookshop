@@ -1,0 +1,65 @@
+.wrapper {
+  position: fixed;
+  color: $dark-text;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+
+  .modal {
+    border-radius: 0.35rem;
+    max-width: 22rem;
+    padding: 1rem;
+    background-color: $white;
+
+    .info {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+
+      .picture_link {
+        @extend %picture_link
+      }
+      .description {
+          .title{
+            line-height: 1.25;
+            font-size: 20px;
+            font-family: GT-Bold, serif;
+            margin-bottom: 0.3rem;
+          }
+        .text{
+          font-family: IbmPlex-Regular, sans-serif;
+          font-size: 16px;
+          margin-bottom: 1rem;
+          span{
+            font-family: IbmPlex-Bold, sans-serif;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .buttons{
+      width: 100%;
+      display: flex;
+     flex-direction: column;
+      gap: 1rem;
+      button{
+        color: $pink;
+        background-color: $white;
+        border: 1px solid $pink;
+      }
+      button:hover{
+        transition: background-color 0.4s;
+        background-color: $biege;
+
+      }
+    }
+  }
+}
+

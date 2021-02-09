@@ -1,12 +1,13 @@
 import { IBook } from '@api/API';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonPrimary } from '@ui/atoms/ButtonPrimary';
 import { IBookInCart } from '@cart/modules/reducer';
-import { cartActions } from '@cart';
+import { cartActions, Modal } from '@cart';
 import { useDispatch } from 'react-redux';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { createPortal } from 'react-dom';
 import styles from './CategoryBooks.module.scss';
 
 interface IcategoryBooksProps {
@@ -17,6 +18,7 @@ interface IcategoryBooksProps {
 
 export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, cartBooks }) => {
   const dispatch = useDispatch();
+  const [modalsId, setModalsId] = useState('');
   const booksElems = books?.map(({
     picture, author, title, price, _id: id,
   }) => {
@@ -24,6 +26,7 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
     if (cartBooks) {
       match = cartBooks.findIndex((item) => id === item.id);
     }
+
     const onAddToCart = () => {
       dispatch(cartActions.addBook({
         id,
@@ -33,6 +36,7 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
         quantity: 1,
         picture,
       }));
+      setModalsId(id);
     };
     return (
       <div className={styles.item_container} key={id}>
@@ -68,6 +72,12 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
             {' '}
             {match >= 0 ? 'In Cart' : 'Add To Cart'}
           </ButtonPrimary>
+          {modalsId === id ? createPortal(<Modal
+            picture={picture}
+            price={price}
+            title={title}
+            closeModal={() => setModalsId('')}
+          />, document.getElementById('root') as Element) : null}
         </div>
       </div>
     );
@@ -79,6 +89,7 @@ export const CategoryBooks: FC<IcategoryBooksProps> = ({ books, categoryName, ca
       <section className={styles.wrapper}>
         {booksElems || <div> Nothing Found</div>}
       </section>
+
     </>
   );
 };

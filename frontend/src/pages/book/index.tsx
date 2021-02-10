@@ -32,6 +32,7 @@ export const BookPage:FC = () => {
   const addItemWishList = (bookId:string) => {
     dispatch(userActions.addItemWishList(bookId));
   };
+
   return (
     <CommonTemplate>
       { book ? (

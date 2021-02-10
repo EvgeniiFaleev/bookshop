@@ -129,7 +129,7 @@ module.exports = (env) => {
             // publicPath: '../assets/images',
           },
         }, {
-          test: /\.(ttf|woff|gif|woff2|eot)$/,
+          test: /\.(ttf|woff|woff2|eot)$/,
           loader: 'file-loader',
           options: {
             outputPath: 'assets/fonts',

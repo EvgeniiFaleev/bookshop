@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, FormEvent, useState } from 'react';
 import { AdminTemplate } from '@templates/AdminTemplate';
 import { AddBook } from '@books/ui/organisms/AddBook';
 import { useForm } from 'react-hook-form';
@@ -27,7 +27,12 @@ export const AddBookPage:FC = () => {
 
   const [categoriesCount, setCategoriesCount] = useState<number>(1);
 
-  const onSubmit = async (data:IFormData) => {
+  const onClear = () => {
+    if (Object.keys(errors).length > 0) clearErrors();
+    if (isBookAdded) setIsBookAdded(false);
+  };
+
+  const onSubmit = async (data:IFormData, e: any) => {
     if (!description) {
       setError('descError', {
         message: 'Enter description of the book',
@@ -48,11 +53,9 @@ export const AddBookPage:FC = () => {
       const { message } = await res.json();
       setError('bookError', { message });
     }
+    const target = e.target as HTMLFormElement;
+    target.reset();
   };
-
-  // const clearError = () => {
-  //   clearErrors();
-  // };
 
   return (
     <AdminTemplate>
@@ -65,6 +68,7 @@ export const AddBookPage:FC = () => {
         register={register}
         onSubmit={handleSubmit(onSubmit)}
         errors={errors}
+        onClear={onClear}
       />
     </AdminTemplate>
   );

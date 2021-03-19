@@ -5,7 +5,7 @@ import { RootState } from '@store/root-reducer';
 import { FC } from 'react';
 
 export const FooterButtons: FC = () => {
-  const isAuth = useSelector((state:RootState) => state.auth.user.isAuth);
+  const isAuth = useSelector<RootState>((state) => state.auth.user.isAuth);
 
   return (
     <>

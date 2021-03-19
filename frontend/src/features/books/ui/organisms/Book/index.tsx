@@ -22,7 +22,7 @@ export const Book:FC<IBookProps > = ({
 }) => {
   const categoriesElements = categories.map((item, index, arr) => {
     const space = index < arr.length - 1 ? ',  ' : '';
-    return <Link key={uuidv4()} className={styles.categories_link} to="/">{`${item}${space}`}</Link>;
+    return <Link key={uuidv4() as string} className={styles.categories_link} to="/">{`${item}${space}`}</Link>;
   });
   const isAuth = useSelector((state:RootState) => state.auth.user.isAuth);
   let match = -1;

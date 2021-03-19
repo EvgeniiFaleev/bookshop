@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const path = require('path');
 const express = require("express");
 const app = require('express')();
 const config = require("config");
@@ -9,10 +10,10 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const corsOptions = {
-  origin: 'http://localhost:9000',
+  origin: 'https://bookshoppet.herokuapp.com',
   credentials: true
 };
-
+console.log('proces!s', process.env.PORT)
 app.use("/", cookieParser(), cors(corsOptions));
 app.use("/", session({
   secret: config.get("privateSessionKey"),
@@ -45,6 +46,10 @@ app.use("/books",
   ]);
 
 app.use(express.static('public'));
+app.use('/', express.static('../frontend/build'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
 
 async function start() {
   try {
@@ -53,7 +58,7 @@ async function start() {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
-    app.listen(PORT, function () {
+    app.listen(process.env.PORT || PORT, function () {
       console.log(`ExpressJS is running on port ${PORT}!`);
     });
   } catch (e) {

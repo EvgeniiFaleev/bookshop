@@ -58,7 +58,7 @@ console.log(book);
       book.save(function (err) {
         if (err) {
           return res.status(500)
-            .json(`Ошибка при сохранении в базу ${err}`);
+            .json({message: `Ошибка при сохранении в базу ${err}`});
         }
         return res.status(200).json({message: "Книга сохранена"})
       });

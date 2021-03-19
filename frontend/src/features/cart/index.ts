@@ -6,8 +6,8 @@ export { cartActions, cartTypes };
 
 export { CartCounter } from './ui/atoms/CartCounter';
 export { CartItem } from './ui/molecules/CartItem';
-export { Cart } from './ui/organisms/cart';
-export { Checkout } from './ui/organisms/checkout';
+export { Cart } from './ui/organisms/Cart';
+export { Checkout } from './ui/organisms/Checkout';
 export { Modal } from './ui/organisms/Modal';
 export { useCart } from './hooks/useCart';
 export { BookInListInfo } from './ui/atoms/BookInListInfo';

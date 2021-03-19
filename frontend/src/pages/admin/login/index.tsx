@@ -38,13 +38,18 @@ export interface IHookFormProps {
   minLength?: RegisterOptions['minLength'],
   maxLength?: RegisterOptions['maxLength'],
   validate?: RegisterOptions['validate'],
-  onFocus?: FocusEventHandler<HTMLInputElement>
+  onClear?: () => void,
+  onFocus?: FocusEventHandler<HTMLInputElement>,
 }
 
 export const AdminLoginPage: FC = () => {
   const {
-    register, handleSubmit, errors, setError,
+    register, handleSubmit, errors, setError, clearErrors,
   } = useForm<ILoginFormValues>();
+
+  const onClear = () => {
+    if (Object.keys(errors).length > 0) clearErrors();
+  };
 
   const isAuth = useSelector((state:RootState) => state.auth.admin.isAuth);
   const dispatch:DispatchType = useDispatch();
@@ -67,6 +72,7 @@ export const AdminLoginPage: FC = () => {
             register={register}
             errors={errors}
             onSubmit={handleSubmit(onSubmit)}
+            onClear={onClear}
           />
         </AdminTemplate>
       ) : <Redirect to="/admin/add_book" />}

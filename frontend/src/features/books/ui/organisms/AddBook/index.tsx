@@ -18,7 +18,7 @@ interface IAddBokProps extends IHookFormProps {
 
 export const AddBook:FC<IAddBokProps> = ({
   onSubmit,
-  errors,
+  errors, onClear,
   register, setDescription, isBookAdded, categoriesCount, setCategoriesCount,
 }) => {
   const categoryElements = [];
@@ -31,6 +31,7 @@ export const AddBook:FC<IAddBokProps> = ({
         register={register}
         errors={errors}
         key={i}
+        onClear={onClear}
       >
         {i > 0 ? (
           <FontAwesomeIcon
@@ -66,6 +67,7 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="author"
         register={register}
         errors={errors}
+        onClear={onClear}
       />
       <InputField
         errorClassName={styles.error}
@@ -73,6 +75,7 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="title"
         register={register}
         errors={errors}
+        onClear={onClear}
       />
       <InputField
         errorClassName={styles.error}
@@ -80,6 +83,7 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="price"
         register={register}
         errors={errors}
+        onClear={onClear}
       />
       <InputField
         type="file"
@@ -88,6 +92,7 @@ export const AddBook:FC<IAddBokProps> = ({
         fieldName="picture"
         register={register}
         errors={errors}
+        onClear={onClear}
       />
       {categoryElements}
       <button
@@ -100,7 +105,10 @@ export const AddBook:FC<IAddBokProps> = ({
       <p className={styles.description}>
         <p>Description:</p>
         <span
-          onKeyDown={(e) => { setDescription(e.currentTarget.textContent as string); }}
+          onKeyDown={(e) => {
+            if(onClear) onClear();
+            setDescription(e.currentTarget.textContent as string);
+          }}
           className={styles.textarea}
           role="textbox"
           contentEditable

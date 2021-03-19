@@ -1,4 +1,3 @@
-import preloader from '@images/805.gif';
 import styles from './Preloader.module.scss';
 
 export const Preloader = () => (

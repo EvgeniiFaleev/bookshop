@@ -7,6 +7,8 @@ const bcrypt = require('bcrypt');
 const {body, validationResult} = require('express-validator');
 const multer  = require('multer');
 const upload  = multer();
+const express = require("express");
+const path = require('path');
 
 
 
@@ -81,5 +83,6 @@ console.log(req.session)
     res.status(500).json({message: "Чтото пошло не так "})
   }
 });
+
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import { renderRoutes } from 'react-router-config';
-import { routes } from '@pages/index';
+import { routes } from '@pages';
 
 // export const Routes = () => (
 //   <Switch>

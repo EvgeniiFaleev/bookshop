@@ -50,6 +50,9 @@
       "@api/*": [
         "api/*"
       ],
+      "@pages": [
+        "pages"
+      ],
       "@pages/*": [
         "pages/*"
       ],

@@ -68,7 +68,7 @@ export interface ISearchResponse extends IAPIResponse{
 }
 
 export const booksAPI = {
-  url: 'http://localhost:5000/books/',
+  url: 'https://bookshoppet.herokuapp.com/books/',
   async getBook(id:string):Promise<IBook | never> {
     try {
       const res: Response = await fetch(`${this.url}item/?id=${id}`);
@@ -150,7 +150,7 @@ export const booksAPI = {
 };
 
 export const userAPI = {
-  url: 'http://localhost:5000/user/',
+  url: 'https://bookshoppet.herokuapp.com/user/',
   async getWishList(): Promise<IResponseWishList | void> {
     try {
       const res: Response = await fetch(`${this.url}wishlist`, {
@@ -212,7 +212,7 @@ export const userAPI = {
 };
 
 export const authAPI = {
-  url: 'http://localhost:5000/',
+  url: 'https://bookshoppet.herokuapp.com/',
   async adminLogin(data: FormData): Promise<Response> {
     try {
       const res: Response = await fetch(`${this.url}admin/login`, {

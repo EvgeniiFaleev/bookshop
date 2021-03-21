@@ -1,30 +1,66 @@
 import { MainPage } from '@pages/main';
-// import { AdminLoginPage } from '@pages/admin/login';
-// import { AddBookPage } from '@pages/admin/add_book';
-// import { BookPage } from '@pages/book';
-// import { CategoryPage } from '@pages/category';
-// import { CartPage } from '@pages/cart';
-// import { CheckoutPage } from '@pages/checkout';
-// import { LoginPage } from '@pages/login';
-// import { SignUpPage } from '@pages/sign_up';
-// import { AccountPage } from '@pages/account';
-// import { WishListPage } from '@pages/account/wishlist';
-// import { UserOrdersPage } from '@pages/account/orders';
-// import { SearchPage } from '@pages/search';
-import { lazyLoad } from '../helpers/lazyLoad';
+import { lazy } from 'react';
 
-const AdminLoginPage = lazyLoad('@pages/admin/login');
-const AddBookPage = lazyLoad('@pages/admin/add_book');
-const BookPage = lazyLoad('@pages/book');
-const CategoryPage = lazyLoad('@pages/category');
-const CartPage = lazyLoad('@pages/cart');
-const CheckoutPage = lazyLoad('@pages/checkout');
-const SignUpPage = lazyLoad('@pages/sign_up');
-const LoginPage = lazyLoad('@pages/login');
-const AccountPage = lazyLoad('@pages/account');
-const WishListPage = lazyLoad('@pages/account/wishlist');
-const UserOrdersPage = lazyLoad('@pages/account/orders');
-const SearchPage = lazyLoad('@pages/search');
+const AdminLoginPageLazy = lazy(() => import(/* webpackChunkName:
+ "adminLog" */ '@pages/admin/login'
+).then(({ AdminLoginPage }) => (
+  { default: AdminLoginPage }
+)));
+const AddBookPageLazy = lazy(() => import(/* webpackChunkName:
+ "addBook" */ '@pages/admin/add_book'
+).then(({ AddBookPage }) => (
+  { default: AddBookPage }
+)));
+const BookPageLazy = lazy(() => import(/* webpackChunkName:
+ "book" */ '@pages/book'
+).then(({ BookPage }) => (
+  { default: BookPage }
+)));
+const CategoryPageLazy = lazy(() => import(/* webpackChunkName:
+ "category" */ '@pages/category'
+).then(({ CategoryPage }) => (
+  { default: CategoryPage }
+)));
+const CartPageLazy = lazy(() => import(/* webpackChunkName:
+ "cart" */ '@pages/cart'
+).then(({ CartPage }) => (
+  { default: CartPage }
+)));
+const CheckoutPageLazy = lazy(() => import(/* webpackChunkName:
+ "check" */ '@pages/checkout'
+).then(({ CheckoutPage }) => (
+  { default: CheckoutPage }
+)));
+const SignUpPageLazy = lazy(() => import(/* webpackChunkName:
+ "sign_up" */ '@pages/sign_up'
+).then(({ SignUpPage }) => (
+  { default: SignUpPage }
+)));
+const LoginPageLazy = lazy(() => import(/* webpackChunkName:
+ "login" */ '@pages/login'
+).then(({ LoginPage }) => (
+  { default: LoginPage }
+)));
+const AccountPageLazy = lazy(() => import(/* webpackChunkName:
+ "account" */ '@pages/account'
+).then(({ AccountPage }) => (
+  { default: AccountPage }
+)));
+const WishListPageLazy = lazy(() => import(/* webpackChunkName:
+ "wish" */ '@pages/account/wishlist'
+).then(({ WishListPage }) => (
+  { default: WishListPage }
+)));
+const UserOrdersPageLazy = lazy(() => import(/* webpackChunkName:
+ "order" */ '@pages/account/orders'
+).then(({ UserOrdersPage }) => (
+  { default: UserOrdersPage }
+)));
+const SearchPageLazy = lazy(() => import(/* webpackChunkName:
+ "search" */ '@pages/search'
+).then(({ SearchPage }) => (
+  { default: SearchPage }
+)));
 
 export const routes = () => [
   {
@@ -35,61 +71,61 @@ export const routes = () => [
   {
     path: '/admin/login',
     exact: true,
-    component: AdminLoginPage,
+    component: AdminLoginPageLazy,
   },
   {
     path: '/admin/add_book',
     exact: true,
-    component: AddBookPage,
+    component: AddBookPageLazy,
   },
   {
     path: '/book/:id',
     exact: true,
-    component: BookPage,
+    component: BookPageLazy,
   },
   {
     path: '/category/:category',
     exact: true,
-    component: CategoryPage,
+    component: CategoryPageLazy,
   },
   {
     path: '/search',
     exact: true,
-    component: SearchPage,
+    component: SearchPageLazy,
   },
   {
     path: '/cart',
     exact: true,
-    component: CartPage,
+    component: CartPageLazy,
   },
   {
     path: '/checkout',
     exact: true,
-    component: CheckoutPage,
+    component: CheckoutPageLazy,
   },
   {
     path: '/login',
     exact: true,
-    component: LoginPage,
+    component: LoginPageLazy,
   },
   {
     path: '/sign_up',
     exact: true,
-    component: SignUpPage,
+    component: SignUpPageLazy,
   },
   {
     path: '/account',
     exact: true,
-    component: AccountPage,
+    component: AccountPageLazy,
   },
   {
     path: '/account/wishlist',
     exact: true,
-    component: WishListPage,
+    component: WishListPageLazy,
   },
   {
     path: '/account/orders',
     exact: true,
-    component: UserOrdersPage,
+    component: UserOrdersPageLazy,
   },
 ];

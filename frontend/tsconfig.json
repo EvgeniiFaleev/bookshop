@@ -64,7 +64,7 @@
       ]},
     "outDir": "./build/",
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "esnext",
     "sourceMap": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,

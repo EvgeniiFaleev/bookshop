@@ -16,7 +16,7 @@ module.exports = (env) => {
       // the output directory when referenced in a browser.
       // A relative URL is resolved relative to the HTML page (or <base> tag).
       // Server-relative URLs, protocol-relative URLs or absolute URLs are also possible and sometimes required
-      filename: 'scripts/main.[hash].js',
+      filename: 'scripts/[name].[hash].js',
       path: path.resolve(__dirname, 'build'),
     },
     resolve: {

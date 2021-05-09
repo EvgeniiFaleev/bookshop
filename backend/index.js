@@ -10,7 +10,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const corsOptions = {
-  origin: 'https://bookshoppet.herokuapp.com',
+  origin: ['https://bookshoppet.herokuapp.com', 'http://localhost:9000'],
   credentials: true
 };
 console.log('proces!s', process.env.PORT)

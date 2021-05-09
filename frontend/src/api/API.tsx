@@ -1,4 +1,5 @@
-import {IUserInfo} from '@authentication/modules/user/actions';
+import { IUserInfo } from '@authentication/modules/user/actions';
+import { BASE_URL } from '../config';
 
 export interface IBook {
   categories: Array<string>,
@@ -68,7 +69,7 @@ export interface ISearchResponse extends IAPIResponse{
 }
 
 export const booksAPI = {
-  url: 'https://bookshoppet.herokuapp.com/books/',
+  url: `${BASE_URL}books/`,
   async getBook(id:string):Promise<IBook | never> {
     try {
       const res: Response = await fetch(`${this.url}item/?id=${id}`);
@@ -150,7 +151,7 @@ export const booksAPI = {
 };
 
 export const userAPI = {
-  url: 'https://bookshoppet.herokuapp.com/user/',
+  url: `${BASE_URL}user/`,
   async getWishList(): Promise<IResponseWishList | void> {
     try {
       const res: Response = await fetch(`${this.url}wishlist`, {
@@ -212,7 +213,7 @@ export const userAPI = {
 };
 
 export const authAPI = {
-  url: 'https://bookshoppet.herokuapp.com/',
+  url: BASE_URL,
   async adminLogin(data: FormData): Promise<Response> {
     try {
       const res: Response = await fetch(`${this.url}admin/login`, {
